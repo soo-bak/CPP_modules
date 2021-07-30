@@ -2,7 +2,7 @@ NAME = megaphone
 COMPILER = clang++
 CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++98
-SRCS = Main.cpp \
+SRCS = megaphone.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
