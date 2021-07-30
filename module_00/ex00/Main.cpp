@@ -4,7 +4,7 @@
 const std::string Noise = "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 
 std::string MakeUpperMessage(char *input) {
-  std::string message = static_cast<std::string>(input);
+  std::string message(input);
   for (std::string::iterator i = message.begin(); i < message.end(); i++) {
     *i = toupper(*i);
   }
