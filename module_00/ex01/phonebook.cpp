@@ -7,10 +7,10 @@ int main() {
     getline(std::cin, input);
     if (input.compare("ADD") == 0)
       std::cout << "it's ADD." << std::endl;
+    else if (input.compare("EXIT") == 0)
+      exit(0);
     else if (input.compare("SEARCH") == 0)
       std::cout << "it's SEARCH." << std::endl;
-    else if (input.compare("EXIT") == 0)
-      std::cout << "it's EXIT." << std::endl;
     else
       continue ;
   }
