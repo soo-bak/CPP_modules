@@ -10,9 +10,10 @@ class Phonebook {
     Phonebook();
     ~Phonebook();
     void ExecuteCommand(const std::string& command);
-    int GetResultValue(void);
+    unsigned int GetContactsNumber();
+    unsigned int SetContactsNumber();
 
   private:
     Contact _contacts[8];
-    int _resultValue;
+    unsigned int _contactsNumber;
 };

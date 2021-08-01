@@ -2,7 +2,6 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <string>
-#include <stdlib.h>
 
 int main() {
   Phonebook Phonebook;
