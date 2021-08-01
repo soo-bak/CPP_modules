@@ -10,7 +10,7 @@ int main() {
   while (true) {
     std::cout << "command : ";
     getline(std::cin, command);
-    Phonebook.GetCommand(command);
+    Phonebook.ExecuteCommand(command);
   }
   return 0;
 }

@@ -9,7 +9,7 @@ class Phonebook {
   public:
     Phonebook();
     ~Phonebook();
-    void GetCommand(const std::string& command);
+    void ExecuteCommand(const std::string& command);
     int GetResultValue(void);
 
   private:

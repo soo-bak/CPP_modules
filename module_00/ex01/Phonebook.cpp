@@ -6,7 +6,7 @@ Phonebook::Phonebook() {
 Phonebook::~Phonebook() {
 }
 
-void Phonebook::GetCommand(const std::string& command)
+void Phonebook::ExecuteCommand(const std::string& command)
 {
   if (command.compare("ADD") == 0) {
     std::cout << "it's ADD." << std::endl;
@@ -20,7 +20,6 @@ void Phonebook::GetCommand(const std::string& command)
     this->_resultValue = 0;
   }
 }
-
 
 int Phonebook::GetResultValue() {
   return _resultValue;
