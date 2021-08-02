@@ -5,9 +5,9 @@
 
 int main() {
   Phonebook Phonebook;
-  std::string input;
   while (true) {
     std::cout << "input : ";
+    std::string input;
     getline(std::cin, input);
     const int commandValue = Phonebook.GetCommandValue(input);
     Phonebook.ExecuteCommand(commandValue);

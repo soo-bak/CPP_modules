@@ -32,5 +32,7 @@ void Phonebook::ExecuteCommand(const unsigned int& commandValue)
     std::cout << "It's SEARCH." << std::endl;
   } else if (commandValue & Exit) {
     exit(0);
+  } else {
+    return ;
   }
 }
