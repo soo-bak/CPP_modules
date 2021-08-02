@@ -10,7 +10,8 @@ class Phonebook {
     Phonebook();
     ~Phonebook();
     unsigned int GetCommandValue(const std::string& input);
-    void ExecuteCommand(const unsigned int& command);
+    void ExecuteCommand(const unsigned int& commandValue);
+    void AddNewContact();
     unsigned int GetContactsNumber();
     unsigned int SetContactsNumber();
 
