@@ -11,11 +11,13 @@ class Phonebook {
     ~Phonebook();
     unsigned int GetCommandValue(const std::string& input);
     void ExecuteCommand(const unsigned int& commandValue);
+    void DisplayContactList();
     void AddNewContact();
-    unsigned int GetContactsNumber();
-    unsigned int SetContactsNumber();
+    void CheckIndexToAdd();
+    int GetContactsNumber();
 
   private:
     Contact _contacts[8];
-    unsigned int _contactsNumber;
+    int _contactsNumber;
+    int _indexToAdd;
 };

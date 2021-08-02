@@ -7,6 +7,8 @@ enum Commands {
 };
 
 Phonebook::Phonebook() {
+  _contactsNumber = 0;
+  _indexToAdd = 0;
 }
 
 Phonebook::~Phonebook() {
@@ -24,15 +26,36 @@ unsigned int Phonebook::GetCommandValue(const std::string& input) {
   return returnValue;
 }
 
-void Phonebook::ExecuteCommand(const unsigned int& commandValue)
-{
+void Phonebook::ExecuteCommand(const unsigned int& commandValue) {
   if (commandValue & Add) {
-    std::cout << "It's ADD." << std::endl;
+    CheckIndexToAdd();
+    AddNewContact();
   } else if (commandValue & Search) {
-    std::cout << "It's SEARCH." << std::endl;
+    DisplayContactList();
   } else if (commandValue & Exit) {
     exit(0);
   } else {
     return ;
+  }
+}
+
+void Phonebook::CheckIndexToAdd() {
+  const int maximuContactNumber = 8;
+   if (_indexToAdd > maximuContactNumber) {
+     this->_indexToAdd = 0;
+     this->_contactsNumber = maximuContactNumber;
+   }
+}
+
+void Phonebook::AddNewContact() {
+  _contacts[_indexToAdd].SetInformation();
+  _contacts[_indexToAdd].SetContactIndex(_indexToAdd);
+  this->_indexToAdd++;
+  this->_contactsNumber++;
+}
+
+void Phonebook::DisplayContactList() {
+  for (int i = 0; i < _contactsNumber; i++) {
+    this->_contacts[i].PrintBasicInformation();
   }
 }
