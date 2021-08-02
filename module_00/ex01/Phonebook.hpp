@@ -9,7 +9,8 @@ class Phonebook {
   public:
     Phonebook();
     ~Phonebook();
-    void ExecuteCommand(const std::string& command);
+    unsigned int GetCommandValue(const std::string& input);
+    void ExecuteCommand(const unsigned int& command);
     unsigned int GetContactsNumber();
     unsigned int SetContactsNumber();
 

@@ -5,11 +5,13 @@
 
 int main() {
   Phonebook Phonebook;
-  std::string command;
+  std::string input;
   while (true) {
-    std::cout << "command : ";
-    getline(std::cin, command);
-    Phonebook.ExecuteCommand(command);
+    int commandValue = 0;
+    std::cout << "input : ";
+    getline(std::cin, input);
+    commandValue = Phonebook.GetCommandValue(input);
+    Phonebook.ExecuteCommand(commandValue);
   }
   return 0;
 }
