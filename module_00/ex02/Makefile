@@ -1,7 +1,7 @@
 NAME = Account
 COMPILER = clang++
 CFLAGS = -Wall -Wextra -Werror
-CPP_VERSION = -std=c++98
+CPP_VERSION = -std=c++03
 SRCS = Account.cpp \
 	tests.cpp \
 
