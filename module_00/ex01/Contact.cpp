@@ -13,7 +13,7 @@ void Contact::SetInformation() {
   }
 }
 
-void Contact::PrintFieldPrompt(int& arrayIterator) {
+void Contact::PrintFieldPrompt(const int& arrayIterator) {
   std::string fieldName;
   if (arrayIterator == FirstName) {
     fieldName = "First Name : ";
@@ -38,7 +38,7 @@ void Contact::SetContactIndex(const int& indexToAdd) {
 }
 
 void Contact::PrintBasicInformation() {
-  std::cout << " | ";
+  std::cout << "|";
   PrintColumn(_contactIndex);
   for (int i = FirstName; i < PhoneNumber; i++) {
     PrintColumn(_information[i]);
@@ -46,10 +46,16 @@ void Contact::PrintBasicInformation() {
   std::cout << std::endl;
 }
 
-void Contact::PrintColumn(const std::string& content) {
+void Contact::PrintColumn(std::string& content) {
   const int fieldWidth = 10;
+  if (content.size() > fieldWidth) {
+    std::size_t truncatedIndex = fieldWidth - 1;
+    content.at(truncatedIndex) = '.';
+    std::size_t truncatedSize = truncatedIndex + 1;
+    content.resize(truncatedSize);
+  }
   std::stringstream contentStream;
   contentStream << content;
   std::cout << std::setw(fieldWidth) << std::right;
-  std::cout << contentStream.str() << " | ";
+  std::cout << contentStream.str() << "|";
 }

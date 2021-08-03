@@ -11,9 +11,9 @@ class Contact {
     ~Contact();
     void SetInformation();
     void SetContactIndex(const int& indexToAdd);
-    void PrintFieldPrompt(int& arrayIterator);
+    void PrintFieldPrompt(const int& arrayIterator);
     void PrintBasicInformation();
-    void PrintColumn(const std::string& content);
+    void PrintColumn(std::string& content);
 
   private:
     std::string _information[5];
