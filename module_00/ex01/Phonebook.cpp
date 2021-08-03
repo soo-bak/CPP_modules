@@ -38,7 +38,7 @@ void Phonebook::ExecuteCommand(const unsigned int& command) {
   } else if (command & Exit) {
     exit(0);
   } else {
-    std::cout << "Please check the command." << std::endl;
+    std::cout << "It's wrong command, try again." << std::endl;
   }
 }
 
@@ -65,10 +65,12 @@ void Phonebook::DisplayContactsList() {
 
 void Phonebook::SelectContact() {
   std::cout << "Please select the index to detail information." << std::endl;
-  std::cin >> _selectedIndex;
+  // std::cin >> _selectedIndex;
+  std::string input;
+  std::getline(std::cin, input);
+  _selectedIndex = atoi(input.c_str());
   if (_selectedIndex > _contactsNumber || _selectedIndex < 1) {
-    std::cout << "Index " <<_selectedIndex;
-    std::cout <<  " is wrong, try agin." << std::endl;
+    std::cout <<  "The index is invalid, try agin." << std::endl;
     std::cout.flush();
     SelectContact();
   }
