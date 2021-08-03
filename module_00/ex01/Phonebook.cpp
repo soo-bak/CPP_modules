@@ -28,8 +28,8 @@ unsigned int Phonebook::CheckCommand(const std::string& input) {
 }
 
 void Phonebook::ExecuteCommand(const unsigned int& command) {
+  CheckIndex();
   if (command & Add) {
-    CheckIndex();
     AddContact();
   } else if (command & Search) {
     DisplayContactsList();
@@ -43,10 +43,12 @@ void Phonebook::ExecuteCommand(const unsigned int& command) {
 }
 
 void Phonebook::CheckIndex() {
-  const int maximuContactNumber = 8;
-   if (_indexToAdd > maximuContactNumber) {
+  const int maximumContactNumber = 8;
+   if (_indexToAdd >= maximumContactNumber) {
      _indexToAdd = 0;
-     _contactsNumber = maximuContactNumber;
+   }
+   if (_contactsNumber > maximumContactNumber) {
+     _contactsNumber = maximumContactNumber;
    }
 }
 

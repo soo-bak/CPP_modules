@@ -8,7 +8,6 @@ int main() {
   while (true) {
     std::cout << "Enter the command : ";
     std::string input;
-    // std::cin >> input;
     std::getline(std::cin, input);
     const int command = phonebook.CheckCommand(input);
     phonebook.ExecuteCommand(command);
