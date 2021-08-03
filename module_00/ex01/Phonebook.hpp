@@ -9,15 +9,17 @@ class Phonebook {
   public:
     Phonebook();
     ~Phonebook();
-    unsigned int GetCommandValue(const std::string& input);
-    void ExecuteCommand(const unsigned int& commandValue);
-    void DisplayContactList();
-    void AddNewContact();
-    void CheckIndexToAdd();
-    int GetContactsNumber();
+    unsigned int CheckCommand(const std::string& input);
+    void ExecuteCommand(const unsigned int& command);
+    void DisplayContactsList();
+    void DisplayContactInformation();
+    void AddContact();
+    void CheckIndex();
+    void SelectContact();
 
   private:
     Contact _contacts[8];
     int _contactsNumber;
     int _indexToAdd;
+    int _selectedIndex;
 };

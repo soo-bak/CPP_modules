@@ -9,12 +9,13 @@ enum Commands {
 Phonebook::Phonebook() {
   _contactsNumber = 0;
   _indexToAdd = 0;
+  _selectedIndex = 0;
 }
 
 Phonebook::~Phonebook() {
 }
 
-unsigned int Phonebook::GetCommandValue(const std::string& input) {
+unsigned int Phonebook::CheckCommand(const std::string& input) {
   unsigned int returnValue = 0;
   if (input.compare("ADD") == 0) {
     returnValue |= Add;
@@ -26,20 +27,22 @@ unsigned int Phonebook::GetCommandValue(const std::string& input) {
   return returnValue;
 }
 
-void Phonebook::ExecuteCommand(const unsigned int& commandValue) {
-  if (commandValue & Add) {
-    CheckIndexToAdd();
-    AddNewContact();
-  } else if (commandValue & Search) {
-    DisplayContactList();
-  } else if (commandValue & Exit) {
+void Phonebook::ExecuteCommand(const unsigned int& command) {
+  if (command & Add) {
+    CheckIndex();
+    AddContact();
+  } else if (command & Search) {
+    DisplayContactsList();
+    SelectContact();
+    DisplayContactInformation();
+  } else if (command & Exit) {
     exit(0);
   } else {
-    return ;
+    std::cout << "Please check the command." << std::endl;
   }
 }
 
-void Phonebook::CheckIndexToAdd() {
+void Phonebook::CheckIndex() {
   const int maximuContactNumber = 8;
    if (_indexToAdd > maximuContactNumber) {
      _indexToAdd = 0;
@@ -47,15 +50,31 @@ void Phonebook::CheckIndexToAdd() {
    }
 }
 
-void Phonebook::AddNewContact() {
+void Phonebook::AddContact() {
   _contacts[_indexToAdd].SetInformation();
   _contacts[_indexToAdd].SetContactIndex(_indexToAdd);
   _indexToAdd++;
   _contactsNumber++;
 }
 
-void Phonebook::DisplayContactList() {
+void Phonebook::DisplayContactsList() {
   for (int i = 0; i < _contactsNumber; i++) {
     _contacts[i].PrintBasicInformation();
   }
+}
+
+void Phonebook::SelectContact() {
+  std::cout << "Please select the index to detail information." << std::endl;
+  std::cin >> _selectedIndex;
+  if (_selectedIndex > _contactsNumber || _selectedIndex < 1) {
+    std::cout << "Index " <<_selectedIndex;
+    std::cout <<  " is wrong, try agin." << std::endl;
+    std::cout.flush();
+    SelectContact();
+  }
+}
+
+void Phonebook::DisplayContactInformation() {
+  const int contactIndex = _selectedIndex - 1;
+  _contacts[contactIndex].PrintAllInformation();
 }

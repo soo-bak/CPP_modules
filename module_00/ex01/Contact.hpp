@@ -13,7 +13,8 @@ class Contact {
     void SetContactIndex(const int& indexToAdd);
     void PrintFieldPrompt(const int& arrayIterator);
     void PrintBasicInformation();
-    void PrintColumn(std::string& content);
+    void PrintColumn(std::string content);
+    void PrintAllInformation();
 
   private:
     std::string _information[5];

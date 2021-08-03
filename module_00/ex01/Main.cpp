@@ -4,13 +4,12 @@
 #include <string>
 
 int main() {
-  Phonebook Phonebook;
+  Phonebook phonebook;
   while (true) {
-    std::cout << "input : ";
     std::string input;
-    getline(std::cin, input);
-    const int commandValue = Phonebook.GetCommandValue(input);
-    Phonebook.ExecuteCommand(commandValue);
+    std::cin >> input;
+    const int command = phonebook.CheckCommand(input);
+    phonebook.ExecuteCommand(command);
   }
   return 0;
 }
