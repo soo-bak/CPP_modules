@@ -7,21 +7,21 @@
 
 class Contact {
   public:
-    Contact();
-    ~Contact();
+    void PrintColumn(std::string content);
+    void PrintFieldPrompt(const int& arrayIterator);
     void SetInformation();
     void SetContactIndex(const int& indexToAdd);
-    void PrintFieldPrompt(const int& arrayIterator);
     void PrintBasicInformation(const std::string index,
                                const std::string *information);
-    void PrintColumn(std::string content);
     void PrintAllInformation();
+    Contact();
+    ~Contact();
+    std::string *GetFieldName();
     std::string GetContactIndex();
     std::string *GetInformation();
-    std::string *GetFieldName();
 
   private:
+    std::string _fieldName[5];
     std::string _contactIndex;
     std::string _information[5];
-    std::string _fieldName[5];
 };

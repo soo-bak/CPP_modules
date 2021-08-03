@@ -35,7 +35,6 @@ void Contact::SetContactIndex(const int& indexToAdd) {
 }
 
 void Contact::PrintFieldPrompt(const int& arrayIterator) {
-  std::string fieldName;
   std::cout << "  ADD contact's <" << _fieldName[arrayIterator] << "> : ";
   return ;
 }
