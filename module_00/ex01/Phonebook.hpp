@@ -7,6 +7,13 @@
 #include "Contact.hpp"
 
 class Phonebook {
+
+  enum Commands {
+  Add = 1 << 0,
+  Search = 1 << 1,
+  Exit = 1 << 2
+  };
+
   public:
     Phonebook();
     ~Phonebook();

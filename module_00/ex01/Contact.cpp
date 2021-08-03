@@ -1,13 +1,5 @@
 #include "Contact.hpp"
 
-enum field {
-  FirstName,
-  LastName,
-  NickName,
-  PhoneNumber,
-  DarkestSecret
-};
-
 Contact::Contact() {
   _fieldName[FirstName] = "First Name";
   _fieldName[LastName] = "Last Name";
