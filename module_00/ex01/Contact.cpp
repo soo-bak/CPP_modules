@@ -9,7 +9,7 @@ Contact::~Contact() {
 void Contact::SetInformation() {
   for (int i = FirstName; i < DarkestSecret; i++) {
     PrintFieldPrompt(i);
-    getline(std::cin, this->_information[i]);
+    getline(std::cin, _information[i]);
   }
 }
 
@@ -32,11 +32,24 @@ void Contact::PrintFieldPrompt(int& arrayIterator) {
 }
 
 void Contact::SetContactIndex(const int& indexToAdd) {
-  this->_contactIndex = indexToAdd;
+  std::stringstream ss;
+  ss << (indexToAdd + 1);
+  ss >> _contactIndex;
 }
 
 void Contact::PrintBasicInformation() {
+  std::cout << " | ";
+  PrintColumn(_contactIndex);
   for (int i = FirstName; i < PhoneNumber; i++) {
-    std::cout << _information[i] << std::endl;
+    PrintColumn(_information[i]);
   }
+  std::cout << std::endl;
+}
+
+void Contact::PrintColumn(const std::string& content) {
+  const int fieldWidth = 10;
+  std::stringstream contentStream;
+  contentStream << content;
+  std::cout << std::setw(fieldWidth) << std::right;
+  std::cout << contentStream.str() << " | ";
 }

@@ -2,6 +2,8 @@
 
 #include <string>
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 
 class Contact {
   public:
@@ -11,10 +13,11 @@ class Contact {
     void SetContactIndex(const int& indexToAdd);
     void PrintFieldPrompt(int& arrayIterator);
     void PrintBasicInformation();
+    void PrintColumn(const std::string& content);
 
   private:
     std::string _information[5];
-    int _contactIndex;
+    std::string _contactIndex;
 };
 
 enum field {

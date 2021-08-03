@@ -42,20 +42,20 @@ void Phonebook::ExecuteCommand(const unsigned int& commandValue) {
 void Phonebook::CheckIndexToAdd() {
   const int maximuContactNumber = 8;
    if (_indexToAdd > maximuContactNumber) {
-     this->_indexToAdd = 0;
-     this->_contactsNumber = maximuContactNumber;
+     _indexToAdd = 0;
+     _contactsNumber = maximuContactNumber;
    }
 }
 
 void Phonebook::AddNewContact() {
   _contacts[_indexToAdd].SetInformation();
   _contacts[_indexToAdd].SetContactIndex(_indexToAdd);
-  this->_indexToAdd++;
-  this->_contactsNumber++;
+  _indexToAdd++;
+  _contactsNumber++;
 }
 
 void Phonebook::DisplayContactList() {
   for (int i = 0; i < _contactsNumber; i++) {
-    this->_contacts[i].PrintBasicInformation();
+    _contacts[i].PrintBasicInformation();
   }
 }
