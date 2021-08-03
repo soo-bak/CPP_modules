@@ -20,10 +20,13 @@ class Contact {
     void SetInformation();
     void SetContactIndex(const int& indexToAdd);
     void PrintFieldPrompt(const int& arrayIterator);
-    void PrintBasicInformation();
+    void PrintBasicInformation(const std::string index,
+                               const std::string *information);
     void PrintColumn(std::string content);
-    void PrintFieldNames();
     void PrintAllInformation();
+    std::string GetContactIndex();
+    std::string *GetInformation();
+    std::string *GetFieldName();
 
   private:
     std::string _information[5];

@@ -7,7 +7,7 @@ enum Commands {
 };
 
 Phonebook::Phonebook() {
-  _contactsNumber = 0;
+  _registeredNumber = 0;
   _indexToAdd = 0;
   _selectedIndex = 0;
 }
@@ -31,14 +31,22 @@ void Phonebook::ExecuteCommand(const unsigned int& command) {
   CheckIndex();
   if (command & Add) {
     AddContact();
+    return ;
   } else if (command & Search) {
-    DisplayContactsList();
-    SelectContact();
-    DisplayContactInformation();
+    if (_registeredNumber == 0) {
+      std::cout << "No contacts are registered." << std::endl;
+      return ;
+    } else {
+      DisplayContactList();
+      SelectContact();
+      DisplayContactInformation();
+    }
+    return ;
   } else if (command & Exit) {
     exit(0);
   } else {
     std::cout << "It's wrong command, try again." << std::endl;
+    return ;
   }
 }
 
@@ -47,22 +55,28 @@ void Phonebook::CheckIndex() {
    if (_indexToAdd >= maximumContactNumber) {
      _indexToAdd = 0;
    }
-   if (_contactsNumber > maximumContactNumber) {
-     _contactsNumber = maximumContactNumber;
+   if (_registeredNumber > maximumContactNumber) {
+     _registeredNumber = maximumContactNumber;
    }
+   return ;
 }
 
 void Phonebook::AddContact() {
-  _contacts[_indexToAdd].SetInformation();
-  _contacts[_indexToAdd].SetContactIndex(_indexToAdd);
+  _contact[_indexToAdd].SetInformation();
+  _contact[_indexToAdd].SetContactIndex(_indexToAdd);
   _indexToAdd++;
-  _contactsNumber++;
+  _registeredNumber++;
+  return ;
 }
 
-void Phonebook::DisplayContactsList() {
-  for (int i = 0; i < _contactsNumber; i++) {
-    _contacts[i].PrintBasicInformation();
+void Phonebook::DisplayContactList() {
+  _contact[0].PrintBasicInformation("INDEX", _contact[0].GetFieldName());
+  for (int i = 0; i < _registeredNumber; i++) {
+    const std::string contactIndex = _contact[i].GetContactIndex();
+    const std::string *information = _contact[i].GetInformation();
+    _contact[i].PrintBasicInformation(contactIndex, information);
   }
+  return ;
 }
 
 void Phonebook::SelectContact() {
@@ -70,13 +84,15 @@ void Phonebook::SelectContact() {
   std::string input;
   std::getline(std::cin, input);
   _selectedIndex = atoi(input.c_str());
-  if (_selectedIndex > _contactsNumber || _selectedIndex < 1) {
+  if (_selectedIndex > _registeredNumber || _selectedIndex < 1) {
     std::cout <<  "The index is invalid, try again." << std::endl;
     SelectContact();
   }
+  return ;
 }
 
 void Phonebook::DisplayContactInformation() {
   const int contactIndex = _selectedIndex - 1;
-  _contacts[contactIndex].PrintAllInformation();
+  _contact[contactIndex].PrintAllInformation();
+  return ;
 }

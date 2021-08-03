@@ -16,26 +16,31 @@ void Contact::SetInformation() {
     PrintFieldPrompt(i);
     std::getline(std::cin, _information[i]);
   }
+  return ;
 }
 
 void Contact::PrintFieldPrompt(const int& arrayIterator) {
   std::string fieldName;
   std::cout << "  ADD contact's <" << _fieldName[arrayIterator] << "> : ";
+  return ;
 }
 
 void Contact::SetContactIndex(const int& indexToAdd) {
   std::stringstream ss;
   ss << (indexToAdd + 1);
   ss >> _contactIndex;
+  return ;
 }
 
-void Contact::PrintBasicInformation() {
+void Contact::PrintBasicInformation(const std::string index,
+                                    const std::string *information) {
   std::cout << "|";
-  PrintColumn(_contactIndex);
+  PrintColumn(index);
   for (int i = FirstName; i < PhoneNumber; i++) {
-    PrintColumn(_information[i]);
+    PrintColumn(information[i]);
   }
   std::cout << std::endl;
+  return ;
 }
 
 void Contact::PrintColumn(std::string content) {
@@ -46,14 +51,26 @@ void Contact::PrintColumn(std::string content) {
     const std::size_t truncatedSize = truncatedIndex + 1;
     content.resize(truncatedSize);
   }
-  std::stringstream contentStream;
-  contentStream << content;
   std::cout << std::setw(fieldWidth) << std::right;
-  std::cout << contentStream.str() << "|";
+  std::cout << content << "|";
+  return ;
 }
 
 void Contact::PrintAllInformation() {
   for (int i = FirstName; i <= DarkestSecret; i++){
     std::cout << "  " << _fieldName[i] << " : " <<_information[i] << std::endl;
   }
+  return ;
+}
+
+std::string Contact::GetContactIndex() {
+  return _contactIndex;
+}
+
+std::string *Contact::GetInformation() {
+  return _information;
+}
+
+std::string *Contact::GetFieldName() {
+  return _fieldName;
 }

@@ -11,15 +11,15 @@ class Phonebook {
     ~Phonebook();
     unsigned int CheckCommand(const std::string& input);
     void ExecuteCommand(const unsigned int& command);
-    void DisplayContactsList();
+    void DisplayContactList();
     void DisplayContactInformation();
     void AddContact();
     void CheckIndex();
     void SelectContact();
 
   private:
-    Contact _contacts[8];
-    int _contactsNumber;
+    Contact _contact[8];
+    int _registeredNumber;
     int _indexToAdd;
     int _selectedIndex;
 };
