@@ -6,7 +6,7 @@
 int main() {
   Phonebook phonebook;
   while (true) {
-    std::cout << "Please input the command : ";
+    std::cout << "Enter the command : ";
     std::string input;
     // std::cin >> input;
     std::getline(std::cin, input);

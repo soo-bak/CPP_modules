@@ -64,14 +64,12 @@ void Phonebook::DisplayContactsList() {
 }
 
 void Phonebook::SelectContact() {
-  std::cout << "Please select the index to detail information." << std::endl;
-  // std::cin >> _selectedIndex;
+  std::cout << "Select the index to detail information." << std::endl;
   std::string input;
   std::getline(std::cin, input);
   _selectedIndex = atoi(input.c_str());
   if (_selectedIndex > _contactsNumber || _selectedIndex < 1) {
     std::cout <<  "The index is invalid, try agin." << std::endl;
-    std::cout.flush();
     SelectContact();
   }
 }
