@@ -1,6 +1,11 @@
 #include "Contact.hpp"
 
 Contact::Contact() {
+  _fieldName[FirstName] = "First Name";
+  _fieldName[LastName] = "Last Name";
+  _fieldName[NickName] = "Nick Name";
+  _fieldName[PhoneNumber] = "Phone Number";
+  _fieldName[DarkestSecret] = "Darkest Secret";
 }
 
 Contact::~Contact() {
@@ -15,20 +20,7 @@ void Contact::SetInformation() {
 
 void Contact::PrintFieldPrompt(const int& arrayIterator) {
   std::string fieldName;
-  if (arrayIterator == FirstName) {
-    fieldName = "First Name : ";
-  } else if (arrayIterator == LastName) {
-    fieldName = "Last Name : ";
-  } else if (arrayIterator == NickName) {
-    fieldName = "Nick Name : ";
-  } else if (arrayIterator == PhoneNumber) {
-    fieldName = "Phone Number : ";
-  } else if (arrayIterator == DarkestSecret) {
-    fieldName = "Darkest Secret : ";
-  } else {
-    fieldName = "Field name error";
-  }
-  std::cout << fieldName;
+  std::cout << "  ADD contact's <" << _fieldName[arrayIterator] << "> : ";
 }
 
 void Contact::SetContactIndex(const int& indexToAdd) {
@@ -62,6 +54,6 @@ void Contact::PrintColumn(std::string content) {
 
 void Contact::PrintAllInformation() {
   for (int i = FirstName; i <= DarkestSecret; i++){
-    std::cout << _information[i] << std::endl;
+    std::cout << "  " << _fieldName[i] << " : " <<_information[i] << std::endl;
   }
 }

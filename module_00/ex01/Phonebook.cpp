@@ -71,7 +71,7 @@ void Phonebook::SelectContact() {
   std::getline(std::cin, input);
   _selectedIndex = atoi(input.c_str());
   if (_selectedIndex > _contactsNumber || _selectedIndex < 1) {
-    std::cout <<  "The index is invalid, try agin." << std::endl;
+    std::cout <<  "The index is invalid, try again." << std::endl;
     SelectContact();
   }
 }

@@ -5,6 +5,14 @@
 #include <iomanip>
 #include <sstream>
 
+enum field {
+  FirstName,
+  LastName,
+  NickName,
+  PhoneNumber,
+  DarkestSecret
+};
+
 class Contact {
   public:
     Contact();
@@ -14,17 +22,11 @@ class Contact {
     void PrintFieldPrompt(const int& arrayIterator);
     void PrintBasicInformation();
     void PrintColumn(std::string content);
+    void PrintFieldNames();
     void PrintAllInformation();
 
   private:
     std::string _information[5];
     std::string _contactIndex;
-};
-
-enum field {
-  FirstName,
-  LastName,
-  NickName,
-  PhoneNumber,
-  DarkestSecret
+    std::string _fieldName[5];
 };
