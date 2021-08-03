@@ -1,5 +1,13 @@
 #include "Contact.hpp"
 
+enum field {
+  FirstName,
+  LastName,
+  NickName,
+  PhoneNumber,
+  DarkestSecret
+};
+
 Contact::Contact() {
   _fieldName[FirstName] = "First Name";
   _fieldName[LastName] = "Last Name";
@@ -19,16 +27,16 @@ void Contact::SetInformation() {
   return ;
 }
 
-void Contact::PrintFieldPrompt(const int& arrayIterator) {
-  std::string fieldName;
-  std::cout << "  ADD contact's <" << _fieldName[arrayIterator] << "> : ";
-  return ;
-}
-
 void Contact::SetContactIndex(const int& indexToAdd) {
   std::stringstream ss;
   ss << (indexToAdd + 1);
   ss >> _contactIndex;
+  return ;
+}
+
+void Contact::PrintFieldPrompt(const int& arrayIterator) {
+  std::string fieldName;
+  std::cout << "  ADD contact's <" << _fieldName[arrayIterator] << "> : ";
   return ;
 }
 

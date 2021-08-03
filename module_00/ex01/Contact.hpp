@@ -1,17 +1,9 @@
 #pragma once
 
-#include <string>
-#include <iostream>
 #include <iomanip>
+#include <iostream>
 #include <sstream>
-
-enum field {
-  FirstName,
-  LastName,
-  NickName,
-  PhoneNumber,
-  DarkestSecret
-};
+#include <string>
 
 class Contact {
   public:
@@ -29,7 +21,7 @@ class Contact {
     std::string *GetFieldName();
 
   private:
-    std::string _information[5];
     std::string _contactIndex;
+    std::string _information[5];
     std::string _fieldName[5];
 };

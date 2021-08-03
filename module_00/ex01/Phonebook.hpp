@@ -1,8 +1,9 @@
 #pragma once
 
-#include <string>
 #include <iostream>
 #include <stdlib.h>
+#include <string>
+
 #include "Contact.hpp"
 
 class Phonebook {
@@ -11,11 +12,11 @@ class Phonebook {
     ~Phonebook();
     unsigned int CheckCommand(const std::string& input);
     void ExecuteCommand(const unsigned int& command);
-    void DisplayContactList();
-    void DisplayContactInformation();
-    void AddContact();
     void CheckIndex();
+    void AddContact();
+    void DisplayContactList();
     void SelectContact();
+    void DisplayContactInformation();
 
   private:
     Contact _contact[8];
