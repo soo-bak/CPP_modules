@@ -5,10 +5,14 @@
 
 #include "Account.hpp"
 
-int Account::_nbAccounts = 1;
+int Account::_nbAccounts = 0;
+int Account::_totalAmount = 0;
+int Account::_totalNbDeposits = 0;
+int Account::_totalNbWithdrawals = 0;
 
 Account::Account( int initial_deposit )
-  : _accountIndex(_nbAccounts - 1), _amount(initial_deposit) {
+  : _accountIndex(_nbAccounts), _amount(initial_deposit) {
+    _totalAmount += _amount;
   _displayTimestamp();
   std::cout << " index:" << _accountIndex << ";";
   std::cout << "amount:" << _amount << ";" << "created" << std::endl;
@@ -19,6 +23,11 @@ Account::~Account( void ) {
 }
 
 void Account::displayAccountsInfos() {
+  _displayTimestamp();
+  std::cout << " accounts:" << _nbAccounts << ";";
+  std::cout << "total:" << _totalAmount << ";";
+  std::cout << "deposits:" << _totalNbDeposits << ";";
+  std::cout << "withdrawals:" << _totalNbWithdrawals << ";" << std::endl;
 }
 
 void Account::displayStatus( void ) const {
