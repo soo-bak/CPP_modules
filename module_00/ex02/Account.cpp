@@ -20,6 +20,10 @@ Account::Account( int initial_deposit )
 }
 
 Account::~Account( void ) {
+  _displayTimestamp();
+  std::cout << " index:" << _accountIndex << ";";
+  std::cout << "amount:" << _amount << ";";
+  std::cout << "closed" << std::endl;
 }
 
 void Account::displayAccountsInfos() {
@@ -31,16 +35,46 @@ void Account::displayAccountsInfos() {
 }
 
 void Account::displayStatus( void ) const {
-
+  _displayTimestamp();
+  std::cout << " index:" << _accountIndex << ";";
+  std::cout << "amount:" << _amount << ";";
+  std::cout << "deposits:" << _nbDeposits << ";";
+  std::cout << "withdrawals:" << _nbWithdrawals << ";" << std::endl;
 };
 
 void Account::makeDeposit( int deposit ) {
-  _nbDeposits = deposit;
+  const int p_amount = _amount;
+  _amount += deposit;
+  _totalAmount += deposit;
+  _nbDeposits++;
+  _displayTimestamp();
+  std::cout << " index:" << _accountIndex << ";";
+  std::cout << "p_amount:" << p_amount << ";";
+  std::cout << "deposit:" << deposit << ";";
+  std::cout << "amount:" << _amount << ";";
+  std::cout << "nb_deposits:" << _nbDeposits << std::endl;
 }
 
 bool Account::makeWithdrawal( int withdrawal ) {
-  _nbWithdrawals = withdrawal;
-  return true;
+  bool isSucceeded = false;
+  const int p_amount = _amount;
+  std::stringstream withdrawalStream;
+  if (_amount >= withdrawal) {
+    _amount -= withdrawal;
+    _totalAmount -= withdrawal;
+    _nbWithdrawals++;
+    withdrawalStream << withdrawal << ";";
+    withdrawalStream << "amount:" << _amount << ";";
+    withdrawalStream << "nb_withdrawals:" << _nbWithdrawals;
+    isSucceeded = true;
+  } else {
+    withdrawalStream << "refused";
+  }
+  _displayTimestamp();
+  std::cout << " index:" << _accountIndex << ";";
+  std::cout << "p_amount:" << p_amount << ";";
+  std::cout << "withdrawal:" << withdrawalStream.str() << std::endl;
+  return isSucceeded;
 }
 
 void Account::_displayTimestamp() {
