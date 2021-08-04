@@ -25,7 +25,7 @@ fclean: clean
 
 re: fclean all
 
-test:
-	@$(COMPILER) $(CFLAGS) $(CPP_VERSION) -o tester $(TESTER)
+test: re
+	@./$(NAME)
 
 .PHONY: all clean fclean re

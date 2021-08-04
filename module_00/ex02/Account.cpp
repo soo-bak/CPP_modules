@@ -1,4 +1,7 @@
-#include <chrono>
+#include <ctime>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
 
 #include "Account.hpp"
 
@@ -28,7 +31,16 @@ bool Account::makeWithdrawal( int withdrawal ) {
 }
 
 void Account::_displayTimestamp() {
-  std::chrono
+  time_t timer = time(NULL);
+  tm *localTimer = localtime(&timer);
+  const int thisYear = 1900 + localTimer->tm_year;
+  const int thisMonth = 1 + localTimer->tm_mon;
+  const int thisDay = localTimer->tm_mday;
+  std::stringstream stringStream;
+  stringStream << "[" << thisYear;
+  stringStream << std::setfill('0') << std::setw(2) << thisMonth;
+  stringStream << std::setfill('0') << std::setw(2) << thisDay << "]";
+  std::string timeStamp = stringStream.str();
 
-
+  std::cout << timeStamp << std::endl;
 }
