@@ -5,8 +5,15 @@
 
 #include "Account.hpp"
 
+int Account::_nbAccounts = 1;
+
 Account::Account( int initial_deposit ) {
-  _nbDeposits = initial_deposit;
+  _amount = initial_deposit;
+  _accountIndex = _nbAccounts - 1;
+  _displayTimestamp();
+  std::cout << " index:" << _accountIndex << ";";
+  std::cout << "amount:" << _amount << ";" << "created" << std::endl;
+  _nbAccounts++;
 }
 
 Account::~Account( void ) {
@@ -14,7 +21,6 @@ Account::~Account( void ) {
 }
 
 void Account::displayAccountsInfos() {
-  _displayTimestamp();
 }
 
 void Account::displayStatus( void ) const {
@@ -47,5 +53,5 @@ void Account::_displayTimestamp() {
   stringStream << std::setfill('0') << std::setw(2) << thisMinute;
   stringStream << std::setfill('0') << std::setw(2) << thisSecond << "]";
   const std::string timeStamp = stringStream.str();
-  std::cout << timeStamp << std::endl;
+  std::cout << timeStamp;
 }
