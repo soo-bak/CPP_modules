@@ -1,47 +1,47 @@
 #include "Phonebook.hpp"
 
+Contact Phonebook::_contact[8] = {};
+int Phonebook::_registeredNumber = 0;
+int Phonebook::_indexToAdd = 0;
+int Phonebook::_selectedIndex = 0;
+
 Phonebook::Phonebook() {
-  _registeredNumber = 0;
-  _indexToAdd = 0;
-  _selectedIndex = 0;
 }
 
 Phonebook::~Phonebook() {
 }
 
+void Phonebook::OpenPhonebook() {
+  std::cout << "Enter the command : ";
+  std::string input;
+  std::getline(std::cin, input);
+  const unsigned int command = CheckCommand(input);
+  ExecuteCommand(command);
+}
+
 unsigned int Phonebook::CheckCommand(const std::string& input) {
-  unsigned int returnValue = 0;
+  unsigned int command = 0;
   if (input.compare("ADD") == 0) {
-    returnValue |= Add;
+    command |= Add;
   } else if (input.compare("SEARCH") == 0) {
-    returnValue |= Search;
+    command |= Search;
   } else if (input.compare("EXIT") == 0) {
-    returnValue |= Exit;
+    command |= Exit;
   }
-  return returnValue;
+  return command;
 }
 
 void Phonebook::ExecuteCommand(const unsigned int& command) {
-  CheckIndex();
   if (command & Add) {
     AddContact();
-    return ;
   } else if (command & Search) {
-    if (_registeredNumber == 0) {
-      std::cout << "No contacts are registered." << std::endl;
-      return ;
-    } else {
-      DisplayContactList();
-      SelectContact();
-      DisplayContactInformation();
-    }
-    return ;
+    SearchContact();
   } else if (command & Exit) {
     exit(0);
   } else {
     std::cout << "It's wrong command, try again." << std::endl;
-    return ;
   }
+  return ;
 }
 
 void Phonebook::CheckIndex() {
@@ -56,10 +56,23 @@ void Phonebook::CheckIndex() {
 }
 
 void Phonebook::AddContact() {
+  CheckIndex();
   _contact[_indexToAdd].SetInformation();
   _contact[_indexToAdd].SetContactIndex(_indexToAdd);
   _indexToAdd++;
   _registeredNumber++;
+  return ;
+}
+
+void Phonebook::SearchContact() {
+  if (_registeredNumber == 0) {
+      std::cout << "No contacts are registered." << std::endl;
+      return ;
+  }
+  CheckIndex();
+  DisplayContactList();
+  SelectContact();
+  DisplayContactInformation();
   return ;
 }
 
@@ -87,6 +100,6 @@ void Phonebook::SelectContact() {
 
 void Phonebook::DisplayContactInformation() {
   const int contactIndex = _selectedIndex - 1;
-  _contact[contactIndex].PrintAllInformation();
+  _contact[contactIndex].PrintInformation();
   return ;
 }

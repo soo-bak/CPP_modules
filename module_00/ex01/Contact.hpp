@@ -6,31 +6,29 @@
 #include <string>
 
 class Contact {
-
-  enum field {
-  FirstName,
-  LastName,
-  NickName,
-  PhoneNumber,
-  DarkestSecret
-  };
-
   public:
     Contact();
     ~Contact();
-    std::string *GetFieldName();
-    std::string GetContactIndex();
-    std::string *GetInformation();
-    void PrintColumn(std::string content);
-    void PrintFieldPrompt(const int& arrayIterator);
-    void SetInformation();
-    void SetContactIndex(const int& indexToAdd);
     void PrintBasicInformation(const std::string index,
                                const std::string *information);
-    void PrintAllInformation();
+    void PrintInformation();
+    void SetContactIndex(const int& indexToAdd);
+    void SetInformation();
+    std::string GetContactIndex();
+    std::string *GetFieldName();
+    std::string *GetInformation();
 
   private:
-    std::string _fieldName[5];
+    enum field {
+      FirstName,
+      LastName,
+      NickName,
+      PhoneNumber,
+      DarkestSecret
+    };
+    static std::string _fieldName[5];
+    static void PrintColumn(std::string content);
+    static void PrintFieldPrompt(const int& arrayIterator);
     std::string _contactIndex;
     std::string _information[5];
 };
