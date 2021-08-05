@@ -4,23 +4,6 @@ std::string Contact::_fieldName[5] = {"First Name", "Last Name",
                                        "Nick Name", "Phone Number",
                                        "Darkest Secret"};
 
-void Contact::PrintColumn(std::string content) {
-  const int fieldWidth = 10;
-  if (content.size() > fieldWidth) {
-    const std::size_t truncatedIndex = fieldWidth - 1;
-    content.at(truncatedIndex) = '.';
-    const std::size_t truncatedSize = truncatedIndex + 1;
-    content.resize(truncatedSize);
-  }
-  std::cout << std::setw(fieldWidth) << std::right << content << "|";
-  return ;
-}
-
-void Contact::PrintFieldPrompt(const int& iterator) {
-  std::cout << "  ADD contact's <" << _fieldName[iterator] << "> : ";
-  return ;
-}
-
 Contact::Contact() {
 }
 
@@ -65,10 +48,27 @@ std::string Contact::GetContactIndex() {
   return _contactIndex;
 }
 
+std::string *Contact::GetFieldName() {
+  return _fieldName;
+}
 std::string *Contact::GetInformation() {
   return _information;
 }
 
-std::string *Contact::GetFieldName() {
-  return _fieldName;
+
+void Contact::PrintColumn(std::string content) {
+  const int fieldWidth = 10;
+  if (content.size() > fieldWidth) {
+    const std::size_t truncatedIndex = fieldWidth - 1;
+    content.at(truncatedIndex) = '.';
+    const std::size_t truncatedSize = truncatedIndex + 1;
+    content.resize(truncatedSize);
+  }
+  std::cout << std::setw(fieldWidth) << std::right << content << "|";
+  return ;
+}
+
+void Contact::PrintFieldPrompt(const int& iterator) {
+  std::cout << "  ADD contact's <" << _fieldName[iterator] << "> : ";
+  return ;
 }
