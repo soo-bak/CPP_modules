@@ -12,11 +12,23 @@ Phonebook::~Phonebook() {
 }
 
 void Phonebook::OpenPhonebook() {
+  CheckIndex();
   std::cout << "Enter the command : ";
   std::string input;
   std::getline(std::cin, input);
   const unsigned int command = CheckCommand(input);
   ExecuteCommand(command);
+}
+
+void Phonebook::CheckIndex() {
+  const int maximumContactNumber = 8;
+   if (_indexToAdd >= maximumContactNumber) {
+     _indexToAdd = 0;
+   }
+   if (_registeredNumber > maximumContactNumber) {
+     _registeredNumber = maximumContactNumber;
+   }
+   return ;
 }
 
 unsigned int Phonebook::CheckCommand(const std::string& input) {
@@ -42,17 +54,6 @@ void Phonebook::ExecuteCommand(const unsigned int& command) {
     std::cout << "It's wrong command, try again." << std::endl;
   }
   return ;
-}
-
-void Phonebook::CheckIndex() {
-  const int maximumContactNumber = 8;
-   if (_indexToAdd >= maximumContactNumber) {
-     _indexToAdd = 0;
-   }
-   if (_registeredNumber > maximumContactNumber) {
-     _registeredNumber = maximumContactNumber;
-   }
-   return ;
 }
 
 void Phonebook::AddContact() {
