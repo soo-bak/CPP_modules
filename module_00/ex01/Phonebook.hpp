@@ -10,24 +10,26 @@ class Phonebook {
   public:
     Phonebook();
     ~Phonebook();
-    void OpenPhonebook();
+    void openPhonebook();
 
   private:
     enum Commands {
       Add = 1 << 0,
       Search = 1 << 1,
-      Exit = 1 << 2
+      Exit = 1 << 2,
+      Empty = 1 << 3,
+      Error = 1 << 4
     };
-    static Contact _contact[8];
-    static int _registeredNumber;
-    static int _indexToAdd;
-    static int _selectedIndex;
-    static unsigned int CheckCommand(const std::string& input);
-    static void ExecuteCommand(const unsigned int& command);
-    static void CheckIndex();
-    static void AddContact();
-    static void SearchContact();
-    static void DisplayContactList();
-    static void SelectContact();
-    static void DisplayContactInformation();
+    static unsigned int _checkCommand(const std::string& input);
+    void _executeCommand(const unsigned int& command);
+    void _checkPhonebookSize();
+    void _addContact();
+    void _searchContact();
+    void _displayContactList();
+    void _selectContact();
+    void _displayContactInformation();
+    Contact _contact[8];
+    int _registeredNumber;
+    int _indexToAdd;
+    int _selectedIndex;
 };

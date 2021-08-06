@@ -1,9 +1,7 @@
 #include <iostream>
 #include <string>
 
-const std::string Noise = "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-
-std::string MakeUpperMessage(char *input) {
+std::string mekeUppermessage(char *input) {
   std::string message(input);
   for (std::string::iterator i = message.begin(); i < message.end(); i++) {
     *i = toupper(*i);
@@ -12,11 +10,12 @@ std::string MakeUpperMessage(char *input) {
 }
 
 int main(int argc, char *argv[]) {
+  const std::string noise = "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
   if (argc == 1) {
-    std::cout << Noise;
+    std::cout << noise;
   } else {
     for (int i = 1; i < argc; i++) {
-      std::cout << MakeUpperMessage(argv[i]);
+      std::cout << mekeUppermessage(argv[i]);
     }
   }
   std::cout << std::endl;

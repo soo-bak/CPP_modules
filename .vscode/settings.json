@@ -49,5 +49,5 @@
         "iomanip": "cpp",
         "chrono": "cpp",
         "ratio": "cpp"
-    }
+    },
 }

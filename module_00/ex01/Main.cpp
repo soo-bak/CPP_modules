@@ -4,7 +4,7 @@
 int main() {
   Phonebook phonebook;
   while (!std::cin.bad() && !std::cin.eof()) {
-    phonebook.OpenPhonebook();
+    phonebook.openPhonebook();
   }
   return 0;
 }

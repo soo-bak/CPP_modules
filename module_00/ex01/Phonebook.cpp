@@ -1,98 +1,96 @@
 #include "Phonebook.hpp"
 
-Contact Phonebook::_contact[8] = {};
-int Phonebook::_registeredNumber = 0;
-int Phonebook::_indexToAdd = 0;
-int Phonebook::_selectedIndex = 0;
-
-Phonebook::Phonebook() {
+Phonebook::Phonebook()
+ : _registeredNumber(0), _indexToAdd(0), _selectedIndex(0) {
 }
 
 Phonebook::~Phonebook() {
 }
 
-void Phonebook::OpenPhonebook() {
-  CheckIndex();
+void Phonebook::openPhonebook() {
+  _checkPhonebookSize();
   std::cout << "Enter the command : ";
   std::string input;
   std::getline(std::cin, input).eof();
   if (std::cin.bad() || std::cin.eof())
     exit(0);
-  const unsigned int command = CheckCommand(input);
-  ExecuteCommand(command);
+  const unsigned int command = _checkCommand(input);
+  _executeCommand(command);
   return ;
 }
 
-void Phonebook::CheckIndex() {
-  const int maximumContactNumber = 8;
-   if (_indexToAdd >= maximumContactNumber) {
+void Phonebook::_checkPhonebookSize() {
+  const int phonebookSize(8);
+   if (_indexToAdd >= phonebookSize) {
      _indexToAdd = 0;
    }
-   if (_registeredNumber > maximumContactNumber) {
-     _registeredNumber = maximumContactNumber;
+   if (_registeredNumber > phonebookSize) {
+     _registeredNumber = phonebookSize;
    }
    return ;
 }
 
-unsigned int Phonebook::CheckCommand(const std::string& input) {
-  unsigned int command = 0;
+unsigned int Phonebook::_checkCommand(const std::string& input) {
+  unsigned int command(0);
   if (input.compare("ADD") == 0) {
     command |= Add;
   } else if (input.compare("SEARCH") == 0) {
     command |= Search;
   } else if (input.compare("EXIT") == 0) {
     command |= Exit;
+  } else if (input.empty()) {
+    command |= Empty;
+  } else {
+    command |= Error;
   }
   return command;
 }
 
-void Phonebook::ExecuteCommand(const unsigned int& command) {
+void Phonebook::_executeCommand(const unsigned int& command) {
   if (command & Add) {
-    AddContact();
+    _addContact();
   } else if (command & Search) {
-    SearchContact();
+    _searchContact();
   } else if (command & Exit) {
     exit(0);
-  } else if (command == 0) {
-    return ;
-  } else {
+  } else if (command & Error) {
     std::cout << "It's wrong command, try again." << std::endl;
   }
   return ;
 }
 
-void Phonebook::AddContact() {
-  CheckIndex();
-  _contact[_indexToAdd].SetInformation();
-  _contact[_indexToAdd].SetContactIndex(_indexToAdd);
+void Phonebook::_addContact() {
+  _checkPhonebookSize();
+  _contact[_indexToAdd].setInformation();
+  _contact[_indexToAdd].setContactIndex(_indexToAdd);
   _indexToAdd++;
   _registeredNumber++;
   return ;
 }
 
-void Phonebook::SearchContact() {
+void Phonebook::_searchContact() {
   if (_registeredNumber == 0) {
       std::cout << "No contacts are registered." << std::endl;
       return ;
   }
-  CheckIndex();
-  DisplayContactList();
-  SelectContact();
-  DisplayContactInformation();
+  _checkPhonebookSize();
+  _displayContactList();
+  _selectContact();
+  _displayContactInformation();
   return ;
 }
 
-void Phonebook::DisplayContactList() {
-  _contact[0].PrintBasicInformation("INDEX", _contact[0].GetFieldName());
+void Phonebook::_displayContactList() {
+  _contact[0].printList("INDEX", _contact[0].getFieldName());
   for (int i = 0; i < _registeredNumber; i++) {
-    const std::string contactIndex = _contact[i].GetContactIndex();
-    const std::string *information = _contact[i].GetInformation();
-    _contact[i].PrintBasicInformation(contactIndex, information);
+    const std::string contactIndex(_contact[i].getContactIndex());
+    const std::string *information(_contact[i].getInformation());
+    _contact[i].printList(contactIndex, information);
   }
   return ;
 }
 
-void Phonebook::SelectContact() {
+void Phonebook::_selectContact() {
   std::cout << "Select the index to detail information." << std::endl;
   std::string input;
   std::getline(std::cin, input);
@@ -101,13 +99,13 @@ void Phonebook::SelectContact() {
   _selectedIndex = atoi(input.c_str());
   if (_selectedIndex > _registeredNumber || _selectedIndex < 1) {
     std::cout <<  "The index is invalid, try again." << std::endl;
-    SelectContact();
+    _selectContact();
   }
   return ;
 }
 
-void Phonebook::DisplayContactInformation() {
-  const int contactIndex = _selectedIndex - 1;
-  _contact[contactIndex].PrintInformation();
+void Phonebook::_displayContactInformation() {
+  const int contactIndex(_selectedIndex - 1);
+  _contact[contactIndex].printInformation();
   return ;
 }

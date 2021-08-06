@@ -2,6 +2,9 @@
 
 const std::string Zombie::_growl = "BraiiiiiiinnnzzzZ...";
 
+Zombie::Zombie() {
+}
+
 Zombie::Zombie(const std::string& nameInput)
  : _name(nameInput) {
 }
@@ -16,5 +19,10 @@ Zombie::~Zombie() {
 
 void Zombie::announce() {
   std::cout << "<" << _name << "> " << _growl << std::endl;
+  return ;
+}
+
+void Zombie::setName(const std::string& nameInput) {
+  _name = nameInput;
   return ;
 }
