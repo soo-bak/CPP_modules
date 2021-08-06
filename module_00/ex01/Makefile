@@ -2,7 +2,7 @@ NAME = phonebook
 COMPILER = clang++
 CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03
-SRCS = Main.cpp \
+SRCS = main.cpp \
 	Phonebook.cpp\
 	Contact.cpp \
 
