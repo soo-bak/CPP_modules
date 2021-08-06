@@ -9,7 +9,7 @@ class Zombie
     Zombie();
     Zombie(const std::string& nameInput);
     ~Zombie();
-    void announce();
+    void announce(void) const;
     void setName(const std::string& nameInput);
 
   private:
