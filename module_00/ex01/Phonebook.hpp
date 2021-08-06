@@ -8,9 +8,9 @@
 
 class Phonebook {
   public:
-    Phonebook();
-    ~Phonebook();
-    void openPhonebook();
+    Phonebook(void);
+    ~Phonebook(void);
+    void openPhonebook(void);
 
   private:
     enum Commands {
@@ -22,12 +22,12 @@ class Phonebook {
     };
     static unsigned int _checkCommand(const std::string& input);
     void _executeCommand(const unsigned int& command);
-    void _checkPhonebookSize();
-    void _addContact();
-    void _searchContact();
-    void _displayContactList();
-    void _selectContact();
-    void _displayContactInformation();
+    void _checkPhonebookSize(void);
+    void _addContact(void);
+    void _searchContact(void);
+    void _displayContactList(void);
+    void _selectContact(void);
+    void _displayContactInformation(void);
     Contact _contact[8];
     int _registeredNumber;
     int _indexToAdd;

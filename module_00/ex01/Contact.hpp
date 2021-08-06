@@ -8,16 +8,16 @@
 
 class Contact {
   public:
-    Contact();
-    ~Contact();
+    Contact(void);
+    ~Contact(void);
     void printList(const std::string index,
                    const std::string *information) const;
-    void printInformation() const;
+    void printInformation(void) const;
     void setContactIndex(const int& indexToAdd);
-    void setInformation();
-    const std::string& getContactIndex() const;
-    const std::string *getFieldName() const;
-    const std::string* getInformation() const;
+    void setInformation(void);
+    const std::string& getContactIndex(void) const;
+    const std::string *getFieldName(void) const;
+    const std::string* getInformation(void) const;
 
   private:
     enum Field {
