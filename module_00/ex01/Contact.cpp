@@ -40,6 +40,8 @@ void Contact::SetInformation() {
   for (int i = FirstName; i <= DarkestSecret; i++) {
     PrintFieldPrompt(i);
     std::getline(std::cin, _information[i]);
+    if (std::cin.bad() || std::cin.eof())
+      return ;
   }
   return ;
 }
