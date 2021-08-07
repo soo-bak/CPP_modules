@@ -8,18 +8,6 @@
 
 class Contact {
   public:
-    Contact(void);
-    ~Contact(void);
-    void printList(const std::string index,
-                   const std::string *information) const;
-    void printInformation(void) const;
-    void setContactIndex(const int& indexToAdd);
-    void setInformation(void);
-    const std::string& getContactIndex(void) const;
-    const std::string *getFieldName(void) const;
-    const std::string* getInformation(void) const;
-
-  private:
     enum Field {
       FirstName,
       LastName,
@@ -27,9 +15,22 @@ class Contact {
       PhoneNumber,
       DarkestSecret
     };
+
+    static const std::string* getFieldNameArray(void);
+
+    Contact(void);
+    ~Contact(void);
+
+    const std::string getContactIndex(void) const;
+    const std::string* getInformationArray(void) const;
+    void printInformation(void) const;
+    void setContactIndex(const int& startZeroIndex);
+    void makeInformation(void);
+
+  private:
+    static void _printFieldPrompt(const int& fieldIterator);
     static const std::string _fieldName[5];
-    static void _printColumn(std::string content);
-    static void _printFieldPrompt(const int& arrayIterator);
-    std::string _contactIndex;
+
     std::string _information[5];
+    std::string _contactIndex;
 };

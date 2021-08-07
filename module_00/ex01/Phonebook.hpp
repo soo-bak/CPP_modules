@@ -10,6 +10,7 @@ class Phonebook {
   public:
     Phonebook(void);
     ~Phonebook(void);
+
     void openPhonebook(void);
 
   private:
@@ -20,16 +21,21 @@ class Phonebook {
       Empty = 1 << 3,
       Error = 1 << 4
     };
-    static unsigned int _checkCommand(const std::string& input);
-    void _executeCommand(const unsigned int& command);
-    void _checkPhonebookSize(void);
-    void _addContact(void);
-    void _searchContact(void);
-    void _displayContactList(void);
-    void _selectContact(void);
-    void _displayContactInformation(void);
+
+    static unsigned int _makeCommandValue(const std::string& input);
+
     Contact _contact[8];
+    int _columnWidth;
+    int _phonebookSize;
     int _registeredNumber;
     int _indexToAdd;
     int _selectedIndex;
+
+    const std::string _makeTruncatedString(std::string& stringInput) const;
+    void _displayContactList(void) const;
+    void _displayContactInformation(void) const;
+    void _executeCommand(const unsigned int& commandValue);
+    void _addContact(void);
+    void _searchContact(void);
+    void _selectContact(void);
 };
