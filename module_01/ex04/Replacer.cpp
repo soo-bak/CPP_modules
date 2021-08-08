@@ -11,8 +11,10 @@ Replacer::~Replacer(void) {
 }
 
 void Replacer::makeReplacedFile(void) const {
-  if (_oldString.compare(_newString))
-
+  if (_oldString.compare(_newString) == 0) {
+    std::cout << "There is nothing to replace." << std::endl;
+    return ;
+  }
   std::string fileContents(_parseFileContents());
   std::size_t position(fileContents.find(_oldString));
   while (position != std::string::npos) {
@@ -35,7 +37,7 @@ std::string Replacer::_parseFileContents(void) const {
     getline(inputFileStream, line);
     contents.append(line + "\n");
   }
-  std::size_t length(contents.size());
-  contents.resize(length - 1);
+  const std::string::iterator lastNewline(contents.end() - 1);
+  contents.erase(lastNewline);
   return contents;
 }
