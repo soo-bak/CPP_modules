@@ -12,7 +12,7 @@ Replacer::~Replacer(void) {
 
 void Replacer::makeReplacedFile(void) const {
   std::string fileContents(_parseFileContents());
-  if (_enableReplacement(fileContents) == false) {
+  if (_enableReplace(fileContents) == false) {
     _printMessage("<Error> There is nothing to replace.");
     exit(0);
   }
@@ -26,6 +26,7 @@ void Replacer::makeReplacedFile(void) const {
   std::ofstream outFileStream(outFilename.c_str());
   outFileStream << fileContents;
   _printMessage("<Success> Replacement is complete.");
+  return ;
 }
 
 void Replacer::_printMessage(const std::string& message) {
@@ -61,7 +62,7 @@ const std::string Replacer::_parseFileContents(void) const {
   return contents;
 }
 
-bool Replacer::_enableReplacement(const std::string& fileContents) const {
+bool Replacer::_enableReplace(const std::string& fileContents) const {
   if (_oldString.compare(_newString) == 0) {
     return false;
   } else if (fileContents.find(_oldString) == std::string::npos) {

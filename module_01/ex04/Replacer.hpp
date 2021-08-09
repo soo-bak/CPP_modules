@@ -22,5 +22,5 @@ class Replacer {
     const std::string _newString;
 
     const std::string _parseFileContents(void) const;
-    bool _enableReplacement(const std::string& fileContents) const;
+    bool _enableReplace(const std::string& fileContents) const;
 };
