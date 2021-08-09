@@ -14,7 +14,7 @@ void Replacer::makeReplacedFile(void) const {
   std::string fileContents(_parseFileContents());
   if (_enableReplacement(fileContents) == false) {
     _printMessage("<Error> There is nothing to replace.");
-    exit(1);
+    exit(0);
   }
   std::size_t position(fileContents.find(_oldString));
   while (position != std::string::npos) {
@@ -48,7 +48,7 @@ const std::string Replacer::_parseFileContents(void) const {
   std::ifstream inputFileStream(_filename.c_str());
   if (!inputFileStream) {
     _printMessage("<Error> Filename is wrong.");
-    exit(1);
+    exit(0);
   }
   std::string contents;
   while (!inputFileStream.eof()) {
