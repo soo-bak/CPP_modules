@@ -18,7 +18,7 @@ class Karen {
 
     static const std::string _validLevels[4];
 
-    void (Karen::*_levelFunction[4])(void);
+    void (Karen::*_levelFunctions[4])(void);
 
     void _debug(void);
     void _info(void);

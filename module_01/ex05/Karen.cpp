@@ -3,10 +3,10 @@
 const std::string Karen::_validLevels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 Karen::Karen(void) {
-  _levelFunction[Debug] = &Karen::_debug;
-  _levelFunction[Info] = &Karen::_info;
-  _levelFunction[Warning] = &Karen::_warning;
-  _levelFunction[Error] = &Karen::_error;
+  _levelFunctions[Debug] = &Karen::_debug;
+  _levelFunctions[Info] = &Karen::_info;
+  _levelFunctions[Warning] = &Karen::_warning;
+  _levelFunctions[Error] = &Karen::_error;
 }
 
 Karen::~Karen(void) {
@@ -15,7 +15,7 @@ Karen::~Karen(void) {
 void Karen::complain(std::string level) {
   for (int i = Debug; i <= Error; i++) {
     if (_validLevels[i].compare(level) == 0) {
-      (this->*_levelFunction[i])();
+      (this->*_levelFunctions[i])();
     }
   }
   return ;
