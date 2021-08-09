@@ -10,20 +10,17 @@ class Karen {
     void complain(std::string levelInput);
 
   private:
-    enum Levels {
-      Debug = 'D',
-      Info = 'I',
-      Warning = 'W',
-      Error = 'E'
+    enum Level {
+      Debug,
+      Info,
+      Warning,
+      Error,
     };
 
+    static const std::string _validLevels[4];
 
-    static const std::string _level[4];
+    void (Karen::*_levelFunction[4])(void);
 
-    void (Karen::*_levelFunction)(void);
-    // void (Karen::*_levelFunction[4])(void);
-
-    void _setLevelFunction(std::string& levelInput);
     void _debug(void);
     void _info(void);
     void _warning(void);

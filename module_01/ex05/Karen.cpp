@@ -1,38 +1,38 @@
 #include "Karen.hpp"
 
-const std::string Karen::_level[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+const std::string Karen::_validLevels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-Karen::Karen(void)
- : _levelFunction(NULL) {
+Karen::Karen(void) {
+  _levelFunction[Debug] = &Karen::_debug;
+  _levelFunction[Info] = &Karen::_info;
+  _levelFunction[Warning] = &Karen::_warning;
+  _levelFunction[Error] = &Karen::_error;
 }
 
 Karen::~Karen(void) {
 }
 
 void Karen::complain(std::string levelInput) {
-  _setLevelFunction(levelInput);
-  (this->*_levelFunction)();
-  return ;
-}
-
-void Karen::_setLevelFunction(std::string& levelInput) {
-  Levels levels(static_cast<Levels>(levelInput[0]));
-  switch (levels) {
+  int level(Debug);
+  while ((level <= Error) && (levelInput != _validLevels[level])) {
+    level++;
+  }
+  switch (level) {
     case Debug:
-      _levelFunction = &Karen::_debug;
+      (this->*_levelFunction[Debug])();
       break ;
     case Info:
-      _levelFunction = &Karen::_info;
+      (this->*_levelFunction[Info])();
       break ;
     case Warning:
-      _levelFunction = &Karen::_warning;
+      (this->*_levelFunction[Warning])();
       break ;
     case Error:
-      _levelFunction = &Karen::_error;
+      (this->*_levelFunction[Error])();
       break ;
     default:
-      std::cout << levelInput << " is invalid." << std::endl;
-      exit(0);
+      std::cout << "It's 'REAL' error, not karen's.";
+      std::cout << "Maybe <"<< levelInput << "> is Invalid level." << std::endl;
   }
   return ;
 }
