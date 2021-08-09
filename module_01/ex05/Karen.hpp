@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <stdlib.h>
 
 class Karen {
   public:
@@ -14,7 +13,7 @@ class Karen {
       Debug,
       Info,
       Warning,
-      Error,
+      Error
     };
 
     static const std::string _validLevels[4];

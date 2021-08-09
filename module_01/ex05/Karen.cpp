@@ -13,11 +13,11 @@ Karen::~Karen(void) {
 }
 
 void Karen::complain(std::string levelInput) {
-  int level(Debug);
-  while ((level <= Error) && (levelInput != _validLevels[level])) {
-    level++;
+  int levelValue(Debug);
+  while ((levelValue <= Error) && (levelInput != _validLevels[levelValue])) {
+    levelValue++;
   }
-  switch (level) {
+  switch (levelValue) {
     case Debug:
       (this->*_levelFunction[Debug])();
       break ;
