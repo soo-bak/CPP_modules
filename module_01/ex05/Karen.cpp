@@ -31,7 +31,7 @@ void Karen::complain(std::string levelInput) {
       (this->*_levelFunction[Error])();
       break ;
     default:
-      std::cout << "It's 'REAL' error, not karen's.";
+      std::cout << "It is 'REAL' compile error, not karen's.";
       std::cout << "Maybe <"<< levelInput << "> is Invalid level." << std::endl;
   }
   return ;
