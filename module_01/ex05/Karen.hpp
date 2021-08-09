@@ -6,7 +6,7 @@ class Karen {
     Karen(void);
     ~Karen(void);
 
-    void complain(std::string levelInput);
+    void complain(std::string level);
 
   private:
     enum Level {

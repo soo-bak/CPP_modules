@@ -12,27 +12,11 @@ Karen::Karen(void) {
 Karen::~Karen(void) {
 }
 
-void Karen::complain(std::string levelInput) {
-  int levelValue(Debug);
-  while ((levelValue <= Error) && (levelInput != _validLevels[levelValue])) {
-    levelValue++;
-  }
-  switch (levelValue) {
-    case Debug:
-      (this->*_levelFunction[Debug])();
-      break ;
-    case Info:
-      (this->*_levelFunction[Info])();
-      break ;
-    case Warning:
-      (this->*_levelFunction[Warning])();
-      break ;
-    case Error:
-      (this->*_levelFunction[Error])();
-      break ;
-    default:
-      std::cout << "It is 'REAL' compile error, not karen's.";
-      std::cout << "Maybe <"<< levelInput << "> is Invalid level." << std::endl;
+void Karen::complain(std::string level) {
+  for (int i = Debug; i <= Error; i++) {
+    if (_validLevels[i].compare(level) == 0) {
+      (this->*_levelFunction[i])();
+    }
   }
   return ;
 }
