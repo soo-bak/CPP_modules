@@ -4,8 +4,8 @@ Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 
 int main () {
-  Zombie stack("stack");
-  stack.announce();
+  randomChump("stack");
+
   Zombie *heap(newZombie("heap"));
   heap->announce();
   delete heap;

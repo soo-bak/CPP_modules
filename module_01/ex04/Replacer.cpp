@@ -48,7 +48,7 @@ void Replacer::_printMessage(const std::string& message) {
 const std::string Replacer::_parseFileContents(void) const {
   std::ifstream inputFileStream(_filename.c_str());
   if (!inputFileStream) {
-    _printMessage("<Error> Filename is wrong.");
+    _printMessage("<Error> Can not open the file.");
     exit(0);
   }
   std::string contents;
