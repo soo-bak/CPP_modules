@@ -1,4 +1,4 @@
-NAME = Fixed
+NAME = ex00
 COMPILER = clang++
 CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03

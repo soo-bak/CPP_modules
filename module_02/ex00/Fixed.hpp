@@ -1,3 +1,5 @@
+#include <iostream>
+
 class Fixed {
   public:
     Fixed(void);
@@ -6,9 +8,11 @@ class Fixed {
 
     int getRawBits(void) const;
     void setRawBits(int const raw);
+
     Fixed& operator = (const Fixed& source);
 
   private:
-    int fixedPointValue;
-    static const int fractionalBitsNumber;
+    static const int _fractionalBitsNumber;
+
+    int _fixedPointValue;
 };
