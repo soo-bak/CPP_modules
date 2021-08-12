@@ -27,12 +27,12 @@ Fixed::~Fixed(void) {
   std::cout << "Destructor called" << std::endl;
 }
 
-Fixed& Fixed::operator = (const Fixed& source) {
+Fixed& Fixed::operator = (const Fixed& other) {
   std::cout << "Assignation operator called" << std::endl;
-  if (this == &source) {
+  if (this == &other) {
     return *this;
   }
-  _rawBits = source.getRawBits();
+  _rawBits = other.getRawBits();
   return *this;
 }
 
@@ -55,7 +55,7 @@ void Fixed::setRawBits(int const raw) {
 }
 
 std::ostream& operator << (std::ostream& outStream,
-                           const Fixed& fixed) {
-  outStream << fixed.toFloat();
+                           const Fixed& object) {
+  outStream << object.toFloat();
   return outStream;
 }

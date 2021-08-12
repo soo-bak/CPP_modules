@@ -11,7 +11,7 @@ class Fixed {
     Fixed(const Fixed& fixed);
     ~Fixed(void);
 
-    Fixed& operator = (const Fixed& source);
+    Fixed& operator = (const Fixed& other);
 
     float toFloat(void) const;
     int toInt(void) const;
@@ -25,4 +25,4 @@ class Fixed {
 };
 
 std::ostream& operator << (std::ostream& outStream,
-                           const Fixed& fixed);
+                           const Fixed& object);
