@@ -3,8 +3,12 @@
 const int Fixed::_fractionalBitsNumber = 8;
 
 Fixed::Fixed(void)
-    : _fixedPointValue(0) {
+    : _rawBits(0) {
   std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::~Fixed(void) {
+  std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& fixed) {
@@ -12,25 +16,22 @@ Fixed::Fixed(const Fixed& fixed) {
   *this = fixed;
 }
 
-Fixed::~Fixed(void) {
-  std::cout << "Destructor called" << std::endl;
-}
-
 Fixed& Fixed::operator = (const Fixed& source) {
+  std::cout << "Assignation operator called" << std::endl;
   if (this == &source) {
     return *this;
   }
-  std::cout << "Assignation operator called" << std::endl;
-  _fixedPointValue = source.getRawBits();
+  _rawBits = source.getRawBits();
   return *this;
 }
 
 int Fixed::getRawBits(void) const {
   std::cout << "getRawBits member function called" << std::endl;
-  return _fixedPointValue;
+  return _rawBits;
 }
 
 void Fixed::setRawBits(int const raw) {
-  _fixedPointValue = raw;
+  std::cout << "setRawBits member function called" << std::endl;
+  _rawBits = raw;
   return ;
 }

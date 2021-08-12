@@ -3,8 +3,23 @@
 const int Fixed::_fractionalBitsNumber = 8;
 
 Fixed::Fixed(void)
-    : _fixedPointValue(0) {
+    : _rawBits(0) {
   std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::Fixed(const int& value)
+    : _rawBits(value << _fractionalBitsNumber) {
+  std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed(const float& value) {
+  std::cout << "Float constructor called" << std::endl;
+  const int scailingFactor(1 << _fractionalBitsNumber);
+  _rawBits = static_cast<int>(roundf(value * scailingFactor));
+}
+
+Fixed::~Fixed(void) {
+  std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& fixed) {
@@ -12,25 +27,35 @@ Fixed::Fixed(const Fixed& fixed) {
   *this = fixed;
 }
 
-Fixed::~Fixed(void) {
-  std::cout << "Destructor called" << std::endl;
-}
-
 Fixed& Fixed::operator = (const Fixed& source) {
+  std::cout << "Assignation operator called" << std::endl;
   if (this == &source) {
     return *this;
   }
-  std::cout << "Assignation operator called" << std::endl;
-  _fixedPointValue = source.getRawBits();
+  _rawBits = source.getRawBits();
   return *this;
 }
 
+std::ostream& operator << (std::ostream& outStream,
+                           const Fixed& fixed) {
+  outStream << fixed.toFloat();
+  return outStream;
+}
+
+float Fixed::toFloat(void) const {
+  const int scailingFactor(1 << _fractionalBitsNumber);
+  return (static_cast<float>(_rawBits) / scailingFactor);
+}
+
+int Fixed::toInt(void) const {
+  return _rawBits >> _fractionalBitsNumber;
+}
+
 int Fixed::getRawBits(void) const {
-  std::cout << "getRawBits member function called" << std::endl;
-  return _fixedPointValue;
+  return _rawBits;
 }
 
 void Fixed::setRawBits(int const raw) {
-  _fixedPointValue = raw;
+  _rawBits = raw;
   return ;
 }

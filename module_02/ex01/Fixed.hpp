@@ -1,19 +1,28 @@
+#pragma once
+
 #include <iostream>
 #include <cmath>
 
 class Fixed {
   public:
     Fixed(void);
-    Fixed(const Fixed& fixed);
+    Fixed(const int& value);
+    Fixed(const float& value);
     ~Fixed(void);
-
-    int getRawBits(void) const;
-    void setRawBits(int const raw);
+    Fixed(const Fixed& fixed);
 
     Fixed& operator = (const Fixed& source);
 
+    float toFloat(void) const;
+    int toInt(void) const;
+    int getRawBits(void) const;
+    void setRawBits(int const raw);
+
+
   private:
     static const int _fractionalBitsNumber;
-
-    int _fixedPointValue;
+    int _rawBits;
 };
+
+std::ostream& operator << (std::ostream& outStream,
+                           const Fixed& fixed);
