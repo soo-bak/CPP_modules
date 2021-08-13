@@ -20,31 +20,25 @@ const Fixed& Fixed::max(const Fixed& one, const Fixed& two) {
 
 Fixed::Fixed(void)
     : _rawBits(0) {
-  std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int& value)
     : _rawBits(value << _fractionalBitsNumber) {
-  std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float& value) {
-  std::cout << "Float constructor called" << std::endl;
   const int scailingFactor(1 << _fractionalBitsNumber);
   _rawBits = static_cast<int>(roundf(value * scailingFactor));
 }
 
 Fixed::Fixed(const Fixed& fixed) {
-  std::cout << "Copy constructor called" << std::endl;
   *this = fixed;
 }
 
 Fixed::~Fixed(void) {
-  std::cout << "Destructor called" << std::endl;
 }
 
 Fixed& Fixed::operator = (const Fixed& other) {
-  std::cout << "Assignation operator called" << std::endl;
   if (this == &other) {
     return *this;
   }
