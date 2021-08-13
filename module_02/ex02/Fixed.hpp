@@ -31,9 +31,9 @@ class Fixed {
     const Fixed operator / (const Fixed& other) const;
 
     Fixed& operator ++ (void);
-    Fixed operator ++ (int dummy);
+    Fixed operator ++ (int);
     Fixed& operator -- (void);
-    Fixed operator -- (int dummy);
+    Fixed operator -- (int);
 
     float toFloat(void) const;
     int toInt(void) const;
