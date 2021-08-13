@@ -11,11 +11,10 @@ class Point {
 
     Point& operator = (const Point& other);
 
-    const Fixed& getX(void);
-    const Fixed& getY(void);
+    const Fixed& getX(void) const;
+    const Fixed& getY(void) const;
 
   private:
     const Fixed _x;
     const Fixed _y;
-
 };

@@ -19,12 +19,12 @@ Point& Point::operator = (const Point& other) {
   if (this == &other) {
     return *this;
   }
+  return *this;
 }
-
-const Fixed& Point::getX(void) {
+const Fixed& Point::getX(void) const {
   return _x;
 }
 
-const Fixed& Point::getY(void) {
+const Fixed& Point::getY(void) const {
   return _y;
 }
