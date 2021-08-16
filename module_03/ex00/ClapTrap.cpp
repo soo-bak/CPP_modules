@@ -63,10 +63,10 @@ void ClapTrap::takeDamage(unsigned int amount) {
   if (_isBroken()) {
     std::cout << "is already broken." << std::endl;
   } else if (amount == 0) {
-    std::cout << "is not damaged at all." << std::endl;
+    std::cout << "is attacked, but not damaged at all." << std::endl;
   } else {
     unsigned int validAmount(amount);
-    if (validAmount >= _hitPoint) {
+    if (amount >= _hitPoint) {
       validAmount = _hitPoint;
     }
     std::cout << "suffered <" << amount << "> ";
@@ -87,18 +87,26 @@ void ClapTrap::beRepaired(unsigned int amount) {
   if (_hitPoint == _maxHitPoint) {
     std::cout << "doesn't need to be repaired." << std::endl;
     return ;
-  } else if (amount > _energyPoint) {
-    std::cout << "doesn't have enough energy to repair <";
-    std::cout << amount << "> points. ";
-    unsigned int validAmount(_energyPoint);
-    if (validAmount != 0) {
-      if (validAmount >= (_maxHitPoint - _hitPoint)) {
-        validAmount = (_maxHitPoint - _hitPoint);
-        std::cout << "And do not need to be repaired <";
-        std::cout << amount << ">, ";
-      }
-      std::cout << "Only <" << validAmount << "> points were repaired.";
+  } else if (amount == 0) {
+    std::cout << "want to be repaired, but nothing happend." << std::endl;
+    return ;
+  } else {
+    unsigned int validAmount(amount);
+    if (amount > _energyPoint) {
+      std::cout << "doesn't have enough energy to repair <";
+      std::cout << amount << "> points. <" << _name << "> ";
+      validAmount = _energyPoint;
+    }
+    if (validAmount > (_maxHitPoint - _hitPoint)) {
+      std::cout << "do not need to be repaired <";
+      std::cout << amount << ">, ";
+      validAmount = (_maxHitPoint - _hitPoint);
+      std::cout << "only <" << validAmount << "> points were repaired.";
       std::cout << std::endl;
+      _hitPoint += validAmount;
+      _energyPoint -= validAmount;
+    } else {
+      std:: cout << "is repaired by <" << validAmount << "> points." << std::endl;
       _hitPoint += validAmount;
       _energyPoint -= validAmount;
     }
@@ -116,16 +124,9 @@ bool ClapTrap::_isBroken(void) const {
 }
 
 void ClapTrap::displayStatus(void) const {
-  std::cout << ansiItalic;
-  std::cout << " B";
-  std::cout << ansiEnd;
-  std::cout << " [ ";
-  std::cout << ansiRed;
-  std::cout << "HP " << _hitPoint << "  ";
-  std::cout << ansiCyan;
-  std::cout << "EP " << _energyPoint;
-  std::cout << ansiEnd;
-  std::cout << " ]";
-  std::cout << std::endl;
+  std::cout << " " << ansiItalic << _name << ansiEnd << " [ ";
+  std::cout << ansiRed << "HP " << _hitPoint << "  ";
+  std::cout << ansiCyan << "EP " << _energyPoint << ansiEnd;
+  std::cout << " ]" << std::endl;
   return ;
 }
