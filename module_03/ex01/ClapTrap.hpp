@@ -10,8 +10,6 @@ class ClapTrap {
     ClapTrap(void);
     ClapTrap(const std::string& name);
     ClapTrap(const ClapTrap& clapTrap);
-    ClapTrap(const std::string& name, const unsigned int& hitPoint,
-                   const unsigned int& energyPoint);
     ~ClapTrap(void);
 
     ClapTrap& operator = (const ClapTrap& other);
@@ -24,17 +22,12 @@ class ClapTrap {
   protected:
 
     std::string _name;
+    std::string _trapType;
     unsigned int _hitPoint;
     unsigned int _energyPoint;
+    unsigned int _attackDamage;
+    unsigned int _maxHitPoint;
+    unsigned int _maxEnergyPoint;
 
     bool _isBroken(void) const;
-    void _initialize(const std::string& name,
-                     const unsigned int& hitPoint,
-                     const unsigned int& energyPoint);
-
-  private:
-
-    static const unsigned int _maxHitPoint;
-    static const unsigned int _maxEnergyPoint;
-    static const unsigned int _attackDamage;
 };

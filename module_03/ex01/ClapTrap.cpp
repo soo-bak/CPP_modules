@@ -5,42 +5,34 @@ const std::string ansiRed("\033[1;31m");
 const std::string ansiCyan("\033[1;36m");
 const std::string ansiEnd("\033[0m");
 
-const unsigned int ClapTrap::_maxHitPoint(10);
-const unsigned int ClapTrap::_maxEnergyPoint(10);
-const unsigned int ClapTrap::_attackDamage(0);
-
-ClapTrap::ClapTrap(void) {
-  _initialize("unknown", _maxHitPoint, _maxEnergyPoint);
+ClapTrap::ClapTrap(void)
+    : _name("unknown"), _trapType("ClapTrap"), _hitPoint(10),
+      _energyPoint(10), _attackDamage(0),
+      _maxHitPoint(10), _maxEnergyPoint(10)  {
   std::cout << ansiItalic;
-  std::cout << "ClapTrap <" << _name << "> appeared." << std::endl;
+  std::cout << _trapType << " <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
-ClapTrap::ClapTrap(const std::string& name) {
-  _initialize(name, _maxHitPoint, _maxEnergyPoint);
+ClapTrap::ClapTrap(const std::string& name)
+    : _name(name), _trapType("ClapTrap"), _hitPoint(10),
+      _energyPoint(10), _attackDamage(0),
+      _maxHitPoint(10), _maxEnergyPoint(10) {
   std::cout << ansiItalic;
-  std::cout << "ClapTrap <" << _name << "> appeared." << std::endl;
-  std::cout << ansiEnd;
-}
-
-ClapTrap::ClapTrap(const std::string& name, const unsigned int& hitPoint,
-                   const unsigned int& energyPoint) {
-  _initialize(name, hitPoint, energyPoint);
-  std::cout << ansiItalic;
-  std::cout << "ClapTrap <" << _name << "> appeared." << std::endl;
+  std::cout << _trapType << " <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& clapTrap) {
   *this = clapTrap;
   std::cout << ansiItalic;
-  std::cout << "ClapTrap <" << _name << "> appeared." << std::endl;
+  std::cout << _trapType << " <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
 ClapTrap::~ClapTrap(void) {
   std::cout << ansiItalic;
-  std::cout << "ClapTrap <" << _name << "> is disappeared." << std::endl;
+  std::cout << _trapType << " <" << _name << "> is disappeared." << std::endl;
   std::cout << ansiEnd;
 }
 
@@ -56,7 +48,7 @@ ClapTrap& ClapTrap::operator = (const ClapTrap& other) {
 
 void ClapTrap::attack(const std::string& target) {
   std::cout << ansiItalic;
-  std::cout << "ClapTrap <" << _name << "> ";
+  std::cout << _trapType << " <" << _name << "> ";
   if (_isBroken()) {
     std::cout << "can't attack. It's broken" << std::endl;
     return ;
@@ -70,7 +62,7 @@ void ClapTrap::attack(const std::string& target) {
 
 void ClapTrap::takeDamage(unsigned int amount) {
   std::cout << ansiItalic;
-  std::cout << "ClapTrap <" << _name << "> ";
+  std::cout << _trapType << " <" << _name << "> ";
   if (_isBroken()) {
     std::cout << "is already broken." << std::endl;
   } else if (amount == 0) {
@@ -84,7 +76,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
     std::cout << "points of damage! " << std::endl;
     _hitPoint -= validAmount;
     if (_isBroken()) {
-      std::cout << "ClapTrap <" << _name << "> ";
+      std::cout << _trapType << " <" << _name << "> ";
       std::cout << "is broken." << std::endl;
     }
   }
@@ -94,7 +86,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 
 void ClapTrap::beRepaired(unsigned int amount) {
   std::cout << ansiItalic;
-  std::cout << "ClapTrap <" << _name << "> ";
+  std::cout << _trapType << " <" << _name << "> ";
   if (_hitPoint == _maxHitPoint) {
     std::cout << "doesn't need to be repaired." << std::endl;
     return ;
@@ -124,14 +116,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
   }
   std::cout << ansiEnd;
   return ;
-}
-
-void ClapTrap::_initialize(const std::string& name,
-                           const unsigned int& hitPoint,
-                           const unsigned int& energyPoint) {
-  _name = name;
-  _hitPoint = hitPoint;
-  _energyPoint = energyPoint;
 }
 
 bool ClapTrap::_isBroken(void) const {

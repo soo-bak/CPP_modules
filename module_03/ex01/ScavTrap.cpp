@@ -5,16 +5,31 @@ const std::string ansiRed("\033[1;31m");
 const std::string ansiCyan("\033[1;36m");
 const std::string ansiEnd("\033[0m");
 
-const unsigned int ScavTrap::_maxHitPoint(100);
-const unsigned int ScavTrap::_maxEnergyPoint(50);
-const unsigned int ScavTrap::_attackDamage(20);
-
 ScavTrap::ScavTrap(void)
-    : ClapTrap("unknown", _maxHitPoint, _maxEnergyPoint) {
+    : ClapTrap() {
+  _trapType = "ScavTrap";
+  _hitPoint = 100;
+  _energyPoint = 50;
+  _attackDamage = 20;
+  _maxHitPoint = 100;
+  _maxEnergyPoint = 50;
   std::cout << ansiItalic;
-  std::cout << "ScavTrap <" << _name << "> appeared." << std::endl;
+  std::cout << _trapType << " <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
+ScavTrap::ScavTrap(const std::string& name)
+  : ClapTrap(name) {
+  _trapType = "ScavTrap";
+  _hitPoint = 100;
+  _energyPoint = 50;
+  _attackDamage = 20;
+  _maxHitPoint = 100;
+  _maxEnergyPoint = 50;
+}
+
 ScavTrap::~ScavTrap(void) {
+  std::cout << ansiItalic;
+  std::cout << _trapType << " <" << _name << "> is disappeared." << std::endl;
+  std::cout << ansiEnd;
 }

@@ -7,13 +7,9 @@ class ScavTrap : public ClapTrap {
   public:
 
     ScavTrap(void);
-    ScavTrap(std::string& name);
+    ScavTrap(const std::string& name);
     ~ScavTrap(void);
 
-  private:
-
-    static const unsigned int _maxHitPoint;
-    static const unsigned int _maxEnergyPoint;
-    static const unsigned int _attackDamage;
+    // void attack(const std::string& target);
 
 };
