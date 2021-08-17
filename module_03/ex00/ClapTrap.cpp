@@ -1,5 +1,10 @@
 #include "ClapTrap.hpp"
 
+const std::string ansiItalic("\033[3;37m");
+const std::string ansiRed("\033[1;31m");
+const std::string ansiCyan("\033[1;36m");
+const std::string ansiEnd("\033[0m");
+
 const unsigned int ClapTrap::_maxHitPoint(10);
 const unsigned int ClapTrap::_maxEnergyPoint(10);
 const unsigned int ClapTrap::_attackDamage(0);

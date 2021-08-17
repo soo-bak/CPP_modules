@@ -30,10 +30,4 @@ class ClapTrap {
     unsigned int _energyPoint;
 
     bool _isBroken(void) const;
-
 };
-
-static const std::string ansiItalic("\033[3;37m");
-static const std::string ansiRed("\033[1;31m");
-static const std::string ansiCyan("\033[1;36m");
-static const std::string ansiEnd("\033[0m");
