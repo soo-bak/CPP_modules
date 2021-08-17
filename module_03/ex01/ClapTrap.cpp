@@ -9,17 +9,23 @@ const unsigned int ClapTrap::_maxHitPoint(10);
 const unsigned int ClapTrap::_maxEnergyPoint(10);
 const unsigned int ClapTrap::_attackDamage(0);
 
-ClapTrap::ClapTrap(void)
-    : _name("unknown"), _hitPoint(_maxHitPoint),
-      _energyPoint(_maxEnergyPoint) {
+ClapTrap::ClapTrap(void) {
+  _initialize("unknown", _maxHitPoint, _maxEnergyPoint);
   std::cout << ansiItalic;
   std::cout << "ClapTrap <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
-ClapTrap::ClapTrap(const std::string& name)
-    : _name(name), _hitPoint(_maxHitPoint),
-      _energyPoint(_maxEnergyPoint) {
+ClapTrap::ClapTrap(const std::string& name) {
+  _initialize(name, _maxHitPoint, _maxEnergyPoint);
+  std::cout << ansiItalic;
+  std::cout << "ClapTrap <" << _name << "> appeared." << std::endl;
+  std::cout << ansiEnd;
+}
+
+ClapTrap::ClapTrap(const std::string& name, const unsigned int& hitPoint,
+                   const unsigned int& energyPoint) {
+  _initialize(name, hitPoint, energyPoint);
   std::cout << ansiItalic;
   std::cout << "ClapTrap <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
@@ -62,7 +68,7 @@ void ClapTrap::attack(const std::string& target) {
   return ;
 }
 
-void ClapTrap::takeDamage(const unsigned int& amount) {
+void ClapTrap::takeDamage(unsigned int amount) {
   std::cout << ansiItalic;
   std::cout << "ClapTrap <" << _name << "> ";
   if (_isBroken()) {
@@ -86,7 +92,7 @@ void ClapTrap::takeDamage(const unsigned int& amount) {
   return ;
 }
 
-void ClapTrap::beRepaired(const unsigned int& amount) {
+void ClapTrap::beRepaired(unsigned int amount) {
   std::cout << ansiItalic;
   std::cout << "ClapTrap <" << _name << "> ";
   if (_hitPoint == _maxHitPoint) {
@@ -118,6 +124,14 @@ void ClapTrap::beRepaired(const unsigned int& amount) {
   }
   std::cout << ansiEnd;
   return ;
+}
+
+void ClapTrap::_initialize(const std::string& name,
+                           const unsigned int& hitPoint,
+                           const unsigned int& energyPoint) {
+  _name = name;
+  _hitPoint = hitPoint;
+  _energyPoint = energyPoint;
 }
 
 bool ClapTrap::_isBroken(void) const {
