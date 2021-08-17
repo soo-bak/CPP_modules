@@ -3,13 +3,14 @@
 #include "ScavTrap.hpp"
 
 int main() {
-  ScavTrap a("nvnvn");
+  ScavTrap scavTrap("SC4V-TP");
 
-  a.attack("asdf");
-  a.displayStatus();
-  a.takeDamage(100);
-  a.displayStatus();
-  a.beRepaired(49);
-  a.displayStatus();
-
+  scavTrap.attack("5H4D0W-TP");
+  scavTrap.displayStatus();
+  scavTrap.takeDamage(2);
+  scavTrap.displayStatus();
+  scavTrap.beRepaired(49);
+  scavTrap.displayStatus();
+  scavTrap.guardGate();
+  return 0;
 }
