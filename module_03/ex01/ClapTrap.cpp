@@ -10,7 +10,7 @@ ClapTrap::ClapTrap(void)
       _energyPoint(10), _attackDamage(0),
       _maxHitPoint(10), _maxEnergyPoint(10)  {
   std::cout << ansiItalic;
-  std::cout << _trapType << " <" << _name << "> appeared." << std::endl;
+  std::cout << "ClapTrap <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
@@ -19,20 +19,20 @@ ClapTrap::ClapTrap(const std::string& name)
       _energyPoint(10), _attackDamage(0),
       _maxHitPoint(10), _maxEnergyPoint(10) {
   std::cout << ansiItalic;
-  std::cout << _trapType << " <" << _name << "> appeared." << std::endl;
+  std::cout << "ClapTrap <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& clapTrap) {
   *this = clapTrap;
   std::cout << ansiItalic;
-  std::cout << _trapType << " <" << _name << "> appeared." << std::endl;
+  std::cout << "ClapTrap <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
 ClapTrap::~ClapTrap(void) {
   std::cout << ansiItalic;
-  std::cout << _trapType << " <" << _name << "> is disappeared." << std::endl;
+  std::cout << "ClapTrap <" << _name << "> is disappeared." << std::endl;
   std::cout << ansiEnd;
 }
 

@@ -14,7 +14,7 @@ ScavTrap::ScavTrap(void)
   _maxHitPoint = 100;
   _maxEnergyPoint = 50;
   std::cout << ansiItalic;
-  std::cout << _trapType << " <" << _name << "> appeared." << std::endl;
+  std::cout << "ScavTrap <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
@@ -26,10 +26,27 @@ ScavTrap::ScavTrap(const std::string& name)
   _attackDamage = 20;
   _maxHitPoint = 100;
   _maxEnergyPoint = 50;
+  std::cout << ansiItalic;
+  std::cout << "ScavTrap <" << _name << "> appeared." << std::endl;
+  std::cout << ansiEnd;
 }
 
 ScavTrap::~ScavTrap(void) {
   std::cout << ansiItalic;
-  std::cout << _trapType << " <" << _name << "> is disappeared." << std::endl;
+  std::cout << "ScavTrap <" << _name << "> is disappeared." << std::endl;
   std::cout << ansiEnd;
+}
+
+void ScavTrap::attack(const std::string& target) {
+  std::cout << ansiItalic;
+  std::cout << _trapType << " <" << _name << "> ";
+  if (_isBroken()) {
+    std::cout << "can't attack. It's broken" << std::endl;
+    return ;
+  }
+  std::cout << "attacks <" << target << ">, ";
+  std::cout << "causing <" << _attackDamage << "> ";
+  std::cout << "points of damage! " << std::endl;
+  std::cout << ansiEnd;
+  return ;
 }
