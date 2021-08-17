@@ -4,36 +4,36 @@
 
 int main() {
   {
-    ClapTrap clapTrapA("A");
-    clapTrapA.displayStatus();
+    ClapTrap clapTrap("CL4P-L3K");
+    clapTrap.displayStatus();
     std::cout << std::endl;
 
-    clapTrapA.attack("target");
+    clapTrap.attack("5H4D0W-TP");
     std::cout << std::endl;
 
-    clapTrapA.takeDamage(0);
-    clapTrapA.displayStatus();
+    clapTrap.takeDamage(0);
+    clapTrap.displayStatus();
     std::cout << std::endl;
 
-    clapTrapA.takeDamage(1);
-    clapTrapA.displayStatus();
+    clapTrap.takeDamage(1);
+    clapTrap.displayStatus();
     std::cout << std::endl;
 
-    clapTrapA.takeDamage(8);
-    clapTrapA.displayStatus();
+    clapTrap.takeDamage(8);
+    clapTrap.displayStatus();
     std::cout << std::endl;
 
-    clapTrapA.takeDamage(10);
-    clapTrapA.displayStatus();
+    clapTrap.takeDamage(10);
+    clapTrap.displayStatus();
     std::cout << std::endl;
 
-    clapTrapA.takeDamage(5);
-    clapTrapA.displayStatus();
+    clapTrap.takeDamage(5);
+    clapTrap.displayStatus();
     std::cout << std::endl;
   }
 
   {
-    ClapTrap clapTrapB("B");
+    ClapTrap clapTrapB("CL4P-L3K");
 
     clapTrapB.takeDamage(5);
     clapTrapB.displayStatus();
