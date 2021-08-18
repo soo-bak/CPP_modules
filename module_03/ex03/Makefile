@@ -1,6 +1,6 @@
 NAME = ex03
 COMPILER = clang++
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow
 CPP_VERSION = -std=c++03
 SRCS = main.cpp \
 	ClapTrap.cpp \
