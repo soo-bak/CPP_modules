@@ -23,10 +23,30 @@ DiamondTrap::DiamondTrap(const std::string& name)
   std::cout << ansiEnd;
 }
 
+DiamondTrap::DiamondTrap(const DiamondTrap& diamondTrap) {
+  *this = diamondTrap;
+  std::cout << ansiItalic;
+  std::cout << "DiamondTrap <" << _name << "> appeared." << std::endl;
+  std::cout << ansiEnd;
+}
+
 DiamondTrap::~DiamondTrap(void) {
   std::cout << ansiItalic;
   std::cout << "DiamondTrap <" << _name << "> disappeared." << std::endl;
   std::cout << ansiEnd;
+}
+
+DiamondTrap& DiamondTrap::operator = (const DiamondTrap& other) {
+  if (this == &other) {
+    return *this;
+  }
+  _name = other._name;
+  _trapType = other._trapType;
+  _hitPoint = other._hitPoint;
+  _energyPoint = other._energyPoint;
+  _attackDamage = other._attackDamage;
+  _maxHitPoint = other._maxHitPoint;
+  _maxEnergyPoint = other._maxEnergyPoint;
 }
 
 void DiamondTrap::attack(const std::string& target) {

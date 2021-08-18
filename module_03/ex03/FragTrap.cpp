@@ -31,10 +31,30 @@ FragTrap::FragTrap(const std::string& name)
   std::cout << ansiEnd;
 }
 
+FragTrap::FragTrap(const FragTrap& fragTrap) {
+  *this = fragTrap;
+  std::cout << ansiItalic;
+  std::cout << "FragTrap <" << getName() << "> appeared." << std::endl;
+  std::cout << ansiEnd;
+}
+
 FragTrap::~FragTrap(void) {
   std::cout << ansiItalic;
   std::cout << "FragTrap <" << getName() << "> disappeared." << std::endl;
   std::cout << ansiEnd;
+}
+
+FragTrap& FragTrap::operator = (const FragTrap& other) {
+  if (this == &other) {
+    return *this;
+  }
+  _name = other._name;
+  _trapType = other._trapType;
+  _hitPoint = other._hitPoint;
+  _energyPoint = other._energyPoint;
+  _attackDamage = other._attackDamage;
+  _maxHitPoint = other._maxHitPoint;
+  _maxEnergyPoint = other._maxEnergyPoint;
 }
 
 void FragTrap::attack(const std::string& target) {

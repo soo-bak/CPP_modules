@@ -31,10 +31,30 @@ ScavTrap::ScavTrap(const std::string& name)
   std::cout << ansiEnd;
 }
 
+ScavTrap::ScavTrap(const ScavTrap& scavTrap) {
+  *this = scavTrap;
+  std::cout << ansiItalic;
+  std::cout << "ScavTrap <" << _name << "> appeared." << std::endl;
+  std::cout << ansiEnd;
+}
+
 ScavTrap::~ScavTrap(void) {
   std::cout << ansiItalic;
   std::cout << "ScavTrap <" << _name << "> is disappeared." << std::endl;
   std::cout << ansiEnd;
+}
+
+ScavTrap& ScavTrap::operator = (const ScavTrap& other) {
+  if (this == &other) {
+    return *this;
+  }
+  _name = other._name;
+  _trapType = other._trapType;
+  _hitPoint = other._hitPoint;
+  _energyPoint = other._energyPoint;
+  _attackDamage = other._attackDamage;
+  _maxHitPoint = other._maxHitPoint;
+  _maxEnergyPoint = other._maxEnergyPoint;
 }
 
 void ScavTrap::attack(const std::string& target) {
