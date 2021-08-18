@@ -47,6 +47,7 @@ DiamondTrap& DiamondTrap::operator = (const DiamondTrap& other) {
   _attackDamage = other._attackDamage;
   _maxHitPoint = other._maxHitPoint;
   _maxEnergyPoint = other._maxEnergyPoint;
+  return *this;
 }
 
 void DiamondTrap::attack(const std::string& target) {

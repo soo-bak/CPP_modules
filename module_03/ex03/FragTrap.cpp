@@ -55,6 +55,7 @@ FragTrap& FragTrap::operator = (const FragTrap& other) {
   _attackDamage = other._attackDamage;
   _maxHitPoint = other._maxHitPoint;
   _maxEnergyPoint = other._maxEnergyPoint;
+  return *this;
 }
 
 void FragTrap::attack(const std::string& target) {

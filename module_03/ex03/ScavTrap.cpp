@@ -55,6 +55,7 @@ ScavTrap& ScavTrap::operator = (const ScavTrap& other) {
   _attackDamage = other._attackDamage;
   _maxHitPoint = other._maxHitPoint;
   _maxEnergyPoint = other._maxEnergyPoint;
+  return *this;
 }
 
 void ScavTrap::attack(const std::string& target) {
