@@ -14,7 +14,7 @@ FragTrap::FragTrap(void)
   _maxHitPoint = 100;
   _maxEnergyPoint = 100;
   std::cout << ansiItalic;
-  std::cout << "FragTrap <" << _name << "> appeared." << std::endl;
+  std::cout << "FragTrap <" << getName() << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
@@ -27,19 +27,19 @@ FragTrap::FragTrap(const std::string& name)
   _maxHitPoint = 100;
   _maxEnergyPoint = 100;
   std::cout << ansiItalic;
-  std::cout << "FragTrap <" << _name << "> appeared." << std::endl;
+  std::cout << "FragTrap <" << getName() << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
 FragTrap::~FragTrap(void) {
   std::cout << ansiItalic;
-  std::cout << "FragTrap <" << _name << "> disappeared." << std::endl;
+  std::cout << "FragTrap <" << getName() << "> disappeared." << std::endl;
   std::cout << ansiEnd;
 }
 
 void FragTrap::attack(const std::string& target) {
   std::cout << ansiItalic;
-  std::cout << _trapType << " <" << _name << "> ";
+  std::cout << _trapType << " <" << getName() << "> ";
   if (_isBroken()) {
     std::cout << "can't attack. It's broken" << std::endl;
     return ;
@@ -54,7 +54,7 @@ void FragTrap::attack(const std::string& target) {
 
 void FragTrap::highFivesGuys(void) {
   std::cout << ansiItalic;
-  std::cout << _trapType << " <" << _name << "> ";
+  std::cout << _trapType << " <" << getName() << "> ";
   std::cout << "offer a high five." << std::endl;
   std::cout << "\"Hey! Over here!, Over here!! I'm over heere!\"" << std::endl;
   std::cout << ansiEnd;

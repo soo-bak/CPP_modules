@@ -12,6 +12,12 @@ int main() {
   diamondTrap.displayStatus();
   std::cout << std::endl;
 
+  diamondTrap.guardGate();
+  std::cout << std::endl;
+
+  diamondTrap.highFivesGuys();
+  std::cout << std::endl;
+
   diamondTrap.whoAmI();
   std::cout << std::endl;
 

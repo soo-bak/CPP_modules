@@ -14,7 +14,7 @@ ScavTrap::ScavTrap(void)
   _maxHitPoint = 100;
   _maxEnergyPoint = 50;
   std::cout << ansiItalic;
-  std::cout << "ScavTrap <" << _name << "> appeared." << std::endl;
+  std::cout << "ScavTrap <" << getName() << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
@@ -27,24 +27,24 @@ ScavTrap::ScavTrap(const std::string& name)
   _maxHitPoint = 100;
   _maxEnergyPoint = 50;
   std::cout << ansiItalic;
-  std::cout << "ScavTrap <" << _name << "> appeared." << std::endl;
+  std::cout << "ScavTrap <" << getName() << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
 ScavTrap::~ScavTrap(void) {
   std::cout << ansiItalic;
-  std::cout << "ScavTrap <" << _name << "> is disappeared." << std::endl;
+  std::cout << "ScavTrap <" << getName() << "> is disappeared." << std::endl;
   std::cout << ansiEnd;
 }
 
 void ScavTrap::attack(const std::string& target) {
   std::cout << ansiItalic;
-  std::cout << _trapType << " <" << _name << "> ";
+  std::cout << _trapType << " <" << getName() << "> ";
   if (_isBroken()) {
     std::cout << "can't attack. It's broken" << std::endl;
     return ;
   }
-  std::cout << "scav attacks <" << target << ">, ";
+  std::cout << "attacks <" << target << "> with bubble-gun, ";
   std::cout << "causing <" << _attackDamage << "> ";
   std::cout << "points of damage!" << std::endl;
   std::cout << "\"Yoo hoooooooooo!\"" << std::endl;
@@ -54,7 +54,7 @@ void ScavTrap::attack(const std::string& target) {
 
 void ScavTrap::guardGate(void) {
   std::cout << ansiItalic;
-  std::cout << _trapType << " <" << _name << "> ";
+  std::cout << _trapType << " <" << getName() << "> ";
   std::cout << "entered in Gate keeper mode." << std::endl;
   std::cout << "\"Please don't shoot me, please don't shoot me!\"" << std::endl;
   std::cout << ansiEnd;

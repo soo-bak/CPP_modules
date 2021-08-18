@@ -127,9 +127,18 @@ bool ClapTrap::_isBroken(void) const {
 }
 
 void ClapTrap::displayStatus(void) const {
-  std::cout << " " << ansiItalic << _name << ansiEnd << " [ ";
+  std::cout << " " << ansiItalic << getName() << ansiEnd << " [ ";
   std::cout << ansiRed << "HP " << _hitPoint << "  ";
   std::cout << ansiCyan << "EP " << _energyPoint << ansiEnd;
   std::cout << " ]" << std::endl;
+  return ;
+}
+
+std::string ClapTrap::getName(void) const {
+  return _name;
+}
+
+void ClapTrap::setName(const std::string& name) {
+  _name = name;
   return ;
 }

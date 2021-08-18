@@ -19,7 +19,7 @@ ScavTrap::ScavTrap(void)
 }
 
 ScavTrap::ScavTrap(const std::string& name)
-  : ClapTrap(name) {
+    : ClapTrap(name) {
   _trapType = "ScavTrap";
   _hitPoint = 100;
   _energyPoint = 50;
@@ -44,7 +44,7 @@ void ScavTrap::attack(const std::string& target) {
     std::cout << "can't attack. It's broken" << std::endl;
     return ;
   }
-  std::cout << "scav attacks <" << target << ">, ";
+  std::cout << "attacks <" << target << "> with bubble-gun, ";
   std::cout << "causing <" << _attackDamage << "> ";
   std::cout << "points of damage!" << std::endl;
   std::cout << "\"Yoo hoooooooooo!\"" << std::endl;
