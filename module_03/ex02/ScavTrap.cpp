@@ -46,8 +46,8 @@ void ScavTrap::attack(const std::string& target) {
   }
   std::cout << "scav attacks <" << target << ">, ";
   std::cout << "causing <" << _attackDamage << "> ";
-  std::cout << "points of damage! ";
-  std::cout << "Yoo hoooooooooo!" << std::endl;
+  std::cout << "points of damage!" << std::endl;
+  std::cout << "\"Yoo hoooooooooo!\"" << std::endl;
   std::cout << ansiEnd;
   return ;
 }
@@ -56,6 +56,7 @@ void ScavTrap::guardGate(void) {
   std::cout << ansiItalic;
   std::cout << _trapType << " <" << _name << "> ";
   std::cout << "entered in Gate keeper mode." << std::endl;
+  std::cout << "\"Please don't shoot me, please don't shoot me!\"" << std::endl;
   std::cout << ansiEnd;
   return ;
 }
