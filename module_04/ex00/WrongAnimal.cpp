@@ -1,37 +1,37 @@
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
 const std::string ansiItalic("\033[3;37m");
 const std::string ansiPurple("\033[1;35m");
 const std::string ansiEnd("\033[0m");
 
-Animal::Animal(void)
+WrongAnimal::WrongAnimal(void)
     : _type("Unknown") {
   std::cout << "Default constructor of '";
-  std::cout << ansiPurple << "Animal"<< ansiEnd << "' called. ";
+  std::cout << ansiPurple << "WrongAnimal"<< ansiEnd << "' called. ";
   std::cout << "[type : " << getType() << "]" << std::endl;
 }
 
-Animal::Animal(const std::string& type)
+WrongAnimal::WrongAnimal(const std::string& type)
     : _type(type) {
   std::cout << "Constructor of '";
-  std::cout << ansiPurple << "Animal"<< ansiEnd << "' called. ";
+  std::cout << ansiPurple << "WrongAnimal"<< ansiEnd << "' called. ";
   std::cout << "[type : " << getType() << "]" << std::endl;
 }
 
-Animal::Animal(const Animal& animal) {
+WrongAnimal::WrongAnimal(const WrongAnimal& animal) {
   *this = animal;
   std::cout << "Copy constructor of '";
-  std::cout << ansiPurple << "Animal"<< ansiEnd << "' called. ";
+  std::cout << ansiPurple << "WrongAnimal"<< ansiEnd << "' called. ";
   std::cout << "[type : " << getType() << "]" << std::endl;
 }
 
-Animal::~Animal(void) {
+WrongAnimal::~WrongAnimal(void) {
   std::cout << "Destructor of '";
-  std::cout << ansiPurple << "Animal"<< ansiEnd << "' called. ";
+  std::cout << ansiPurple << "WrongAnimal"<< ansiEnd << "' called. ";
   std::cout << "[type : " << getType() << "]" << std::endl;
 }
 
-Animal& Animal::operator = (const Animal& other) {
+WrongAnimal& WrongAnimal::operator = (const WrongAnimal& other) {
   std::cout << "Assignation operator called." << std::endl;
   if (this == &other) {
     return *this;
@@ -40,18 +40,18 @@ Animal& Animal::operator = (const Animal& other) {
   return *this;
 }
 
-std::string Animal::getType(void) const {
+std::string WrongAnimal::getType(void) const {
   return _type;
 }
 
-void Animal::setType(const std::string& type) {
+void WrongAnimal::setType(const std::string& type) {
   _type = type;
   return ;
 }
 
-void Animal::makeSound(void) const {
+void WrongAnimal::makeSound(void) const {
   std::cout << ansiItalic;
-  std::cout << "\"Unknown animal sound...\"" << std::endl;
+  std::cout << "\"Unknown wrong animal sound...\"" << std::endl;
   std::cout << ansiEnd;
   return ;
 }
