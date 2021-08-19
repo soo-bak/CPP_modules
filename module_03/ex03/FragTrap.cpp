@@ -40,7 +40,7 @@ FragTrap::FragTrap(const FragTrap& fragTrap) {
 
 FragTrap::~FragTrap(void) {
   std::cout << ansiItalic;
-  std::cout << "FragTrap <" << getName() << "> disappeared." << std::endl;
+  std::cout << "FragTrap <" << getName() << "> is disappeared." << std::endl;
   std::cout << ansiEnd;
 }
 
