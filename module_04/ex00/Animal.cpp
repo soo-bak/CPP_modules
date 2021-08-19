@@ -52,7 +52,7 @@ void Animal::setType(const std::string& type) {
 
 void Animal::makeSound(void) const {
   std::cout << ansiItalic;
-  std::cout << "\"Unknown animal sound...\"" << std::endl;
+  std::cout << "\"Unknown animal sound....\"" << std::endl;
   std::cout << ansiEnd;
   return ;
 }

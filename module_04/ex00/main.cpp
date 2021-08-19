@@ -3,7 +3,6 @@
 int main() {
   const Animal* meta = new Animal();
 
-
   meta->makeSound();
 
   delete meta;
