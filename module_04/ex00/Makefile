@@ -4,6 +4,8 @@ CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03
 SRCS = main.cpp \
 	Animal.cpp \
+	Cat.cpp \
+	Dog.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

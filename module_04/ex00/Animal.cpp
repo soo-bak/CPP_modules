@@ -14,7 +14,7 @@ Animal::Animal(void)
 
 Animal::Animal(const std::string& type)
     : _type(type) {
- std::cout << "Constructor of '";
+  std::cout << "Constructor of '";
   std::cout << ansiRed << "Animal"<< ansiEnd << "' called. ";
   std::cout << "[type : " << getType() << "]" << std::endl;
 }
