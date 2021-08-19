@@ -10,7 +10,7 @@ ScavTrap::ScavTrap(void)
   _trapType = "ScavTrap";
   _hitPoint = 100;
   _energyPoint = 50;
-  _attackDamage = 20;
+  ScavTrap::_attackDamage = 20;
   _maxHitPoint = 100;
   _maxEnergyPoint = 50;
   std::cout << ansiItalic;
@@ -23,7 +23,7 @@ ScavTrap::ScavTrap(const std::string& name)
   _trapType = "ScavTrap";
   _hitPoint = 100;
   _energyPoint = 50;
-  _attackDamage = 20;
+  ScavTrap::_attackDamage = 20;
   _maxHitPoint = 100;
   _maxEnergyPoint = 50;
   std::cout << ansiItalic;

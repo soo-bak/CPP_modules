@@ -10,7 +10,7 @@ FragTrap::FragTrap(void)
   _trapType = "FragTrap";
   _hitPoint = 100;
   _energyPoint = 100;
-  _attackDamage = 30;
+  FragTrap::_attackDamage = 30;
   _maxHitPoint = 100;
   _maxEnergyPoint = 100;
   std::cout << ansiItalic;
@@ -23,7 +23,7 @@ FragTrap::FragTrap(const std::string& name)
   _trapType = "FragTrap";
   _hitPoint = 100;
   _energyPoint = 100;
-  _attackDamage = 30;
+  FragTrap::_attackDamage = 30;
   _maxHitPoint = 100;
   _maxEnergyPoint = 100;
   std::cout << ansiItalic;

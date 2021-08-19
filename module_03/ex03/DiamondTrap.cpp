@@ -5,19 +5,25 @@ const std::string ansiRed("\033[1;31m");
 const std::string ansiCyan("\033[1;36m");
 const std::string ansiEnd("\033[0m");
 
-DiamondTrap::DiamondTrap(void) {
+DiamondTrap::DiamondTrap(void)
+    : ClapTrap(), FragTrap(), ScavTrap() {
+  _trapType = "DiamondTrap";
+  _hitPoint = 100;
+  _energyPoint = 50;
+  _attackDamage = 30;
   std::cout << ansiItalic;
   std::cout << "DiamondTrap <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
 }
 
 DiamondTrap::DiamondTrap(const std::string& name)
-    : ClapTrap(name + "_clap_name") {
+    : ClapTrap(name + "_clap_name"),
+      FragTrap(name + "_clap_name"), ScavTrap(name + "_clap_name") {
   _name = name;
   _trapType = "DiamondTrap";
-  _hitPoint = FragTrap::_maxHitPoint;
-  _energyPoint = ScavTrap::_maxEnergyPoint;
-  _attackDamage = FragTrap::_attackDamage;
+  _hitPoint = 100;
+  _energyPoint = 50;
+  _attackDamage = 30;
   std::cout << ansiItalic;
   std::cout << "DiamondTrap <" << _name << "> appeared." << std::endl;
   std::cout << ansiEnd;
