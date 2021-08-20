@@ -17,7 +17,7 @@ Character::Character(const Character& other)
 }
 
 Character::~Character(void) {
-  for (int i = 0; i < _maxInventorySlot; i++) {
+  for (int i = 0; i < _inventoryCounts; i++) {
     if (_inventory[i] != NULL) {
       delete _inventory[i];
     }
@@ -42,6 +42,8 @@ const std::string Character::getName(void) const {
 
 void Character::equip(AMateria* materia) {
   if (_inventoryCounts == _maxInventorySlot) {
+    return ;
+  } else if (materia == NULL) {
     return ;
   } else {
     setInventory(_inventoryCounts, materia);
@@ -68,7 +70,11 @@ void Character::unequip(int index) {
 }
 
 void Character::use(int index, ICharacter& target) {
+  if (getInventory(index) == NULL) {
+    return ;
+  } else {
   getInventory(index)->use(target);
+  }
   return ;
 }
 

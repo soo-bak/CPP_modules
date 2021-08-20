@@ -16,8 +16,11 @@ AMateria::~AMateria(void) {
 }
 
 AMateria& AMateria::operator = (const AMateria& other) {
-  if (_type == other.getType()) {
-    *this = other;
+  if (this == &other) {
+    return *this;
+  }
+  if (_type == other.getType() || _type == "unknown") {
+    setType(other.getType());
   }
   return *this;
 }

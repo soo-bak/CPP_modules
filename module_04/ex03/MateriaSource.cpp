@@ -12,7 +12,7 @@ MateriaSource::MateriaSource(const MateriaSource& other)
 }
 
 MateriaSource::~MateriaSource(void) {
-  for (int i = 0; i < _maxLearnableNumber; i++) {
+  for (int i = 0; i < _materiaCount; i++) {
     if (_learnedMateria[i] != NULL) {
       delete _learnedMateria[i];
     }
