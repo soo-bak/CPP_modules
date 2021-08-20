@@ -9,6 +9,7 @@ Cat::Cat(void)
   std::cout << "Default constructor of '";
   std::cout << ansiRed << "Cat"<< ansiEnd << "' called. ";
   std::cout << "[type : " << getType() << "]" << std::endl;
+  _brain = new Brain();
 }
 
 Cat::Cat(const Cat& cat) {
@@ -21,6 +22,7 @@ Cat::~Cat(void) {
   std::cout << "Destructor of '";
   std::cout << ansiRed << "Cat"<< ansiEnd << "' called. ";
   std::cout << "[type : " << getType() << "]" << std::endl;
+  delete _brain;
 }
 
 Cat& Cat::operator = (const Cat& other) {
@@ -28,7 +30,10 @@ Cat& Cat::operator = (const Cat& other) {
   std::cout << ansiRed << "Cat"<< ansiEnd << "' called. ";
   if (this == &other) {
     return *this;
+  } else if (_brain != NULL) {
+    delete _brain;
   }
+  _brain = new Brain(*other._brain);
   return *this;
 }
 
@@ -36,5 +41,15 @@ void Cat::makeSound(void) const {
   std::cout << ansiItalic;
   std::cout << "\"meow... meow...\"" << std::endl;
   std::cout << ansiEnd;
+  return ;
+}
+
+Brain* Cat::getBrain(void) const {
+  return _brain;
+}
+
+void Cat::setBrain(const Brain*& newBrain) {
+  delete _brain;
+  _brain = new Brain(*newBrain);
   return ;
 }

@@ -2,7 +2,6 @@
 
 #include <string>
 #include <iostream>
-#include <typeinfo>
 
 class Brain {
   public:

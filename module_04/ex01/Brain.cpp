@@ -1,12 +1,15 @@
 #include "Brain.hpp"
 
 const std::string ansiItalic("\033[3;37m");
-const std::string ansiYellow("\033[1;34m");
+const std::string ansiYellow("\033[1;33m");
 const std::string ansiEnd("\033[0m");
 
 Brain::Brain(void) {
   std::cout << "Default constructor of '" << ansiYellow;
   std::cout << "Brain"<< ansiEnd << "' called." << std::endl;
+  for (int i = 0; i < ideasLength; i++) {
+    setIdea(i, "no idea");
+  }
 }
 
 Brain::Brain(const Brain& brain) {
