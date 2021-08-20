@@ -12,6 +12,8 @@ const std::string asniCyan("\033[1;36m");
 const std::string ansiEnd("\033[0m");
 
 int main() {
+  // Animal animal;
+
   std::cout << std::endl << ansiRed;
   std::cout << "-----------DEEP COPY TEST ABOUT CAT----------";
   std::cout << ansiEnd << std::endl;
