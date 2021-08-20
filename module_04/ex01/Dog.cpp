@@ -13,8 +13,9 @@ Dog::Dog(void)
 }
 
 Dog::Dog(const Dog& dog) {
-  std::cout << "Copy constructor of '";
-  std::cout << ansiBlue << "Dog"<< ansiEnd << "' called. ";
+  std::cout << "Copy constructor of '" << ansiBlue;
+  std::cout << "Dog"<< ansiEnd << "' called. " << std::endl;
+  setType(dog._type);
   if (dog._brain != NULL) {
     _brain = new Brain(dog.getBrain());
   } else {

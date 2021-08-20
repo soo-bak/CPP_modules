@@ -13,8 +13,9 @@ Cat::Cat(void)
 }
 
 Cat::Cat(const Cat& cat) {
-  std::cout << "Copy constructor of '";
-  std::cout << ansiRed << "Cat"<< ansiEnd << "' called. ";
+  std::cout << "Copy constructor of '" << ansiRed;
+  std::cout << "Cat"<< ansiEnd << "' called. " << std::endl;
+  setType(cat._type);
   if (cat._brain != NULL) {
     _brain = new Brain(cat.getBrain());
   } else {
