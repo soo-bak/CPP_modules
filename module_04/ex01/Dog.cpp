@@ -11,6 +11,11 @@ Dog::Dog(void)
   std::cout << "[type : " << getType() << "]" << std::endl;
 }
 
+Dog::Dog(const Dog& dog) {
+  *this = dog;
+
+}
+
 Dog::~Dog(void) {
   std::cout << "Destructor of '";
   std::cout << ansiBlue << "Dog"<< ansiEnd << "' called. ";

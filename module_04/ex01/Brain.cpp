@@ -9,9 +9,32 @@ Brain::Brain(void) {
   std::cout << "Brain"<< ansiEnd << "' called." << std::endl;
 }
 
+Brain::Brain(const Brain& brain) {
+  *this = brain;
+  std::cout << "Copy constructor of '" << ansiYellow;
+  std::cout << "Brain"<< ansiEnd << "' called." << std::endl;
+}
+
 Brain::~Brain(void) {
   std::cout << "Destructor of '" << ansiYellow;
   std::cout << "Brain"<< ansiEnd << "' called." << std::endl;
+}
+
+Brain& Brain::operator = (const Brain& other) {
+   std::cout << "Assignation operator of '" << ansiYellow;
+   std::cout << "Brain"<< ansiEnd << "' called." << std::endl;
+  if (this == &other) {
+    return *this;
+  }
+  for (int i = 0; i < ideasLength; i++) {
+    setIdea(i, other.getIdea(i));
+  }
+  return *this;
+}
+
+void Brain::setIdea(size_t index, const std::string& newIdea) {
+  _ideas[index] = newIdea;
+  return ;
 }
 
 std::string Brain::getIdea(size_t index) const {

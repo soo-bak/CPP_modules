@@ -11,10 +11,25 @@ Cat::Cat(void)
   std::cout << "[type : " << getType() << "]" << std::endl;
 }
 
+Cat::Cat(const Cat& cat) {
+  *this = cat;
+  std::cout << "Copy constructor of '";
+  std::cout << ansiRed << "Cat"<< ansiEnd << "' called. ";
+}
+
 Cat::~Cat(void) {
   std::cout << "Destructor of '";
   std::cout << ansiRed << "Cat"<< ansiEnd << "' called. ";
   std::cout << "[type : " << getType() << "]" << std::endl;
+}
+
+Cat& Cat::operator = (const Cat& other) {
+  std::cout << "Assignation operator of '";
+  std::cout << ansiRed << "Cat"<< ansiEnd << "' called. ";
+  if (this == &other) {
+    return *this;
+  }
+  return *this;
 }
 
 void Cat::makeSound(void) const {

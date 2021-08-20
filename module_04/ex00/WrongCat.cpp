@@ -11,10 +11,25 @@ WrongCat::WrongCat(void)
   std::cout << "[type : " << getType() << "]" << std::endl;
 }
 
+WrongCat::WrongCat(const WrongCat& wrongCat) {
+  *this = wrongCat;
+  std::cout << "Copy constructor of '";
+  std::cout << ansiRed << "WrongCat"<< ansiEnd << "' called. ";
+}
+
 WrongCat::~WrongCat(void) {
   std::cout << "Destructor of '";
   std::cout << ansiRed << "WrongCat"<< ansiEnd << "' called. ";
   std::cout << "[type : " << getType() << "]" << std::endl;
+}
+
+WrongCat& WrongCat::operator = (const WrongCat& other) {
+  std::cout << "Assignation operator of '";
+  std::cout << ansiRed << "WrongCat"<< ansiEnd << "' called. ";
+  if (this == &other) {
+    return *this;
+  }
+  return *this;
 }
 
 void WrongCat::makeSound(void) const {

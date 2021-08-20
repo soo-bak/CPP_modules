@@ -32,7 +32,9 @@ Animal::~Animal(void) {
 }
 
 Animal& Animal::operator = (const Animal& other) {
-  std::cout << "Assignation operator called." << std::endl;
+  std::cout << "Assignation operator of '";
+  std::cout << ansiPurple << "Animal"<< ansiEnd << "' called. ";
+  std::cout << "[type : " << getType() << "]" << std::endl;
   if (this == &other) {
     return *this;
   }

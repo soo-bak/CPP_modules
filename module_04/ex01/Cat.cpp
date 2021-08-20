@@ -9,6 +9,7 @@ Cat::Cat(void)
   std::cout << "Default constructor of '";
   std::cout << ansiRed << "Cat"<< ansiEnd << "' called. ";
   std::cout << "[type : " << getType() << "]" << std::endl;
+  _brain = new Brain();
 }
 
 Cat::~Cat(void) {

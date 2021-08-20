@@ -32,7 +32,9 @@ WrongAnimal::~WrongAnimal(void) {
 }
 
 WrongAnimal& WrongAnimal::operator = (const WrongAnimal& other) {
-  std::cout << "Assignation operator called." << std::endl;
+  std::cout << "Assignation operator of '";
+  std::cout << ansiPurple << "WrongAnimal"<< ansiEnd << "' called. ";
+  std::cout << "[type : " << getType() << "]" << std::endl;
   if (this == &other) {
     return *this;
   }
