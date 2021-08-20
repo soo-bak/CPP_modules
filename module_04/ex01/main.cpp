@@ -76,6 +76,24 @@ int main() {
     std::cout << std::endl;
     delete dogA;
   }
-
+  std::cout << std::endl << ansiRed;
+  std::cout << "-----------POLYMORPHISM TEST----------";
+  std::cout << ansiEnd << std::endl;
+  {
+    const int animalsNumber(10);
+    Animal* animals[animalsNumber];
+    for (int i = 0; i < (animalsNumber / 2); i++) {
+      animals[i] = new Dog();
+    }
+    for (int i = (animalsNumber / 2); i < animalsNumber; i++) {
+      animals[i] = new Cat();
+    }
+    for (int i = 0; i < animalsNumber; i++) {
+      animals[i]->makeSound();
+    }
+    for (int i = 0; i < animalsNumber; i++) {
+      delete animals[i];
+    }
+  }
   return 0;
 }
