@@ -13,13 +13,23 @@ Dog::Dog(void)
 
 Dog::Dog(const Dog& dog) {
   *this = dog;
-
+  std::cout << "Copy constructor of '";
+  std::cout << ansiBlue << "Dog"<< ansiEnd << "' called. ";
 }
 
 Dog::~Dog(void) {
   std::cout << "Destructor of '";
   std::cout << ansiBlue << "Dog"<< ansiEnd << "' called. ";
   std::cout << "[type : " << getType() << "]" << std::endl;
+}
+
+Dog& Dog::operator = (const Dog& other) {
+  std::cout << "Assignation operator of '";
+  std::cout << ansiBlue << "Dog"<< ansiEnd << "' called. ";
+  if (this == &other) {
+    return *this;
+  }
+  return *this;
 }
 
 void Dog::makeSound(void) const {
