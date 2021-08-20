@@ -33,7 +33,24 @@ int main() {
     delete src;
   }
   std::cout << ansiRed;
-  std::cout << "-----------SUBJECT TEST CASE----------" << std::endl;
+  std::cout << "-----------UDEFINED MATERIA TEST CASE----------" << std::endl;
+  std::cout << ansiEnd;
+  {
+    IMateriaSource* src = new MateriaSource();
+    src->learnMateria(new Ice());
+    src->learnMateria(new Cure());
+    ICharacter* me = new Character("me");
+    AMateria* tmp;
+    tmp = src->createMateria("TEST");
+    me->equip(tmp);
+    ICharacter* bob = new Character("bob");
+    me->use(0, *bob);
+    delete bob;
+    delete me;
+    delete src;
+  }
+  std::cout << ansiRed;
+  std::cout << "-----------EQUIP COUNT TEST CASE----------" << std::endl;
   std::cout << ansiEnd;
   {
     IMateriaSource* src = new MateriaSource();
@@ -42,7 +59,12 @@ int main() {
     ICharacter* me = new Character("me");
     AMateria* tmp;
     tmp = src->createMateria("ice");
-    me->equip(tmp);
+    for (int i = 0; i < 4; i++) {
+      std::cout << "[check]" << std::endl;
+      me->equip(tmp);
+    }
+    // tmp = src->createMateria("cure");
+    // me->equip(tmp);
     ICharacter* bob = new Character("bob");
     me->use(0, *bob);
     delete bob;

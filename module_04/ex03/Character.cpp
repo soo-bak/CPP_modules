@@ -2,10 +2,16 @@
 
 Character::Character(void)
     : _name("unknown"), _inventoryCounts(0) {
+  for (int i = 0; i < _maxInventorySlot; i++) {
+    _inventory[i] = NULL;
+  }
 }
 
 Character::Character(const std::string& nameInput)
     : _name(nameInput), _inventoryCounts(0) {
+  for (int i = 0; i < _maxInventorySlot; i++) {
+  _inventory[i] = NULL;
+  }
 }
 
 Character::Character(const Character& other)
@@ -41,12 +47,13 @@ const std::string Character::getName(void) const {
 }
 
 void Character::equip(AMateria* materia) {
-  if (_inventoryCounts == _maxInventorySlot) {
+  if (getInventoryCounts() == _maxInventorySlot) {
     return ;
   } else if (materia == NULL) {
     return ;
   } else {
-    setInventory(_inventoryCounts, materia);
+    std::cout << _inventoryCounts << std::endl;
+    setInventory(getInventoryCounts(), materia);
     _inventoryCounts++;
   }
   return ;
@@ -98,6 +105,7 @@ AMateria* Character::getInventory(const int& index) const {
 
 void Character::setInventory(const int& index, const AMateria* const & newMateria) {
   if (_inventory[index] != NULL) {
+    std::cout << "casdf" << index << std::endl;
     delete _inventory[index];
   }
   _inventory[index] = newMateria->clone();
