@@ -32,13 +32,14 @@ Character& Character::operator = (const Character& other) {
   }
 }
 
-void Character::equip(AMateria* meteria) {
+void Character::equip(AMateria* materia) {
   if (_inventoryCounts == _maxInventorySlot) {
     return ;
   } else {
-    setInventory(_inventoryCounts, *meteria);
+    setInventory(_inventoryCounts, *materia);
     _inventoryCounts++;
   }
+  return ;
 }
 
 void Character::unequip(int index) {
@@ -55,6 +56,7 @@ void Character::unequip(int index) {
       }
     }
   }
+  return ;
 }
 
 void Character::use(int index, ICharacter& target) {
@@ -80,10 +82,10 @@ AMateria* Character::getInventory(const int& index) const {
   return _inventory[index];
 }
 
-void Character::setInventory(const int& index, const AMateria& newMeteria) {
+void Character::setInventory(const int& index, const AMateria& newMateria) {
   if (_inventory[index] != NULL) {
     delete _inventory[index];
   }
-  _inventory[index] = newMeteria.clone();
+  _inventory[index] = newMateria.clone();
   return ;
 }

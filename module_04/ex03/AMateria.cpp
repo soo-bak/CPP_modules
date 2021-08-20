@@ -15,8 +15,16 @@ AMateria::AMateria(const AMateria& other) {
 AMateria::~AMateria(void) {
 }
 
+AMateria& AMateria::operator = (const AMateria& other) {
+  if (_type == other.getType()) {
+    *this = other;
+  } else {
+    return *this;
+  }
+}
+
 void AMateria::use(ICharacter& target) {
-  // std::cout << "\"*cast some magic to " << target << ". *\"" << std::endl;
+  std::cout << "\"*cast some magic to " << target.getName() << ". *\"" << std::endl;
 }
 
 const std::string& AMateria::getType(void) const {

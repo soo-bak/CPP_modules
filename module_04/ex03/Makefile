@@ -4,9 +4,10 @@ CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03
 SRCS = main.cpp \
 	AMateria.cpp \
+	Character.cpp \
 	Cure.cpp \
 	Ice.cpp \
-	ICharacter.cpp \
+	MateriaSource.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

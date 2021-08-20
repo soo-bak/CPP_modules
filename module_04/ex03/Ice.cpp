@@ -19,8 +19,8 @@ Ice& Ice::operator = (const Ice& other) {
 }
 
 AMateria* Ice::clone(void) const {
-  AMateria* clonedMeteria = new Ice();
-  return clonedMeteria;
+  AMateria* clonedMateria = new Ice();
+  return clonedMateria;
 }
 
 void Ice::use(ICharacter& target) {

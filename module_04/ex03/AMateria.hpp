@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 
-class ICharacter;
+#include "ICharacter.hpp"
 
 class AMateria {
 
@@ -14,14 +14,13 @@ class AMateria {
     AMateria(const AMateria& other);
    ~AMateria();
 
-   AMateria& operator = (const AMateria& other) = delete;
+    AMateria& operator = (const AMateria& other);
 
-  virtual AMateria* clone(void) const = 0;
-  virtual void use(ICharacter& target);
+    virtual AMateria* clone(void) const = 0;
+    virtual void use(ICharacter& target);
 
-  const std::string& getType(void) const;
-  void setType(const std::string& newType);
-
+    const std::string& getType(void) const;
+    void setType(const std::string& newType);
 
   protected:
     std::string _type;

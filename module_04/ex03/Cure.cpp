@@ -19,8 +19,8 @@ Cure& Cure::operator = (const Cure& other) {
 }
 
 AMateria* Cure::clone(void) const {
-  AMateria* clonedMeteria = new Cure();
-  return clonedMeteria;
+  AMateria* clonedMateria = new Cure();
+  return clonedMateria;
 }
 
 void Cure::use(ICharacter& target) {

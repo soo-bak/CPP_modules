@@ -9,12 +9,12 @@ class Character : public ICharacter {
     Character(void);
     Character(const std::string& name);
     Character(const Character& other);
-    ~Character(void);
+    virtual ~Character(void);
 
     Character& operator = (const Character& other);
 
     virtual const std::string getName(void) const;
-    virtual void equip(AMateria* meteria);
+    virtual void equip(AMateria* materia);
     virtual void unequip(int index);
     virtual void use(int index, ICharacter& target);
 
@@ -22,8 +22,7 @@ class Character : public ICharacter {
     const int getInventoryCounts(void) const;
     void setInventoryCounts(const int& newInventoryCounts);
     AMateria* getInventory(const int& index) const;
-    void setInventory(const int& index, const AMateria& newMeteria);
-
+    void setInventory(const int& index, const AMateria& newMateria);
 
   private:
     static const int _maxInventorySlot = 4;
