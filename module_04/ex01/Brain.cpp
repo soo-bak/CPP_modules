@@ -40,6 +40,6 @@ void Brain::setIdea(size_t index, const std::string& newIdea) {
   return ;
 }
 
-std::string Brain::getIdea(size_t index) const {
+const std::string Brain::getIdea(size_t index) const {
   return _ideas[index];
 }

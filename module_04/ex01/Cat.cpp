@@ -13,9 +13,13 @@ Cat::Cat(void)
 }
 
 Cat::Cat(const Cat& cat) {
-  *this = cat;
   std::cout << "Copy constructor of '";
   std::cout << ansiRed << "Cat"<< ansiEnd << "' called. ";
+  if (cat._brain != NULL) {
+    _brain = new Brain(cat.getBrain());
+  } else {
+    _brain = new Brain();
+  }
 }
 
 Cat::~Cat(void) {
@@ -30,10 +34,13 @@ Cat& Cat::operator = (const Cat& other) {
   std::cout << ansiRed << "Cat"<< ansiEnd << "' called. " << std::endl;
   if (this == &other) {
     return *this;
-  } else if (_brain != NULL) {
-    delete _brain;
   }
-  _brain = new Brain(*other._brain);
+  delete _brain;
+  if (other._brain != NULL) {
+    _brain = new Brain(other.getBrain());
+  } else {
+    _brain = new Brain();
+  }
   return *this;
 }
 
@@ -44,12 +51,14 @@ void Cat::makeSound(void) const {
   return ;
 }
 
-Brain* Cat::getBrain(void) const {
-  return _brain;
+const Brain& Cat::getBrain(void) const {
+  return *_brain;
 }
 
-void Cat::setBrain(const Brain*& newBrain) {
-  delete _brain;
-  _brain = new Brain(*newBrain);
+void Cat::setBrain(const Brain& newBrain) {
+  if (_brain != NULL) {
+    delete _brain;
+  }
+  _brain = new Brain(newBrain);
   return ;
 }
