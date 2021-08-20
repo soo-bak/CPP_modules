@@ -1,8 +1,8 @@
 #pragma once
 
-#include "AMeteria.hpp"
+#include "AMateria.hpp"
 
-class Cure : public AMeteria {
+class Cure : public AMateria {
 
   public:
 
@@ -12,6 +12,6 @@ class Cure : public AMeteria {
 
     Cure& operator = (const Cure& other);
 
-    virtual AMeteria* clone(void) const;
+    virtual AMateria* clone(void) const;
     virtual void use(ICharacter& target);
 };

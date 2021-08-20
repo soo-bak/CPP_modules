@@ -5,18 +5,18 @@
 
 class ICharacter;
 
-class AMeteria {
+class AMateria {
 
   public:
 
-    AMeteria(void);
-    AMeteria(const std::string& type);
-    AMeteria(const AMeteria& other);
-   ~AMeteria();
+    AMateria(void);
+    AMateria(const std::string& type);
+    AMateria(const AMateria& other);
+   ~AMateria();
 
-   AMeteria& operator = (const AMeteria& other) = delete;
+   AMateria& operator = (const AMateria& other) = delete;
 
-  virtual AMeteria* clone(void) const = 0;
+  virtual AMateria* clone(void) const = 0;
   virtual void use(ICharacter& target);
 
   const std::string& getType(void) const;

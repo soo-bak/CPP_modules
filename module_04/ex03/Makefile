@@ -3,7 +3,7 @@ COMPILER = clang++
 CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03
 SRCS = main.cpp \
-	AMeteria.cpp \
+	AMateria.cpp \
 	Cure.cpp \
 	Ice.cpp \
 	ICharacter.cpp \

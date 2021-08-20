@@ -1,7 +1,7 @@
 #include "Cure.hpp"
 
 Cure::Cure(void)
-    : AMeteria("cure") {
+    : AMateria("cure") {
 }
 
 Cure::Cure(const Cure& other) {
@@ -18,8 +18,8 @@ Cure& Cure::operator = (const Cure& other) {
   setType(other.getType());
 }
 
-AMeteria* Cure::clone(void) const {
-  AMeteria* clonedMeteria = new Cure();
+AMateria* Cure::clone(void) const {
+  AMateria* clonedMeteria = new Cure();
   return clonedMeteria;
 }
 

@@ -1,7 +1,7 @@
 #include "Ice.hpp"
 
 Ice::Ice(void)
-    : AMeteria("ice") {
+    : AMateria("ice") {
 }
 
 Ice::Ice(const Ice& other) {
@@ -18,8 +18,8 @@ Ice& Ice::operator = (const Ice& other) {
   setType(other.getType());
 }
 
-AMeteria* Ice::clone(void) const {
-  AMeteria* clonedMeteria = new Ice();
+AMateria* Ice::clone(void) const {
+  AMateria* clonedMeteria = new Ice();
   return clonedMeteria;
 }
 
