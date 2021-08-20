@@ -16,8 +16,8 @@ class MateriaSource : public IMateriaSource {
     virtual AMateria* createMateria(const std::string& type);
 
     AMateria* getLearnedMateria(int index) const;
-    void setLearnedMateria(int index, const AMateria& newMateria);
-    const int getMateriaCount(void) const;
+    void setLearnedMateria(int index, const AMateria* const & newMateria);
+    int getMateriaCount(void) const;
     void setMateriaCount(const int& newMateriaCount);
 
   private:

@@ -8,7 +8,7 @@ class Ice : public AMateria {
 
     Ice(void);
     Ice(const Ice& other);
-    ~Ice();
+    virtual ~Ice();
 
     Ice& operator = (const Ice& other);
 

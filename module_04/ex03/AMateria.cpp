@@ -18,9 +18,8 @@ AMateria::~AMateria(void) {
 AMateria& AMateria::operator = (const AMateria& other) {
   if (_type == other.getType()) {
     *this = other;
-  } else {
-    return *this;
   }
+  return *this;
 }
 
 void AMateria::use(ICharacter& target) {

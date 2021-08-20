@@ -5,6 +5,8 @@
 
 #include "ICharacter.hpp"
 
+class ICharacter;
+
 class AMateria {
 
   public:
@@ -12,7 +14,7 @@ class AMateria {
     AMateria(void);
     AMateria(const std::string& type);
     AMateria(const AMateria& other);
-   ~AMateria();
+    virtual ~AMateria();
 
     AMateria& operator = (const AMateria& other);
 

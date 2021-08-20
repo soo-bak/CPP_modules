@@ -7,7 +7,7 @@ MateriaSource::MateriaSource(void)
 MateriaSource::MateriaSource(const MateriaSource& other)
     : _materiaCount(other.getMateriaCount()) {
   for (int i = 0; i < _maxLearnableNumber; i++) {
-    setLearnedMateria(i, *other.getLearnedMateria(i));
+    setLearnedMateria(i, other.getLearnedMateria(i));
   }
 }
 
@@ -21,15 +21,16 @@ MateriaSource::~MateriaSource(void) {
 
 MateriaSource& MateriaSource::operator = (const MateriaSource& other) {
   for (int i = 0; i < _maxLearnableNumber; i++) {
-    setLearnedMateria(i, *other.getLearnedMateria(i));
+    setLearnedMateria(i, other.getLearnedMateria(i));
   }
+  return *this;
 }
 
 void MateriaSource::learnMateria(AMateria* materia) {
   if (_materiaCount == _maxLearnableNumber) {
     return ;
   } else {
-    setLearnedMateria(_materiaCount, *materia);
+    _learnedMateria[_materiaCount] = materia;
     _materiaCount++;
   }
   return ;
@@ -48,15 +49,15 @@ AMateria* MateriaSource::getLearnedMateria(int index) const {
   return _learnedMateria[index];
 }
 
-void MateriaSource::setLearnedMateria(int index, const AMateria& newMateria) {
+void MateriaSource::setLearnedMateria(int index, const AMateria* const & newMateria) {
   if (_learnedMateria[index] != NULL) {
     delete _learnedMateria[index];
   }
-  _learnedMateria[index] = newMateria.clone();
+  _learnedMateria[index] = newMateria->clone();
   return ;
 }
 
-const int MateriaSource::getMateriaCount(void) const {
+int MateriaSource::getMateriaCount(void) const {
   return _materiaCount;
 }
 

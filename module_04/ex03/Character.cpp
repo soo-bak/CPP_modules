@@ -12,7 +12,7 @@ Character::Character(const Character& other)
     :_name(other.getName()),
      _inventoryCounts(other.getInventoryCounts()) {
   for (int i = 0; i < _maxInventorySlot; i++) {
-    setInventory(i, *other.getInventory(i));
+    setInventory(i, other.getInventory(i));
   }
 }
 
@@ -25,18 +25,26 @@ Character::~Character(void) {
 }
 
 Character& Character::operator = (const Character& other) {
+  if (this == &other) {
+    return *this;
+  }
   setName(other.getName());
   setInventoryCounts(other.getInventoryCounts());
   for (int i = 0; i < _maxInventorySlot; i++) {
-    setInventory(i, *other.getInventory(i));
+    setInventory(i, other.getInventory(i));
   }
+  return *this;
+}
+
+const std::string Character::getName(void) const {
+  return _name;
 }
 
 void Character::equip(AMateria* materia) {
   if (_inventoryCounts == _maxInventorySlot) {
     return ;
   } else {
-    setInventory(_inventoryCounts, *materia);
+    setInventory(_inventoryCounts, materia);
     _inventoryCounts++;
   }
   return ;
@@ -69,7 +77,7 @@ void Character::setName(const std::string& newName) {
   return ;
 }
 
-const int Character::getInventoryCounts(void) const {
+int Character::getInventoryCounts(void) const {
   return _inventoryCounts;
 }
 
@@ -82,10 +90,10 @@ AMateria* Character::getInventory(const int& index) const {
   return _inventory[index];
 }
 
-void Character::setInventory(const int& index, const AMateria& newMateria) {
+void Character::setInventory(const int& index, const AMateria* const & newMateria) {
   if (_inventory[index] != NULL) {
     delete _inventory[index];
   }
-  _inventory[index] = newMateria.clone();
+  _inventory[index] = newMateria->clone();
   return ;
 }

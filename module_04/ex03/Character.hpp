@@ -19,10 +19,10 @@ class Character : public ICharacter {
     virtual void use(int index, ICharacter& target);
 
     void setName(const std::string& newName);
-    const int getInventoryCounts(void) const;
+    int getInventoryCounts(void) const;
     void setInventoryCounts(const int& newInventoryCounts);
     AMateria* getInventory(const int& index) const;
-    void setInventory(const int& index, const AMateria& newMateria);
+    void setInventory(const int& index, const AMateria* const & newMateria);
 
   private:
     static const int _maxInventorySlot = 4;
