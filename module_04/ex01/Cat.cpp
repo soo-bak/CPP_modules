@@ -27,7 +27,7 @@ Cat::~Cat(void) {
 
 Cat& Cat::operator = (const Cat& other) {
   std::cout << "Assignation operator of '";
-  std::cout << ansiRed << "Cat"<< ansiEnd << "' called. ";
+  std::cout << ansiRed << "Cat"<< ansiEnd << "' called. " << std::endl;
   if (this == &other) {
     return *this;
   } else if (_brain != NULL) {

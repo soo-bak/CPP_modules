@@ -25,7 +25,7 @@ Dog::~Dog(void) {
 
 Dog& Dog::operator = (const Dog& other) {
   std::cout << "Assignation operator of '";
-  std::cout << ansiBlue << "Dog"<< ansiEnd << "' called. ";
+  std::cout << ansiBlue << "Dog"<< ansiEnd << "' called. " << std::endl;
   if (this == &other) {
     return *this;
   }

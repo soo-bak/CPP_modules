@@ -10,13 +10,16 @@ const std::string ansiBlue("\033[1;34m");
 const std::string ansiEnd("\033[0m");
 
 int main() {
+  Cat* catA = new Cat();
   {
-    Cat* catA = new Cat();
-    Cat* catB = new Cat();
-
-    catA->getBrain()->setIdea(0, "IDEA CAT A");
+    Cat catB;
+    catB.getBrain()->setIdea(0, "new idea of cat B !");
+    std::cout << "first idea of cat A : ";
     std::cout << catA->getBrain()->getIdea(0) << std::endl;
-    std::cout << catB->getBrain()->getIdea(0) << std::endl;
+    std::cout << "first idea of cat B : ";
+    std::cout << catB.getBrain()->getIdea(0) << std::endl;
+    catB = *catA;
+    std::cout << catB.getBrain()->getIdea(0) << std::endl;
   }
   return 0;
 }
