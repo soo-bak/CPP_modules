@@ -23,8 +23,8 @@ class Bureaucrat {
     Bureaucrat(const Bureaucrat& other);
     ~Bureaucrat(void);
 
-    const std::string getName(void) const;
-    const unsigned int getGrade(void) const;
+    const std::string& getName(void) const;
+    const unsigned int& getGrade(void) const;
     void increaseGrade(void);
     void decreaseGrade(void);
 
