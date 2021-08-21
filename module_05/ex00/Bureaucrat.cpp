@@ -3,11 +3,11 @@
 const std::string asniCyan("\033[1;36m");
 const std::string ansiEnd("\033[0m");
 
-const char* Bureaucrat::GradeTooHighException::what(void) const {
+const char* Bureaucrat::GradeTooHighException::what(void) const throw() {
   return "GradeTooHighException";
 }
 
-const char* Bureaucrat::GradeTooLowException::what(void) const {
+const char* Bureaucrat::GradeTooLowException::what(void) const throw() {
   return "GradeTooLowException";
 }
 
@@ -23,7 +23,7 @@ Bureaucrat::Bureaucrat(void)
     : _name("unknown"), _grade(150) {
 }
 
-Bureaucrat::Bureaucrat(const std::string& name, const unsigned int& grade)
+Bureaucrat::Bureaucrat(const std::string& name, const int& grade)
     : _name(name), _grade(grade) {
   if (_grade < 1) {
     throw GradeTooHighException();
@@ -44,7 +44,7 @@ const std::string& Bureaucrat::getName(void) const {
   return _name;
 }
 
-const unsigned int& Bureaucrat::getGrade(void) const {
+const int& Bureaucrat::getGrade(void) const {
   return _grade;
 }
 
