@@ -67,7 +67,7 @@ void Bureaucrat::decreaseGrade(void) {
 std::ostream& operator << (std::ostream& outStream,
                            const Bureaucrat& object) {
   outStream << "Bureaucrat " << asniCyan << object.getName() << ansiEnd;
-  outStream << "[grade : " << asniCyan << object.getGrade() << ansiEnd;
+  outStream << " [grade : " << asniCyan << object.getGrade() << ansiEnd;
   outStream << "]" << std::endl;
   return outStream;
 }

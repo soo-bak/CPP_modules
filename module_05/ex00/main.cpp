@@ -12,7 +12,8 @@ const std::string ansiEnd("\033[0m");
 int main () {
 
   try {
-    Bureaucrat("Bob", 150);
+    Bureaucrat bob("Bob", 150);
+    std::cout << bob << std::endl;
   }
   catch (std::exception& exception){
     std::cout << exception.what() << std::endl;
