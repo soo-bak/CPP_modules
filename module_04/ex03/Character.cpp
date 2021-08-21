@@ -23,7 +23,7 @@ Character::Character(const Character& other)
 }
 
 Character::~Character(void) {
-  for (int i = 0; i < _inventoryCounts; i++) {
+  for (int i = 0; i < _maxInventorySlot; i++) {
     if (_inventory[i] != NULL) {
       delete _inventory[i];
     }
@@ -52,7 +52,6 @@ void Character::equip(AMateria* materia) {
   } else if (materia == NULL) {
     return ;
   } else {
-    std::cout << _inventoryCounts << std::endl;
     setInventory(getInventoryCounts(), materia);
     _inventoryCounts++;
   }
@@ -65,8 +64,9 @@ void Character::unequip(int index) {
   } else if (_inventory[index] == NULL) {
     return ;
   } else {
-    _inventory[index] = NULL;
-    for (int i = 0; i < _maxInventorySlot; i++) {
+    setInventory(index, NULL);
+    _inventoryCounts--;
+    for (int i = 0; i < (_maxInventorySlot - 1); i++) {
       if ((_inventory[i] == NULL) && _inventory[i + 1] != NULL) {
         _inventory[i] = _inventory[i + 1];
         _inventory[i + 1] = NULL;
@@ -103,11 +103,14 @@ AMateria* Character::getInventory(const int& index) const {
   return _inventory[index];
 }
 
-void Character::setInventory(const int& index, const AMateria* const & newMateria) {
+void Character::setInventory(const int& index, AMateria* const & newMateria) {
   if (_inventory[index] != NULL) {
-    std::cout << "casdf" << index << std::endl;
     delete _inventory[index];
   }
-  _inventory[index] = newMateria->clone();
+  if (newMateria == NULL) {
+    _inventory[index] = NULL;
+    return ;
+  }
+  _inventory[index] = newMateria;
   return ;
 }

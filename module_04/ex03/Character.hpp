@@ -22,7 +22,7 @@ class Character : public ICharacter {
     int getInventoryCounts(void) const;
     void setInventoryCounts(const int& newInventoryCounts);
     AMateria* getInventory(const int& index) const;
-    void setInventory(const int& index, const AMateria* const & newMateria);
+    void setInventory(const int& index, AMateria* const & newMateria);
 
   private:
     static const int _maxInventorySlot = 4;

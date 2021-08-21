@@ -50,7 +50,7 @@ int main() {
     delete src;
   }
   std::cout << ansiRed;
-  std::cout << "-----------EQUIP COUNT TEST CASE----------" << std::endl;
+  std::cout << "-----------EQUIP COUNT & UNEQUIP TEST CASE----------" << std::endl;
   std::cout << ansiEnd;
   {
     IMateriaSource* src = new MateriaSource();
@@ -58,15 +58,21 @@ int main() {
     src->learnMateria(new Cure());
     ICharacter* me = new Character("me");
     AMateria* tmp;
+
     tmp = src->createMateria("ice");
-    for (int i = 0; i < 4; i++) {
-      std::cout << "[check]" << std::endl;
-      me->equip(tmp);
-    }
-    // tmp = src->createMateria("cure");
-    // me->equip(tmp);
+    me->equip(tmp);
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+    tmp = src->createMateria("ice");
+    me->equip(tmp);
+
+    tmp = src->createMateria("cure");
+    me->unequip(0);
+    me->equip(tmp);
     ICharacter* bob = new Character("bob");
-    me->use(0, *bob);
+    me->use(3, *bob);
     delete bob;
     delete me;
     delete src;
