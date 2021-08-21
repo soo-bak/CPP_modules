@@ -2,6 +2,7 @@
 
 #include <exception>
 #include <string>
+#include <iostream>
 
 class Bureaucrat {
 
@@ -32,3 +33,6 @@ class Bureaucrat {
     const std::string _name;
     unsigned int _grade;
 };
+
+std::ostream& operator << (std::ostream& outStream,
+                           const Bureaucrat& object);

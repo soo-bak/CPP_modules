@@ -1,5 +1,8 @@
 #include "Bureaucrat.hpp"
 
+const std::string asniCyan("\033[1;36m");
+const std::string ansiEnd("\033[0m");
+
 const char* Bureaucrat::GradeTooHighException::what(void) const {
   return "GradeTooHighException";
 }
@@ -59,4 +62,12 @@ void Bureaucrat::decreaseGrade(void) {
   }
   _grade++;
   return ;
+}
+
+std::ostream& operator << (std::ostream& outStream,
+                           const Bureaucrat& object) {
+  outStream << "Bureaucrat " << asniCyan << object.getName() << ansiEnd;
+  outStream << "[grade : " << asniCyan << object.getGrade() << ansiEnd;
+  outStream << "]" << std::endl;
+  return outStream;
 }
