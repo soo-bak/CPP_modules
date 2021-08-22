@@ -84,6 +84,20 @@ void Bureaucrat::signForm(Form& form) const {
   return ;
 }
 
+void Bureaucrat::executeForm(const Form& form) const {
+  try {
+    form.execute(*this);
+    std::cout << "Bureaucrat " << asniCyan << getName() << ansiEnd;
+    std::cout << " execute form " << ansiPurple << form.getName();
+    std::cout << ansiEnd << std::endl;
+  }
+  catch (const std::exception& exception) {
+    std::cout << "Bureaucrat " << asniCyan << getName() << ansiEnd;
+    std::cout << "can not execute form " << ansiPurple << form.getName() << ansiEnd;
+    std::cout << " because " << ansiRed << exception.what() << ansiEnd << std::endl;
+  }
+}
+
 std::ostream& operator << (std::ostream& outStream,
                            const Bureaucrat& object) {
   outStream << "Bureaucrat " << asniCyan << object.getName() << ansiEnd;
