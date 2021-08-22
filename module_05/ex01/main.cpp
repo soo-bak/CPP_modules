@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 const std::string ansiRed("\033[1;31m");
 const std::string ansiPurple("\033[1;35m");
@@ -19,20 +20,33 @@ int main () {
     std::cout << " Eneter the Bureaucrat's grade : ";
     std::cin >> gradeInput;
 
-    Bureaucrat test(nameInput, gradeInput);
+    Bureaucrat bureaucrat(nameInput, gradeInput);
     std::cout << asniCyan << "Bureaucrat appeard! " << ansiEnd << std::endl;
-    std::cout << test << std::endl;
+    std::cout << bureaucrat << std::endl;
+
+    std::cout << " Eneter the Form's name : ";
+    std::cin >> nameInput;
+    int signGradeInput;
+    std::cout << " Eneter the Form's grade to sign : ";
+    std::cin >> signGradeInput;
+    int executeGradeInput;
+    std::cout << " Eneter the Form's grade to execute : ";
+    std::cin >> executeGradeInput;
+
+    Form form(nameInput, signGradeInput, executeGradeInput);
+    std::cout << ansiPurple << "Form is made! " << ansiEnd << std::endl;
+    std::cout <<
 
     while (true) {
       std::string command;
       std::cout << " Eneter the command(i to increase grade, d to decrease grade) : ";
       std::cin >> command;
       if (command.compare("i") == 0) {
-        test.increaseGrade();
+        bureaucrat.increaseGrade();
       } else if (command.compare("d") == 0) {
-        test.decreaseGrade();
+        bureaucrat.decreaseGrade();
       }
-      std::cout << test << std::endl;
+      std::cout << bureaucrat << std::endl;
     }
   }
 
