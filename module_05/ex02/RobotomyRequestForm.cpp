@@ -14,5 +14,28 @@ RobotomyRequestForm::RobotomyRequestForm(void)
     : Form("RobotomyRequestForm",
            RobotomyRequestForm::_gradeToSign,
            RobotomyRequestForm::_gradeToExecute),
-      _target("unknown"){
+      _target("unknown") {
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
+    : Form("RobotomyRequestForm",
+           RobotomyRequestForm::_gradeToSign,
+           RobotomyRequestForm::_gradeToExecute),
+      _target(target ) {
+}
+
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) {
+  *this = other;
+}
+
+RobotomyRequestForm::~RobotomyRequestForm(void) {
+}
+
+void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
+  //TODO;
+  return ;
+}
+
+const std::string& RobotomyRequestForm::getTarget(void) const {
+  return _target;
 }
