@@ -1,6 +1,8 @@
 #include "Bureaucrat.hpp"
 
+const std::string ansiRed("\033[1;31m");
 const std::string asniCyan("\033[1;36m");
+const std::string ansiPurple("\033[1;35m");
 const std::string ansiEnd("\033[0m");
 
 const int Bureaucrat::_highestGrade(1);
@@ -71,12 +73,13 @@ void Bureaucrat::signForm(Form& form) const {
   try {
     form.beSigned(*this);
     std::cout << "Bureaucrat " << asniCyan << getName() << ansiEnd;
-    std::cout << "signs form " << asniCyan << form.getName() << std::endl;
+    std::cout << " signs form " << ansiPurple << form.getName();
+    std::cout << ansiEnd << std::endl;
   }
   catch (const std::exception& exception) {
     std::cout << "Bureaucrat " << asniCyan << getName() << ansiEnd;
-    std::cout << "can not sign form " << form.getName() << "because ";
-    std::cout << exception.what() << std::endl;
+    std::cout << "can not sign form " << ansiPurple << form.getName() << ansiEnd;
+    std::cout << " because " << ansiRed << exception.what() << ansiEnd << std::endl;
   }
   return ;
 }

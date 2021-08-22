@@ -19,6 +19,7 @@ int main () {
     int gradeInput;
     std::cout << " Eneter the Bureaucrat's grade : ";
     std::cin >> gradeInput;
+    std::cout << std::endl;
 
     Bureaucrat bureaucrat(nameInput, gradeInput);
     std::cout << asniCyan << "Bureaucrat appeard! " << ansiEnd << std::endl;
@@ -32,21 +33,30 @@ int main () {
     int executeGradeInput;
     std::cout << " Eneter the Form's grade to execute : ";
     std::cin >> executeGradeInput;
+    std::cout << std::endl;
 
     Form form(nameInput, signGradeInput, executeGradeInput);
     std::cout << ansiPurple << "Form is made! " << ansiEnd << std::endl;
-    std::cout <<
+    std::cout << form << std::endl;
 
     while (true) {
       std::string command;
-      std::cout << " Eneter the command(i to increase grade, d to decrease grade) : ";
+      std::cout << " Eneter the command" << std::endl;
+      std::cout << " (i to increase grade, d to decrease grade, s to sign the form) : ";
       std::cin >> command;
       if (command.compare("i") == 0) {
+        std::cout << std::endl;
         bureaucrat.increaseGrade();
+        std::cout << bureaucrat << std::endl;
       } else if (command.compare("d") == 0) {
+        std::cout << std::endl;
         bureaucrat.decreaseGrade();
+        std::cout << bureaucrat << std::endl;
+      } else if (command.compare("s") == 0) {
+        std::cout << std::endl;
+        bureaucrat.signForm(form);
+        std::cout << std::endl;
       }
-      std::cout << bureaucrat << std::endl;
     }
   }
 

@@ -18,6 +18,7 @@ int main () {
     int gradeInput;
     std::cout << " Eneter the Bureaucrat's grade : ";
     std::cin >> gradeInput;
+    std::cout << std::endl;
 
     Bureaucrat bureaucrat(nameInput, gradeInput);
     std::cout << asniCyan << "Bureaucrat appeard! " << ansiEnd << std::endl;
