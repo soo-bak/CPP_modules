@@ -36,7 +36,6 @@ class Form {
     void setIsSigned(const bool& newIsSigned);
     void beSigned(const Bureaucrat& bureaucrat);
 
-
   private:
 
     static const int _highestGrade;
@@ -45,7 +44,6 @@ class Form {
     const std::string _name;
     const int _gradeToSign;
     const int _gradeToExcute;
-
 
     bool _isSigned;
 };

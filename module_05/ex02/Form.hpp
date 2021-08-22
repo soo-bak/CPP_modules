@@ -26,7 +26,7 @@ class Form {
     Form(const std::string& name, const int& gradeToSign,
          const int& gradeToExcute);
     Form(const Form& other);
-    ~Form(void);
+    virtual ~Form(void);
 
     const std::string& getName(void) const;
     const int& getGradeToSign(void) const;
@@ -45,7 +45,6 @@ class Form {
     const std::string _name;
     const int _gradeToSign;
     const int _gradeToExcute;
-
 
     bool _isSigned;
 };
