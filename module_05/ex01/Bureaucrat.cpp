@@ -7,11 +7,11 @@ const int Bureaucrat::_highestGrade(1);
 const int Bureaucrat::_lowestGrade(150);
 
 const char* Bureaucrat::GradeTooHighException::what(void) const throw() {
-  return "GradeTooHighException";
+  return "Bureaucrat::GradeTooHighException";
 }
 
 const char* Bureaucrat::GradeTooLowException::what(void) const throw() {
-  return "GradeTooLowException";
+  return "Bureaucrat::GradeTooLowException";
 }
 
 Bureaucrat& Bureaucrat::operator = (const Bureaucrat& other) {
@@ -64,6 +64,20 @@ void Bureaucrat::decreaseGrade(void) {
     throw GradeTooLowException();
   }
   _grade++;
+  return ;
+}
+
+void Bureaucrat::signForm(Form& form) const {
+  try {
+    form.beSigned(*this);
+    std::cout << "Bureaucrat " << asniCyan << getName() << ansiEnd;
+    std::cout << "signs form " << asniCyan << form.getName() << std::endl;
+  }
+  catch (const std::exception& exception) {
+    std::cout << "Bureaucrat " << asniCyan << getName() << ansiEnd;
+    std::cout << "can not sign form " << form.getName() << "because ";
+    std::cout << exception.what() << std::endl;
+  }
   return ;
 }
 

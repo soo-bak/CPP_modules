@@ -3,6 +3,10 @@
 #include <iostream>
 #include <string>
 
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
+
 class Form {
 
   public:
@@ -30,6 +34,8 @@ class Form {
 
     const bool& getIsSigned(void) const;
     void setIsSigned(const bool& newIsSigned);
+    void beSigned(const Bureaucrat& bureaucrat);
+
 
   private:
 

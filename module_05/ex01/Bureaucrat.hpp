@@ -4,6 +4,10 @@
 #include <string>
 #include <iostream>
 
+#include "Form.hpp"
+
+class Form;
+
 class Bureaucrat {
 
   public:
@@ -28,6 +32,7 @@ class Bureaucrat {
     const int& getGrade(void) const;
     void increaseGrade(void);
     void decreaseGrade(void);
+    void signForm(Form& form) const;
 
   private:
 

@@ -1,10 +1,17 @@
 #include "Form.hpp"
 
+const std::string asniCyan("\033[1;36m");
+const std::string ansiEnd("\033[0m");
+
 const int Form::_highestGrade(1);
 const int Form::_lowestGrade(150);
 
 const char* Form::GradeTooHighException::what(void) const throw() {
+  return "Form::GradeTooHighException";
+}
 
+const char* Form::GradeTooLowException::what(void) const throw() {
+  return "Form::GradeTooLowException";
 }
 
 Form& Form::operator = (const Form& other) {
@@ -28,6 +35,12 @@ Form::Form(const std::string& name, const int& gradeToSign,
       _gradeToSign(gradeToSign),
       _gradeToExcute(gradeToExcute),
       _isSigned(false) {
+  if (_gradeToSign < _highestGrade || _gradeToExcute < _highestGrade) {
+    throw GradeTooHighException();
+  }
+  if (_gradeToSign > _lowestGrade || _gradeToExcute > _lowestGrade) {
+    throw GradeTooLowException();
+  }
 }
 
 Form::Form(const Form& other)
@@ -59,6 +72,13 @@ const bool& Form::getIsSigned(void) const {
 void Form::setIsSigned(const bool& newIsSigned) {
   _isSigned = newIsSigned;
   return ;
+}
+
+void Form::beSigned(const Bureaucrat& bureaucrat) {
+  if (bureaucrat.getGrade() > getGradeToSign()) {
+    throw Form::GradeTooLowException();
+  }
+  setIsSigned(true);
 }
 
 std::ostream& operator << (std::ostream& outStream,
