@@ -24,7 +24,7 @@ class Form {
         virtual const char* what(void) const throw();
     };
 
-    Form& operator = (const Form& other);
+    virtual Form& operator = (const Form& other);
 
     Form(void);
     Form(const std::string& name, const int& gradeToSign,

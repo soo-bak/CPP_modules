@@ -21,6 +21,13 @@ const std::string ShrubberyCreationForm::_shrubberyAscii[16] = {
   "           .######. "
 };
 
+ShrubberyCreationForm& ShrubberyCreationForm::operator = (
+    const ShrubberyCreationForm& other) {
+  Form::operator = (other);
+  _target = other.getTarget();
+  return *this;
+}
+
 ShrubberyCreationForm::ShrubberyCreationForm(void)
     : Form("ShrubberyCreationForm",
            ShrubberyCreationForm::_gradeToSign,

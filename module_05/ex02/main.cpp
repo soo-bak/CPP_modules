@@ -13,9 +13,18 @@ const std::string ansiEnd("\033[0m");
 
 int main () {
   ShrubberyCreationForm form("asdf");
+  ShrubberyCreationForm testform("zxcv");
   Bureaucrat test("ff", 1);
-  form.setIsSigned(true);
-  form.execute(test);
+  try {
+    form.setIsSigned(true);
+    // form.execute(test);
+    // testform.setIsSigned(true);
+    testform = form;
+    testform.execute(test);
+  }
+  catch (const std::exception& e) {
+    std::cout << e.what() << std::endl;
+  }
 
   // try {
   //   std::string nameInput;

@@ -8,6 +8,9 @@ class ShrubberyCreationForm : public Form {
 
   public:
 
+    virtual ShrubberyCreationForm& operator = (
+        const ShrubberyCreationForm& other);
+
     ShrubberyCreationForm(const std::string& target);
     virtual ~ShrubberyCreationForm(void);
 
