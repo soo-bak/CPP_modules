@@ -5,6 +5,8 @@ CPP_VERSION = -std=c++03
 SRCS = main.cpp \
 	Bureaucrat.cpp \
 	Form.cpp \
+	ShrubberyCreationForm.cpp \
+
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -9,11 +9,11 @@ class Bureaucrat {
   public:
 
     class GradeTooHighException : public std::exception {
-      public :
+      public:
         virtual const char* what(void) const throw();
     };
     class GradeTooLowException : public std::exception {
-      public :
+      public:
         virtual const char* what(void) const throw();
     };
 

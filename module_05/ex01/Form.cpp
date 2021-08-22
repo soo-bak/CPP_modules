@@ -25,20 +25,20 @@ Form& Form::operator = (const Form& other) {
 Form::Form(void)
     : _name("unknown"),
       _gradeToSign(_lowestGrade),
-      _gradeToExcute(_lowestGrade),
+      _gradeToExecute(_lowestGrade),
       _isSigned(false) {
 }
 
 Form::Form(const std::string& name, const int& gradeToSign,
-           const int& gradeToExcute)
+           const int& gradeToExecute)
     : _name(name),
       _gradeToSign(gradeToSign),
-      _gradeToExcute(gradeToExcute),
+      _gradeToExecute(gradeToExecute),
       _isSigned(false) {
-  if (_gradeToSign < _highestGrade || _gradeToExcute < _highestGrade) {
+  if (_gradeToSign < _highestGrade || _gradeToExecute < _highestGrade) {
     throw GradeTooHighException();
   }
-  if (_gradeToSign > _lowestGrade || _gradeToExcute > _lowestGrade) {
+  if (_gradeToSign > _lowestGrade || _gradeToExecute > _lowestGrade) {
     throw GradeTooLowException();
   }
 }
@@ -46,7 +46,7 @@ Form::Form(const std::string& name, const int& gradeToSign,
 Form::Form(const Form& other)
     : _name(other.getName()),
       _gradeToSign(other.getGradeToSign()),
-      _gradeToExcute(other.getGradeToExcute()),
+      _gradeToExecute(other.getGradeToExecute()),
       _isSigned(other.getIsSigned()) {
 }
 
@@ -61,8 +61,8 @@ const int& Form::getGradeToSign(void) const {
   return _gradeToSign;
 }
 
-const int& Form::getGradeToExcute(void) const {
-  return _gradeToExcute;
+const int& Form::getGradeToExecute(void) const {
+  return _gradeToExecute;
 }
 
 const bool& Form::getIsSigned(void) const {
@@ -76,9 +76,10 @@ void Form::setIsSigned(const bool& newIsSigned) {
 
 void Form::beSigned(const Bureaucrat& bureaucrat) {
   if (bureaucrat.getGrade() > getGradeToSign()) {
-    throw Form::GradeTooLowException();
+    throw GradeTooLowException();
   }
   setIsSigned(true);
+  return ;
 }
 
 std::ostream& operator << (std::ostream& outStream,
@@ -86,7 +87,7 @@ std::ostream& operator << (std::ostream& outStream,
   outStream << "Form " << ansiPurple << object.getName() << ansiEnd;
   outStream << " [required grade to sign " << ansiPurple;
   outStream << object.getGradeToSign() << ansiEnd;
-  outStream << " required grade to excute " << ansiPurple;
-  outStream << object.getGradeToExcute() << ansiEnd << "]" << std::endl;
+  outStream << " required grade to execute " << ansiPurple;
+  outStream << object.getGradeToExecute() << ansiEnd << "]" << std::endl;
   return outStream;
 }

@@ -12,11 +12,11 @@ class Form {
   public:
 
     class GradeTooHighException : public std::exception {
-      public :
+      public:
         virtual const char* what(void) const throw();
     };
     class GradeTooLowException : public std::exception {
-      public :
+      public:
         virtual const char* what(void) const throw();
     };
 
@@ -24,7 +24,7 @@ class Form {
 
     Form(void);
     Form(const std::string& name, const int& gradeToSign,
-         const int& gradeToExcute);
+         const int& gradeToExecute);
     Form(const Form& other);
     ~Form(void);
 
@@ -43,7 +43,7 @@ class Form {
 
     const std::string _name;
     const int _gradeToSign;
-    const int _gradeToExcute;
+    const int _gradeToExecute;
 
     bool _isSigned;
 };
