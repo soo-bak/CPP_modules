@@ -30,6 +30,10 @@ class Bureaucrat {
     void decreaseGrade(void);
 
   private:
+
+    static const int _highestGrade;
+    static const int _lowestGrade;
+
     const std::string _name;
     int _grade;
 };

@@ -3,6 +3,9 @@
 const std::string asniCyan("\033[1;36m");
 const std::string ansiEnd("\033[0m");
 
+const int Bureaucrat::_highestGrade(1);
+const int Bureaucrat::_lowestGrade(150);
+
 const char* Bureaucrat::GradeTooHighException::what(void) const throw() {
   return "GradeTooHighException";
 }
@@ -20,15 +23,15 @@ Bureaucrat& Bureaucrat::operator = (const Bureaucrat& other) {
 }
 
 Bureaucrat::Bureaucrat(void)
-    : _name("unknown"), _grade(150) {
+    : _name("unknown"), _grade(_lowestGrade) {
 }
 
 Bureaucrat::Bureaucrat(const std::string& name, const int& grade)
     : _name(name), _grade(grade) {
-  if (_grade < 1) {
+  if (_grade < _highestGrade) {
     throw GradeTooHighException();
   }
-  if (_grade > 150) {
+  if (_grade > _lowestGrade) {
     throw GradeTooLowException();
   }
 }
@@ -49,7 +52,7 @@ const int& Bureaucrat::getGrade(void) const {
 }
 
 void Bureaucrat::increaseGrade(void) {
-  if (_grade - 1 < 1) {
+  if (_grade - 1 < _highestGrade) {
     throw GradeTooHighException();
   }
   _grade--;
@@ -57,7 +60,7 @@ void Bureaucrat::increaseGrade(void) {
 }
 
 void Bureaucrat::decreaseGrade(void) {
-  if (_grade + 1 > 150) {
+  if (_grade + 1 > _lowestGrade) {
     throw GradeTooLowException();
   }
   _grade++;
