@@ -30,7 +30,7 @@ class Form {
 
     const std::string& getName(void) const;
     const int& getGradeToSign(void) const;
-    const int& getGradeToExcute(void) const;
+    const int& getGradeToExecute(void) const;
 
     const bool& getIsSigned(void) const;
     void setIsSigned(const bool& newIsSigned);
