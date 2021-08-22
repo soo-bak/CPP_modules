@@ -1,5 +1,12 @@
 #include "Form.hpp"
 
+const int Form::_highestGrade(1);
+const int Form::_lowestGrade(150);
+
+const char* Form::GradeTooHighException::what(void) const throw() {
+
+}
+
 Form& Form::operator = (const Form& other) {
   if (this == &other) {
     return *this;
@@ -9,12 +16,23 @@ Form& Form::operator = (const Form& other) {
 }
 
 Form::Form(void)
-    : _name("unknown"), _gradeToSign(150), _gradeToExcute(150),
+    : _name("unknown"),
+      _gradeToSign(_lowestGrade),
+      _gradeToExcute(_lowestGrade),
+      _isSigned(false) {
+}
+
+Form::Form(const std::string& name, const int& gradeToSign,
+           const int& gradeToExcute)
+    : _name(name),
+      _gradeToSign(gradeToSign),
+      _gradeToExcute(gradeToExcute),
       _isSigned(false) {
 }
 
 Form::Form(const Form& other)
-    : _name(other.getName()), _gradeToSign(other.getGradeToSign()),
+    : _name(other.getName()),
+      _gradeToSign(other.getGradeToSign()),
       _gradeToExcute(other.getGradeToExcute()),
       _isSigned(other.getIsSigned()) {
 }
