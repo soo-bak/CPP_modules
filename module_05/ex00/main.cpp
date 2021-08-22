@@ -15,13 +15,12 @@ int main () {
     std::string nameInput;
     std::cout << " Eneter the Bureaucrat's name : ";
     std::cin >> nameInput;
-    std::cout << std::endl;
     int gradeInput;
     std::cout << " Eneter the Bureaucrat's grade : ";
     std::cin >> gradeInput;
-    std::cout << std::endl;
 
     Bureaucrat test(nameInput, gradeInput);
+    std::cout << asniCyan << "Bureaucrat appeard! " << ansiEnd << std::endl;
     std::cout << test << std::endl;
 
     while (true) {

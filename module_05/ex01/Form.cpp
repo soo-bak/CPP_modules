@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-const std::string asniCyan("\033[1;36m");
+const std::string ansiPurple("\033[1;35m");
 const std::string ansiEnd("\033[0m");
 
 const int Form::_highestGrade(1);
@@ -83,5 +83,10 @@ void Form::beSigned(const Bureaucrat& bureaucrat) {
 
 std::ostream& operator << (std::ostream& outStream,
                            const Form& object) {
-  // outStream <<
+  outStream << "Form " << ansiPurple << object.getName() << ansiEnd;
+  outStream << " [required grade to sign : " << ansiPurple;
+  outStream << object.getGradeToSign() << ansiEnd;
+  outStream << " required grade to excute : " << ansiPurple;
+  outStream << object.getGradeToExcute() << ansiEnd << "]" << std::endl;
+  return outStream;
 }
