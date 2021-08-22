@@ -12,11 +12,34 @@ const std::string ansiEnd("\033[0m");
 int main () {
 
   try {
-    Bureaucrat bob("Bob", 150);
-    std::cout << bob << std::endl;
+    std::string nameInput;
+    std::cout << " Eneter the Bureaucrat's name : ";
+    std::cin >> nameInput;
+    std::cout << std::endl;
+    int gradeInput;
+    std::cout << " Eneter the Bureaucrat's grade : ";
+    std::cin >> gradeInput;
+    std::cout << std::endl;
+
+    Bureaucrat test(nameInput, gradeInput);
+    std::cout << test << std::endl;
+
+    while (true) {
+      std::string command;
+      std::cout << " Eneter the command(i to increase grade, d to decrease grade) : ";
+      std::cin >> command;
+      if (command.compare("i") == 0) {
+        test.increaseGrade();
+      } else if (command.compare("d") == 0) {
+        test.decreaseGrade();
+      }
+      std::cout << test << std::endl;
+    }
   }
+
   catch (std::exception& exception){
     std::cout << exception.what() << std::endl;
   }
+
   return 0;
 }
