@@ -14,14 +14,14 @@ PresidentialPardonForm& PresidentialPardonForm::operator = (
 }
 
 PresidentialPardonForm::PresidentialPardonForm(void)
-    : Form("PresidentialPardonForm",
+    : Form("presidential pardon",
            PresidentialPardonForm::_gradeToSign,
            PresidentialPardonForm::_gradeToExecute),
       _target("unknown") {
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target)
-    : Form("PresidentialPardonForm",
+    : Form("presidential pardon",
            PresidentialPardonForm::_gradeToSign,
            PresidentialPardonForm::_gradeToExecute),
       _target(target) {

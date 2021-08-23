@@ -14,14 +14,14 @@ RobotomyRequestForm& RobotomyRequestForm::operator = (
 }
 
 RobotomyRequestForm::RobotomyRequestForm(void)
-    : Form("RobotomyRequestForm",
+    : Form("robotomy request",
            RobotomyRequestForm::_gradeToSign,
            RobotomyRequestForm::_gradeToExecute),
       _target("unknown") {
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
-    : Form("RobotomyRequestForm",
+    : Form("robotomy request",
            RobotomyRequestForm::_gradeToSign,
            RobotomyRequestForm::_gradeToExecute),
       _target(target) {

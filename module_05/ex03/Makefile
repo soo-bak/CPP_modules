@@ -1,4 +1,4 @@
-NAME = ex02
+NAME = ex03
 COMPILER = clang++
 CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03
@@ -8,6 +8,7 @@ SRCS = main.cpp \
 	ShrubberyCreationForm.cpp \
 	RobotomyRequestForm.cpp \
 	PresidentialPardonForm.cpp \
+	Intern.cpp \
 
 
 OBJS = $(SRCS:.cpp=.o)

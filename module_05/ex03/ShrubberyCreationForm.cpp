@@ -29,14 +29,14 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator = (
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(void)
-    : Form("ShrubberyCreationForm",
+    : Form("shrubbery creation",
            ShrubberyCreationForm::_gradeToSign,
            ShrubberyCreationForm::_gradeToExecute),
       _target("unknown") {
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
-    : Form("ShrubberyCreationForm",
+    : Form("shrubbery creation",
            ShrubberyCreationForm::_gradeToSign,
            ShrubberyCreationForm::_gradeToExecute),
       _target(target) {
