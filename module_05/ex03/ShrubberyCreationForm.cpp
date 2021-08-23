@@ -56,6 +56,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
   for (size_t i = 0; i < _shrubberyAscii->size(); i++) {
     outFileStream << _shrubberyAscii[i] << std::endl;
   }
+  outFileStream.close();
   return ;
 }
 
