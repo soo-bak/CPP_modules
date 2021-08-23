@@ -93,7 +93,7 @@ void Bureaucrat::executeForm(const Form& form) const {
   }
   catch (const std::exception& exception) {
     std::cout << "Bureaucrat " << asniCyan << getName() << ansiEnd;
-    std::cout << "can not execute form " << ansiPurple << form.getName() << ansiEnd;
+    std::cout << " can not execute form " << ansiPurple << form.getName() << ansiEnd;
     std::cout << " because " << ansiRed << exception.what() << ansiEnd << std::endl;
   }
 }
