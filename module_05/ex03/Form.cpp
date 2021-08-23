@@ -15,7 +15,7 @@ const char* Form::GradeTooLowException::what(void) const throw() {
 }
 
 const char* Form::ExecutingNotSignedFormException::what(void) const throw() {
-  return "From::ExecutingNotSignedFormException";
+  return "Form::ExecutingNotSignedFormException";
 }
 
 Form& Form::operator = (const Form& other) {

@@ -38,6 +38,7 @@ void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
   Form::execute(executor);
   std::cout << "drilling.... drilling.... drlllllllll.... " << std::endl;
   std::srand(std::time(NULL));
+
   if (std::rand() % 2) {
     std::cout << "[Robotomization " << ansiGreen << "success" << ansiEnd;
     std::cout << "] target " << ansiGreen << getTarget() << ansiEnd;

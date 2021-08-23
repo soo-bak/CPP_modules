@@ -36,10 +36,8 @@ int main () {
       std::cout << bureaucrat << std::endl;
     }
   }
-
-  catch (std::exception& exception){
+  catch (std::exception& exception) {
     std::cout << exception.what() << std::endl;
   }
-
   return 0;
 }
