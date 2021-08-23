@@ -36,16 +36,5 @@ int main () {
     jinchoi.executeForm(*form);
     delete form;
   }
-
-  // form = someRandomIntern.makeForm("robotomy request", "randomTarget");
-  // jinchoi.signForm(*form);
-  // jinchoi.executeForm(*form);
-  // delete form;
-
-  // form = someRandomIntern.makeForm("presidential pardon", "randomTarget");
-  // jinchoi.signForm(*form);
-  // jinchoi.executeForm(*form);
-  // delete form;
-
   return 0;
 }
