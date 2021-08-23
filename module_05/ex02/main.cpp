@@ -61,7 +61,9 @@ int main () {
     }
   }
   catch (const std::exception& exception) {
+    std::cout << ansiRed;
     std::cout << exception.what() << std::endl;
+    std::cout << ansiEnd;
   }
 
   return 0;
