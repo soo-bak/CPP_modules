@@ -3,7 +3,6 @@ COMPILER = clang++
 CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03
 SRCS = main.cpp \
-	Bureaucrat.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
