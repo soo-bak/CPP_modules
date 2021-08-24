@@ -20,11 +20,11 @@ class CharConverter : public ATypeConverter {
 
     virtual void printValue(void) const;
     virtual void convert(void) const;
-
-    const bool& getIsDisplayable(void) const;
-    void setIsDisplayable(const bool& boolean);
+    virtual const std::string& getTypeName(void) const;
 
   private:
+
+    static const std::string _typeName;
 
     char _value;
     bool _isDisplayable;

@@ -1,5 +1,10 @@
 #include "CharConverter.hpp"
 
+const std::string ansiRed("\033[1;31m");
+const std::string ansiEnd("\033[0m");
+
+const std::string CharConverter::_typeName("char");
+
 CharConverter& CharConverter::operator = (const CharConverter& other) {
   ATypeConverter::operator = (other);
   _value = other._value;
@@ -40,9 +45,9 @@ CharConverter::~CharConverter(void) {
 void CharConverter::printValue(void) const {
   std::cout << "char : ";
   if (!_isConvertable) {
-    std::cout << "Impossible";
+    std::cout << ansiRed << "Impossible" << ansiEnd;
   } else if (!_isDisplayable) {
-    std::cout << "Non displayable";
+    std::cout << ansiRed << "Non displayable" << ansiEnd;
   } else {
     std::cout << _value;
   }
@@ -55,11 +60,6 @@ void CharConverter::convert(void) const {
   intConverter.printValue();
 }
 
-const bool& CharConverter::getIsDisplayable(void) const {
-  return _isDisplayable;
-}
-
-void CharConverter::setIsDisplayable(const bool& boolean) {
-  _isDisplayable = boolean;
-  return ;
+const std::string& CharConverter::getTypeName(void) const {
+  return _typeName;
 }

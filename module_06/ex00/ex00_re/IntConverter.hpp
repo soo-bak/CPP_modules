@@ -18,8 +18,11 @@ class IntConverter : public ATypeConverter {
 
     virtual void printValue(void) const;
     virtual void convert(void) const;
+    virtual const std::string& getTypeName(void) const;
 
   private:
+
+    static const std::string _typeName;
 
     int _value;
 };

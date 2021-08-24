@@ -17,6 +17,7 @@ class ATypeConverter {
 
     virtual void printValue(void) const = 0;
     virtual void convert(void) const = 0;
+    virtual const std::string& getTypeName(void) const = 0;
 
     const std::string& getLiteral(void) const;
     void setLiteral(const std::string& newLiteral);

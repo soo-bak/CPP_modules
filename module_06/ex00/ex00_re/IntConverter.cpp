@@ -1,5 +1,7 @@
 #include "IntConverter.hpp"
 
+const std::string IntConverter::_typeName("int");
+
 IntConverter& IntConverter::operator = (const IntConverter& other) {
   ATypeConverter::operator = (other);
   _value = other._value;
@@ -41,4 +43,8 @@ void IntConverter::convert(void) const {
   CharConverter charConverter(_value);
   charConverter.printValue();
 
+}
+
+const std::string& IntConverter::getTypeName(void) const {
+  return _typeName;
 }
