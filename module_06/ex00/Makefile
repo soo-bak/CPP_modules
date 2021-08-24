@@ -3,6 +3,7 @@ COMPILER = clang++
 CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03
 SRCS = main.cpp \
+	Conversion.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -23,6 +24,6 @@ fclean: clean
 re: fclean all
 
 test: re
-	@./$(NAME)
+	@./$(NAME) a
 
 .PHONY: all clean fclean re
