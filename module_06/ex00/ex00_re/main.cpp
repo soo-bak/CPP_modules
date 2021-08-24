@@ -18,14 +18,16 @@ int main(int argc, char* argv[]) {
   ATypeConverter* type;
   try {
     type = Parser::acquireType(input);
-    type->printValue();
-    std::cout << std::endl;
   }
   catch (const std::exception& exception) {
     std::cout << ansiRed;
     std::cout << exception.what() << std::endl;
     std::cout << ansiEnd;
+    return -1;
   }
+  type->printValue();
+  std::cout << std::endl;
+  type->convert();
   delete type;
   return 0;
 }

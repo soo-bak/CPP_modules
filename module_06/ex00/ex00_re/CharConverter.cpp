@@ -19,7 +19,7 @@ CharConverter::CharConverter(const std::string& literal)
 
 CharConverter::CharConverter(const CharConverter& other)
     : ATypeConverter(other._literal), _value(other._value),
-      _isDisplayable(other._isDisplayable){
+      _isDisplayable(other._isDisplayable) {
 }
 
 CharConverter::~CharConverter(void) {
@@ -39,7 +39,8 @@ void CharConverter::printValue(void) const {
 }
 
 void CharConverter::convert(void) const {
-
+  IntConverter intConverter(_value);
+  intConverter.printValue();
 }
 
 const bool& CharConverter::getIsDisplayable(void) const {

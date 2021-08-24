@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ATypeConverter.hpp"
+#include "IntConverter.hpp"
 
 class CharConverter : public ATypeConverter {
 

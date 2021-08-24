@@ -3,6 +3,7 @@
 #include <string>
 
 #include "CharConverter.hpp"
+#include "IntConverter.hpp"
 
 class Parser {
 

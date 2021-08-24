@@ -18,8 +18,8 @@ ATypeConverter* Parser::acquireType(const std::string& string) {
     case CharType:
       returnType = new CharConverter(string);
     break;
-    // case IntType:
-      // returnType = new Int(string);
+    case IntType:
+      returnType = new IntConverter(string);
   default:
     break;
   }

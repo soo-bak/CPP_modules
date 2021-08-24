@@ -9,7 +9,8 @@ ATypeConverter& ATypeConverter::operator = (const ATypeConverter& other) {
   return *this;
 }
 
-ATypeConverter::ATypeConverter(void) {
+ATypeConverter::ATypeConverter(void)
+    : _literal(""), _isConvertable(true) {
 }
 
 ATypeConverter::ATypeConverter(const std::string& literal)
