@@ -12,13 +12,13 @@ CharConverter::CharConverter(void)
       _isDisplayable(true) {
 }
 
-CharConverter::CharConverter(const std::string& string)
-    : ATypeConverter("char"), _value(*string.begin()),
+CharConverter::CharConverter(const std::string& literal)
+    : ATypeConverter(literal), _value(*literal.begin()),
       _isDisplayable(true) {
 }
 
 CharConverter::CharConverter(const CharConverter& other)
-    : ATypeConverter(other._typeName), _value(other._value),
+    : ATypeConverter(other._literal), _value(other._value),
       _isDisplayable(other._isDisplayable){
 }
 
@@ -36,6 +36,10 @@ void CharConverter::printValue(void) const {
   }
   std::cout << std::endl;
   return ;
+}
+
+void CharConverter::convert(void) const {
+
 }
 
 const bool& CharConverter::getIsDisplayable(void) const {

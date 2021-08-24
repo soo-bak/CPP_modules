@@ -19,6 +19,7 @@ int main(int argc, char* argv[]) {
   try {
     type = Parser::acquireType(input);
     type->printValue();
+    std::cout << std::endl;
   }
   catch (const std::exception& exception) {
     std::cout << ansiRed;
