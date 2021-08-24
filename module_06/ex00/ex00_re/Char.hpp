@@ -15,12 +15,10 @@ class Char : public AType {
 
     virtual void printValue(void) const;
 
-    const bool& getIsConvertable(void) const;
     const bool& getIsDisplayable(void) const;
-    void setIsConvertable(const bool& boolean);
     void setIsDisplayable(const bool& boolean);
-  private:
 
+  private:
 
     char _value;
     bool _isDisplayable;

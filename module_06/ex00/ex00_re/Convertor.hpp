@@ -29,7 +29,8 @@ class Convertor {
     static AType* acquireType(const std::string& string);
 
   private:
-    static unsigned int detectType(const std::string& string);
+
+    static unsigned int _detectType(const std::string& string);
     static bool _isTypeChar(const std::string& string);
     static bool _isTypeInt(const std::string& string);
     static bool _isTypeFloat(const std::string& string);
@@ -41,5 +42,4 @@ class Convertor {
     static bool _isSign(const char& character);
     static bool _isDot(const char& character);
     static bool _isFloatSuffix(const char& character);
-    static unsigned int _detectType(const std::string& strng);
 };

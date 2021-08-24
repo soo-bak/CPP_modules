@@ -4,7 +4,7 @@ AType& AType::operator = (const AType& other) {
   if (this == &other) {
     return *this;
   }
-  _literal = other._literal;
+  _typeName = other._typeName;
   _isConvertable = other._isConvertable;
   return *this;
 }
@@ -12,12 +12,12 @@ AType& AType::operator = (const AType& other) {
 AType::AType(void) {
 }
 
-AType::AType(const std::string& literal)
-    : _literal(literal), _isConvertable(true) {
+AType::AType(const std::string& typeName)
+    : _typeName(typeName), _isConvertable(true) {
 }
 
 AType::AType(const AType& other)
-    : _literal(other._literal),
+    : _typeName(other._typeName),
       _isConvertable(other._isConvertable) {
 }
 
@@ -25,12 +25,12 @@ AType::AType(const AType& other)
 AType::~AType(void) {
 }
 
-const std::string& AType::getLiteral(void) const {
-  return _literal;
+const std::string& AType::getTypeName(void) const {
+  return _typeName;
 }
 
-void AType::setLiteral(const std::string& newLiteralValue) {
-  _literal = newLiteralValue;
+void AType::setTypeName(const std::string& newTypeName) {
+  _typeName = newTypeName;
   return ;
 }
 

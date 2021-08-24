@@ -13,12 +13,12 @@ Char::Char(void)
 }
 
 Char::Char(const std::string& string)
-    : AType(string), _value(*string.begin()),
+    : AType("char"), _value(*string.begin()),
       _isDisplayable(true) {
 }
 
 Char::Char(const Char& other)
-    : AType(other._literal), _value(other._value),
+    : AType(other._typeName), _value(other._value),
       _isDisplayable(other._isDisplayable){
 }
 
@@ -26,7 +26,7 @@ Char::~Char(void) {
 }
 
 void Char::printValue(void) const {
-  std::cout << "Char : ";
+  std::cout << "char : ";
   if (!_isConvertable) {
     std::cout << "Impossible";
   } else if (!_isDisplayable) {

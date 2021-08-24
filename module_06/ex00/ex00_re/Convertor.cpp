@@ -11,20 +11,22 @@ Convertor::~Convertor(void) {
 }
 
 AType* Convertor::acquireType(const std::string& string) {
-  const unsigned int typeEnum(detectType(string));
+  const unsigned int typeEnum(_detectType(string));
 
   AType* returnType(NULL);
   switch (typeEnum) {
     case CharType:
       returnType = new Char(string);
     break;
+    // case IntType:
+      // returnType = new Int(string);
   default:
     break;
   }
   return returnType;
 }
 
-unsigned int Convertor::detectType(const std::string& string) {
+unsigned int Convertor::_detectType(const std::string& string) {
   if (_isTypeChar(string)) {
     return CharType;
   } else if (_isTypeInt(string)) {
@@ -38,7 +40,6 @@ unsigned int Convertor::detectType(const std::string& string) {
   }
   return ValidTypesNumber;
 }
-
 
 bool Convertor::_isPointNumber(const std::string& string) {
   if (!isdigit(*string.begin()) && !_isSign(*string.begin())) {
