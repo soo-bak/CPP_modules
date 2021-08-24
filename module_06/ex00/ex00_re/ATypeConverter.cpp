@@ -1,45 +1,41 @@
 #include "ATypeConverter.hpp"
 
+const std::string ansiRed("\033[1;31m");
+const std::string ansiEnd("\033[0m");
+
 ATypeConverter& ATypeConverter::operator = (const ATypeConverter& other) {
   if (this == &other) {
     return *this;
   }
   _literal = other._literal;
+  _typeName = other._typeName;
   _isConvertable = other._isConvertable;
   return *this;
 }
 
 ATypeConverter::ATypeConverter(void)
-    : _literal(""), _isConvertable(true) {
+    : _literal(""), _typeName("unknwon"),
+      _isConvertable(true) {
 }
 
 ATypeConverter::ATypeConverter(const std::string& literal)
-    : _literal(literal), _isConvertable(true) {
+    : _literal(literal), _typeName("unknwon"),
+      _isConvertable(true) {
 }
 
 ATypeConverter::ATypeConverter(const ATypeConverter& other)
     : _literal(other._literal),
+      _typeName(other._typeName),
       _isConvertable(other._isConvertable) {
 }
-
 
 ATypeConverter::~ATypeConverter(void) {
 }
 
-const std::string& ATypeConverter::getLiteral(void) const {
-  return _literal;
+const std::string& ATypeConverter::getTypeName(void) const {
+  return _typeName;
 }
 
-void ATypeConverter::setLiteral(const std::string& newTypeName) {
-  _literal = newTypeName;
-  return ;
-}
-
-const bool& ATypeConverter::getIsConvertable(void) const {
-  return _isConvertable;
-}
-
-void ATypeConverter::setIsConvertable(const bool& boolean) {
-  _isConvertable = boolean;
-  return ;
+void ATypeConverter::_setTypeName(const std::string& typeName) {
+  _typeName = typeName;
 }

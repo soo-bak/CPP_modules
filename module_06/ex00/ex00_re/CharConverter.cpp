@@ -3,8 +3,6 @@
 const std::string ansiRed("\033[1;31m");
 const std::string ansiEnd("\033[0m");
 
-const std::string CharConverter::_typeName("char");
-
 CharConverter& CharConverter::operator = (const CharConverter& other) {
   ATypeConverter::operator = (other);
   _value = other._value;
@@ -15,15 +13,18 @@ CharConverter& CharConverter::operator = (const CharConverter& other) {
 CharConverter::CharConverter(void)
     : ATypeConverter(), _value(0),
       _isDisplayable(true) {
+  _setTypeName("char");
 }
 
 CharConverter::CharConverter(const std::string& literal)
     : ATypeConverter(literal), _value(*literal.begin()),
       _isDisplayable(true) {
+  _setTypeName("char");
 }
 
 CharConverter::CharConverter(const int& integerNumber)
     : ATypeConverter(), _value(0), _isDisplayable(true) {
+  _setTypeName("char");
   if (integerNumber < 0 || integerNumber > 127) {
     _isConvertable = false;
   } else {
@@ -58,8 +59,4 @@ void CharConverter::printValue(void) const {
 void CharConverter::convert(void) const {
   IntConverter intConverter(_value);
   intConverter.printValue();
-}
-
-const std::string& CharConverter::getTypeName(void) const {
-  return _typeName;
 }

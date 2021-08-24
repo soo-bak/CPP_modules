@@ -17,15 +17,14 @@ class ATypeConverter {
 
     virtual void printValue(void) const = 0;
     virtual void convert(void) const = 0;
-    virtual const std::string& getTypeName(void) const = 0;
 
-    const std::string& getLiteral(void) const;
-    void setLiteral(const std::string& newLiteral);
-    const bool& getIsConvertable(void) const;
-    void setIsConvertable(const bool& boolean);
+    const std::string& getTypeName(void) const;
 
   protected:
 
+    void _setTypeName(const std::string& typeName);
+
     std::string _literal;
+    std::string _typeName;
     bool _isConvertable;
 };

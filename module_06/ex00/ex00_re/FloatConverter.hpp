@@ -12,6 +12,8 @@ class FloatConverter : public ATypeConverter {
 
     FloatConverter(void);
     FloatConverter(const char& character);
+    FloatConverter(const int& integerNumber);
+    FloatConverter(const double& doubleNumber);
     FloatConverter(const std::string& literal);
     FloatConverter(const FloatConverter& other);
     virtual ~FloatConverter();
