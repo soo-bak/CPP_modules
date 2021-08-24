@@ -1,5 +1,8 @@
 #include "Conversion.hpp"
 
+const std::string ansiRed("\033[1;31m");
+const std::string ansiEnd("\033[0m");
+
 const char* Conversion::NotMatchedTypeException::what(void) const throw() {
   return "Conversion::NotMatchedTypeException";
 }
@@ -14,30 +17,14 @@ Conversion& Conversion::operator = (const Conversion& other) {
 }
 
 Conversion::Conversion(const Conversion& other)
-    : _literalValue(other.getLiteralValue()) {
+    : _literalValue(other.getLiteralValue()),
+      _type(other.getType()) {
 }
 
 Conversion::Conversion(const std::string& string)
     : _literalValue(string) {
-  try {
-    _type = _findType(_literalValue);
-  }
-  catch (std::exception& exception) {
-    std::cout << exception.what() << std::endl;
-  }
-  // std::string test;
-  // if (_type == Char) {
-  //   test = "char";
-  // } else if (_type == Int) {
-  //   test = "int";
-  // } else if (_type == Float) {
-  //   test = "float";
-  // } else if (_type == Double) {
-  //   test = "double";
-  // } else {
-  //   test = "???????";
-  // }
-  // std::cout << "[ " << test << " ]" << std::endl;
+  _type = _detectType(_literalValue);
+  _convertValues();
 }
 
 Conversion::Conversion(void)
@@ -53,6 +40,29 @@ const std::string& Conversion::getLiteralValue(void) const {
 
 const unsigned int& Conversion::getType(void) const {
   return _type;
+}
+
+const char& Conversion::getCharValue(void) const {
+  return _charValue;
+}
+
+const int& Conversion::getIntValue(void) const {
+  return _intValue;
+}
+
+const float& Conversion::getFloatValue(void) const {
+  return _floatValue;
+}
+
+const double& Conversion::getDoubleValue(void) const {
+  return _doubleValue;
+}
+
+void Conversion::printConvertedValues(void) const {
+  std::cout << "Char : " << _charValue << std::endl;
+  std::cout << "Int : " << _intValue << std::endl;
+  std::cout << "Float : " << _floatValue << std::endl;
+  std::cout << "Double : " << _doubleValue << std::endl;
 }
 
 bool Conversion::_isPointNumber(const std::string& string) {
@@ -123,7 +133,6 @@ bool Conversion::_isTypeInt(const std::string& string) {
 }
 
 bool Conversion::_isTypeFloat(const std::string& string) {
-  std::cout << string << std::endl;
   if (_isPointNumber(string) &&
       _isFloatSuffix(*(string.end() - 1)) &&
       !_isDot(*(string.end() - 2))) {
@@ -140,7 +149,22 @@ bool Conversion::_isTypeDouble(const std::string& string) {
   return false;
 }
 
-unsigned int Conversion::_findType(const std::string& string) {
+bool Conversion::_isNaN(const std::string& string) {
+  if (string.compare("nan") == 0) {
+    return true;
+  }
+  return false;
+}
+
+bool Conversion::_isInf(const std::string& string) {
+  if (string.compare("+inf") == 0 || string.compare("-inf") == 0 ||
+      string.compare("+inff") == 0 || string.compare("-inff") == 0) {
+    return true;
+  }
+  return false;
+}
+
+unsigned int Conversion::_detectType(const std::string& string) {
   if (_isTypeChar(string)) {
     return Char;
   } else if (_isTypeInt(string)) {
@@ -149,8 +173,51 @@ unsigned int Conversion::_findType(const std::string& string) {
     return Float;
   } else if (_isTypeDouble(string)) {
     return Double;
+  } else if (_isNaN(string)) {
+    return NaN;
+  } else if (_isInf(string)) {
+    return Inf;
   } else {
     throw NotMatchedTypeException();
   }
   return TypeListCount;
+}
+
+void Conversion::_convertValues(void) {
+  switch (_type) {
+    case Char:
+      _charValue = _literalValue.at(0);
+      _intValue = static_cast<int>(_charValue);
+      _floatValue = static_cast<float>(_charValue);
+      _doubleValue = static_cast<double>(_charValue);
+      break ;
+    case Int:
+      _intValue = atoi(_literalValue.c_str());
+      _charValue = static_cast<char>(_intValue);
+      _floatValue = static_cast<float>(_intValue);
+      _doubleValue = static_cast<double>(_intValue);
+      break ;
+    case Float:
+      _floatValue = static_cast<float>(atof(_literalValue.c_str()));
+      _charValue = static_cast<char>(_floatValue);
+      _intValue = static_cast<int>(_floatValue);
+      _doubleValue = static_cast<double>(_floatValue);
+      break ;
+    case Double:
+      _doubleValue = atof(_literalValue.c_str());
+      _charValue = static_cast<char>(_doubleValue);
+      _intValue = static_cast<int>(_doubleValue);
+      _floatValue = static_cast<float>(_doubleValue);
+      break ;
+    case NaN:
+      _charValue = NAN;
+      _intValue = NAN;
+      _floatValue = NAN;
+      _doubleValue = NAN;
+      break ;
+    default:
+      throw NotMatchedTypeException();
+      break ;
+  }
+  return ;
 }

@@ -20,12 +20,15 @@ int main (int argc, char* argv[]) {
     return 0;
   }
   std::string stringInput = argv[1];
-  try {
-  Conversion converter(stringInput);
 
+  try {
+    Conversion converter(stringInput);
+    converter.printConvertedValues();
   }
   catch (std::exception& exception) {
+    std::cout << ansiRed;
     std::cout << exception.what() << std::endl;
+    std::cout << ansiEnd;
   }
 
   return 0;
