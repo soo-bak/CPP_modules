@@ -21,7 +21,7 @@ DoubleConverter::DoubleConverter(const char& character)
 }
 
 DoubleConverter::DoubleConverter(const int& integerNumber)
-    : ATypeConverter(), _value(0), _precision(0) {
+    : ATypeConverter(), _value(0), _precision(1) {
   _setTypeName("double");
   _value = static_cast<double>(integerNumber);
 }
