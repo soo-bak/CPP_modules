@@ -8,6 +8,7 @@ class Char : public AType {
 
     Char& operator = (const Char& other);
 
+    Char(void);
     Char(const std::string& string);
     Char(const Char& other);
     virtual ~Char();
@@ -20,7 +21,6 @@ class Char : public AType {
     void setIsDisplayable(const bool& boolean);
   private:
 
-    Char(void);
 
     char _value;
     bool _isDisplayable;

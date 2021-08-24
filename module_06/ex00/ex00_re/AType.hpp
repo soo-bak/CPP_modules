@@ -9,6 +9,7 @@ class AType {
 
     AType& operator = (const AType& other);
 
+    AType(void);
     AType(const std::string& literal);
     AType(const AType& other);
     virtual ~AType();
@@ -25,5 +26,4 @@ class AType {
     bool _isConvertable;
 
   private:
-    AType(void);
 };

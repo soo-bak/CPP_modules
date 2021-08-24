@@ -8,7 +8,7 @@ Char& Char::operator = (const Char& other) {
 }
 
 Char::Char(void)
-    : AType(""), _value(0),
+    : AType(), _value(0),
       _isDisplayable(true) {
 }
 

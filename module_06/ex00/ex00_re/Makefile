@@ -4,6 +4,8 @@ CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03
 SRCS = main.cpp \
 	Convertor.cpp \
+	AType.cpp \
+	Char.cpp \
 
 
 OBJS = $(SRCS:.cpp=.o)

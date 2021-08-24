@@ -9,9 +9,11 @@ AType& AType::operator = (const AType& other) {
   return *this;
 }
 
+AType::AType(void) {
+}
+
 AType::AType(const std::string& literal)
     : _literal(literal), _isConvertable(true) {
-
 }
 
 AType::AType(const AType& other)
@@ -19,8 +21,6 @@ AType::AType(const AType& other)
       _isConvertable(other._isConvertable) {
 }
 
-AType::AType(void) {
-}
 
 AType::~AType(void) {
 }
