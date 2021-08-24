@@ -125,7 +125,8 @@ bool Conversion::_isTypeInt(const std::string& string) {
 bool Conversion::_isTypeFloat(const std::string& string) {
   std::cout << string << std::endl;
   if (_isPointNumber(string) &&
-      _isFloatSuffix(*(string.end() - 1))) {
+      _isFloatSuffix(*(string.end() - 1)) &&
+      !_isDot(*(string.end() - 2))) {
     return true;
   }
   return false;
