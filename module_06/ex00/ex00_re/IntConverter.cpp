@@ -38,5 +38,7 @@ void IntConverter::printValue(void) const {
 }
 
 void IntConverter::convert(void) const {
+  CharConverter charConverter(_value);
+  charConverter.printValue();
 
 }

@@ -2,6 +2,7 @@
 
 #include "ATypeConverter.hpp"
 #include "IntConverter.hpp"
+#include "FloatConverter.hpp"
 
 class CharConverter : public ATypeConverter {
 
@@ -11,6 +12,9 @@ class CharConverter : public ATypeConverter {
 
     CharConverter(void);
     CharConverter(const std::string& literal);
+    CharConverter(const int& integerNumber);
+    CharConverter(const float& floatingNumber);
+    CharConverter(const double& doubeNumber);
     CharConverter(const CharConverter& other);
     virtual ~CharConverter();
 

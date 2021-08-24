@@ -17,6 +17,18 @@ CharConverter::CharConverter(const std::string& literal)
       _isDisplayable(true) {
 }
 
+CharConverter::CharConverter(const int& integerNumber)
+    : ATypeConverter(), _value(0), _isDisplayable(true) {
+  if (integerNumber < 0 || integerNumber > 127) {
+    _isConvertable = false;
+  } else {
+    _value = static_cast<char>(integerNumber);
+    if (!isprint(_value)) {
+      _isDisplayable = false;
+    }
+  }
+}
+
 CharConverter::CharConverter(const CharConverter& other)
     : ATypeConverter(other._literal), _value(other._value),
       _isDisplayable(other._isDisplayable) {
