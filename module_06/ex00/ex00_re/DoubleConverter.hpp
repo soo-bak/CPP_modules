@@ -3,6 +3,7 @@
 #include "ATypeConverter.hpp"
 #include "CharConverter.hpp"
 #include "IntConverter.hpp"
+#include "FloatConverter.hpp"
 
 class DoubleConverter : public ATypeConverter {
 
@@ -13,7 +14,7 @@ class DoubleConverter : public ATypeConverter {
     DoubleConverter(void);
     DoubleConverter(const char& character);
     DoubleConverter(const int& integerNumber);
-    DoubleConverter(const float& doubleNumber);
+    DoubleConverter(const float& floatingNumber);
     DoubleConverter(const std::string& literal);
     DoubleConverter(const DoubleConverter& other);
     virtual ~DoubleConverter();

@@ -3,6 +3,7 @@
 #include "ATypeConverter.hpp"
 #include "CharConverter.hpp"
 #include "FloatConverter.hpp"
+#include "DoubleConverter.hpp"
 
 class IntConverter : public ATypeConverter {
 
@@ -22,6 +23,7 @@ class IntConverter : public ATypeConverter {
     virtual void convert(void) const;
 
   private:
+    int _castToInt(const double& number);
 
     int _value;
 };

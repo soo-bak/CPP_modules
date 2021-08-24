@@ -1,8 +1,5 @@
 #include "ATypeConverter.hpp"
 
-const std::string ansiRed("\033[1;31m");
-const std::string ansiEnd("\033[0m");
-
 ATypeConverter& ATypeConverter::operator = (const ATypeConverter& other) {
   if (this == &other) {
     return *this;

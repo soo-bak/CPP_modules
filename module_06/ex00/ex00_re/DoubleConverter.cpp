@@ -1,41 +1,64 @@
-#include "FloatConverter.hpp"
+#include "DoubleConverter.hpp"
 
-FloatConverter& FloatConverter::operator = (const FloatConverter& other) {
+const std::string ansiRed("\033[1;31m");
+const std::string ansiEnd("\033[0m");
+
+DoubleConverter& DoubleConverter::operator = (const DoubleConverter& other) {
   ATypeConverter::operator = (other);
   _value = other._value;
   return *this;
 }
 
-FloatConverter::FloatConverter(void)
+DoubleConverter::DoubleConverter(void)
     : ATypeConverter(), _value(0) {
-  _setTypeName("float");
+  _setTypeName("double");
 }
 
-FloatConverter::FloatConverter(const char& character)
-    : ATypeConverter() {
-  _setTypeName("float");
-  _value = static_cast<float>(character);
+DoubleConverter::DoubleConverter(const char& character)
+    : ATypeConverter(), _value(0) {
+  _setTypeName("double");
+  _value = static_cast<double>(character);
 }
 
-FloatConverter::FloatConverter(const std::string& literal)
+DoubleConverter::DoubleConverter(const int& integerNumber)
+    : ATypeConverter(), _value(0) {
+  _setTypeName("double");
+  _value = static_cast<double>(integerNumber);
+}
+
+DoubleConverter::DoubleConverter(const float& floatingNumber)
+    : ATypeConverter(), _value(0) {
+  _setTypeName("double");
+  _value = static_cast<double>(floatingNumber);
+}
+
+DoubleConverter::DoubleConverter(const std::string& literal)
     : ATypeConverter(literal), _value(atoi(literal.c_str())) {
 }
 
-FloatConverter::FloatConverter(const FloatConverter& other)
+DoubleConverter::DoubleConverter(const DoubleConverter& other)
     : ATypeConverter(other._literal), _value(other._value) {
 }
 
-FloatConverter::~FloatConverter(void) {
+DoubleConverter::~DoubleConverter(void) {
 }
 
-void FloatConverter::printValue(void) const {
-  std::cout << "float : " << _value << "f" << std::endl;
+void DoubleConverter::printValue(void) const {
+  std::cout << "double : ";
+  if (!_isConvertable) {
+    std::cout << ansiRed << "Impossible" << ansiEnd;
+  } else {
+    std::cout << _value;
+  }
+  std::cout << std::endl;
   return ;
 }
 
-void FloatConverter::convert(void) const {
+void DoubleConverter::convert(void) const {
   CharConverter charConverter(_value);
   charConverter.printValue();
   IntConverter intConverter(_value);
   intConverter.printValue();
+  FloatConverter floatConverter(_value);
+  floatConverter.printValue();
 }

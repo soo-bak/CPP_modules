@@ -3,6 +3,7 @@
 #include "ATypeConverter.hpp"
 #include "CharConverter.hpp"
 #include "IntConverter.hpp"
+#include "DoubleConverter.hpp"
 
 class FloatConverter : public ATypeConverter {
 
