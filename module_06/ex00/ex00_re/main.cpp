@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
   std::cout << ansiEnd << " ]" << std::endl;
   type->printValue();
   std::cout << std::endl;
-  std::cout << "[ Convert to other types ]" << std::endl;
+  std::cout << "[ Converted other types ]" << std::endl;
   type->convert();
   delete type;
   return 0;

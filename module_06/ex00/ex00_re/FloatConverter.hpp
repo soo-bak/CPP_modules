@@ -14,7 +14,8 @@ class FloatConverter : public ATypeConverter {
     FloatConverter(void);
     FloatConverter(const char& character);
     FloatConverter(const int& integerNumber);
-    FloatConverter(const double& doubleNumber);
+    FloatConverter(const double& doubleNumber,
+                   const int& precision);
     FloatConverter(const std::string& literal);
     FloatConverter(const FloatConverter& other);
     virtual ~FloatConverter();
@@ -25,4 +26,5 @@ class FloatConverter : public ATypeConverter {
   private:
 
     float _value;
+    int _precision;
 };

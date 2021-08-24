@@ -10,24 +10,25 @@ FloatConverter& FloatConverter::operator = (const FloatConverter& other) {
 }
 
 FloatConverter::FloatConverter(void)
-    : ATypeConverter(), _value(0) {
+    : ATypeConverter(), _value(0), _precision(0) {
   _setTypeName("float");
 }
 
 FloatConverter::FloatConverter(const char& character)
-    : ATypeConverter(), _value(0) {
+    : ATypeConverter(), _value(0), _precision(1) {
   _setTypeName("float");
   _value = static_cast<float>(character);
 }
 
 FloatConverter::FloatConverter(const int& integerNumber)
-    : ATypeConverter(), _value(0) {
+    : ATypeConverter(), _value(0), _precision(1) {
   _setTypeName("float");
   _value = static_cast<float>(integerNumber);
 }
 
-FloatConverter::FloatConverter(const double& doubleNumber)
-    : ATypeConverter(), _value(0) {
+FloatConverter::FloatConverter(const double& doubleNumber,
+                               const int& precision)
+    : ATypeConverter(), _value(0), _precision(precision) {
   _setTypeName("float");
   if (doubleNumber < std::numeric_limits<float>::min() ||
       doubleNumber > std::numeric_limits<float>::max()) {
@@ -38,7 +39,9 @@ FloatConverter::FloatConverter(const double& doubleNumber)
 }
 
 FloatConverter::FloatConverter(const std::string& literal)
-    : ATypeConverter(literal), _value(atoi(literal.c_str())) {
+    : ATypeConverter(literal), _value(0),
+      _precision(literal.find('f') - literal.find('.') - 1) {
+  _value = static_cast<float>(atof(literal.c_str()));
 }
 
 FloatConverter::FloatConverter(const FloatConverter& other)
@@ -53,7 +56,8 @@ void FloatConverter::printValue(void) const {
   if (!_isConvertable) {
     std::cout << ansiRed << "Impossible" << ansiEnd;
   } else {
-    std::cout << _value;
+    std::cout << std::fixed << std::setprecision(_precision);
+    std::cout << _value << "f";
   }
   std::cout << std::endl;
   return ;
@@ -64,6 +68,6 @@ void FloatConverter::convert(void) const {
   charConverter.printValue();
   IntConverter intConverter(_value);
   intConverter.printValue();
-  DoubleConverter doubleConverter(_value);
+  DoubleConverter doubleConverter(_value, _precision);
   doubleConverter.printValue();
 }

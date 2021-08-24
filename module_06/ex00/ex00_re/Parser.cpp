@@ -11,17 +11,24 @@ Parser::~Parser(void) {
 }
 
 ATypeConverter* Parser::acquireType(const std::string& string) {
-  const unsigned int typeEnum(_detectType(string));
-
+  unsigned int typeEnum;
+  typeEnum = _detectType(string);
   ATypeConverter* returnType(NULL);
   switch (typeEnum) {
     case CharType:
       returnType = new CharConverter(string);
-    break;
+      break ;
     case IntType:
       returnType = new IntConverter(string);
-  default:
-    break;
+      break ;
+    case FloatType:
+      returnType = new FloatConverter(string);
+      break ;
+    case DoubleType:
+      returnType = new DoubleConverter(string);
+      break ;
+    default:
+      break ;
   }
   return returnType;
 }
