@@ -1,5 +1,9 @@
 #include "Conversion.hpp"
 
+const char* Conversion::NotMatchedTypeException::what(void) const throw() {
+  return "Conversion::NotMatchedTypeException";
+}
+
 Conversion& Conversion::operator = (const Conversion& other) {
   if (this == &other) {
     return *this;
@@ -21,7 +25,19 @@ Conversion::Conversion(const std::string& string)
   catch (std::exception& exception) {
     std::cout << exception.what() << std::endl;
   }
-  std::cout << "[ " <<_type << " ]" << std::endl;
+  std::string test;
+  if (_type == Char) {
+    test = "char";
+  } else if (_type == Int) {
+    test = "int";
+  } else if (_type == Float) {
+    test = "float";
+  } else if (_type == Double) {
+    test = "double";
+  } else {
+    test = "???????";
+  }
+  std::cout << "[ " << test << " ]" << std::endl;
 }
 
 Conversion::Conversion(void)
@@ -51,10 +67,10 @@ bool Conversion::_isPointNumber(const std::string& string) {
     }
     if (_isDot(*i)) {
         dotCounts++;
-        if (dotCounts > 1) {
-          return false;
-        }
     }
+  }
+  if (dotCounts != 1) {
+    return false;
   }
   return true;
 }
@@ -107,8 +123,9 @@ bool Conversion::_isTypeInt(const std::string& string) {
 }
 
 bool Conversion::_isTypeFloat(const std::string& string) {
+  std::cout << string << std::endl;
   if (_isPointNumber(string) &&
-      _isFloatSuffix(*string.end())) {
+      _isFloatSuffix(*(string.end() - 1))) {
     return true;
   }
   return false;
@@ -116,7 +133,7 @@ bool Conversion::_isTypeFloat(const std::string& string) {
 
 bool Conversion::_isTypeDouble(const std::string& string) {
   if (_isPointNumber(string) &&
-      isdigit(*string.end())) {
+      isdigit(*(string.end() - 1))) {
     return true;
   }
   return false;
