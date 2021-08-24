@@ -25,19 +25,19 @@ Conversion::Conversion(const std::string& string)
   catch (std::exception& exception) {
     std::cout << exception.what() << std::endl;
   }
-  std::string test;
-  if (_type == Char) {
-    test = "char";
-  } else if (_type == Int) {
-    test = "int";
-  } else if (_type == Float) {
-    test = "float";
-  } else if (_type == Double) {
-    test = "double";
-  } else {
-    test = "???????";
-  }
-  std::cout << "[ " << test << " ]" << std::endl;
+  // std::string test;
+  // if (_type == Char) {
+  //   test = "char";
+  // } else if (_type == Int) {
+  //   test = "int";
+  // } else if (_type == Float) {
+  //   test = "float";
+  // } else if (_type == Double) {
+  //   test = "double";
+  // } else {
+  //   test = "???????";
+  // }
+  // std::cout << "[ " << test << " ]" << std::endl;
 }
 
 Conversion::Conversion(void)

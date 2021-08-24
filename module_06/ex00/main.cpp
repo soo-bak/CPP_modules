@@ -13,9 +13,9 @@ const std::string asniCyan("\033[1;36m");
 const std::string ansiEnd("\033[0m");
 
 int main (int argc, char* argv[]) {
-  if (argc > 2) {
+  if (argc != 2) {
     std::cout << ansiRed;
-    std::cout << "There are too many arguments" << std::endl;
+    std::cout << "Please execute in the appropriate foramt" << std::endl;
     std::cout << ansiEnd;
     return 0;
   }
