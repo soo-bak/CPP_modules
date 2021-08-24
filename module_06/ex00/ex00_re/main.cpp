@@ -1,8 +1,8 @@
 #include <exception>
 #include <iostream>
 
-#include "Convertor.hpp"
-#include "Char.hpp"
+#include "Parser.hpp"
+#include "CharConverter.hpp"
 
 const std::string ansiRed("\033[1;31m");
 const std::string ansiEnd("\033[0m");
@@ -15,9 +15,9 @@ int main(int argc, char* argv[]) {
     return -1;
   }
   std::string input(argv[1]);
-  AType* type;
+  ATypeConverter* type;
   try {
-    type = Convertor::acquireType(input);
+    type = Parser::acquireType(input);
     type->printValue();
   }
   catch (const std::exception& exception) {
@@ -25,5 +25,6 @@ int main(int argc, char* argv[]) {
     std::cout << exception.what() << std::endl;
     std::cout << ansiEnd;
   }
+  delete type;
   return 0;
 }

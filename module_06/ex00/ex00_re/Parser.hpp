@@ -2,9 +2,9 @@
 
 #include <string>
 
-#include "Char.hpp"
+#include "CharConverter.hpp"
 
-class Convertor {
+class Parser {
 
   public:
 
@@ -21,12 +21,13 @@ class Convertor {
        virtual const char* what(void) const throw();
     };
 
-    Convertor& operator = (const Convertor& other);
+    Parser& operator = (const Parser& other);
 
-    Convertor(void);
-    ~Convertor();
+    Parser(void);
+    ~Parser();
 
-    static AType* acquireType(const std::string& string);
+    static ATypeConverter* acquireType(const std::string& string);
+    static void printOtherTypeValue(const ATypeConverter& type);
 
   private:
 

@@ -3,10 +3,12 @@ COMPILER = clang++
 CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03
 SRCS = main.cpp \
-	Convertor.cpp \
-	AType.cpp \
-	Char.cpp \
-
+	Parser.cpp \
+	ATypeConverter.cpp \
+	CharConverter.cpp \
+	IntConverter.cpp \
+	FloatConverter.cpp \
+	DoubleConverter.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

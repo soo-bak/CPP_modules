@@ -1,22 +1,22 @@
-#include "Convertor.hpp"
+#include "Parser.hpp"
 
-const char* Convertor::NotMatchedTypeException::what(void) const throw() {
-  return "Convertor::NotMatchedTypeException";
+const char* Parser::NotMatchedTypeException::what(void) const throw() {
+  return "Parser::NotMatchedTypeException";
 }
 
-Convertor::Convertor(void) {
+Parser::Parser(void) {
 }
 
-Convertor::~Convertor(void) {
+Parser::~Parser(void) {
 }
 
-AType* Convertor::acquireType(const std::string& string) {
+ATypeConverter* Parser::acquireType(const std::string& string) {
   const unsigned int typeEnum(_detectType(string));
 
-  AType* returnType(NULL);
+  ATypeConverter* returnType(NULL);
   switch (typeEnum) {
     case CharType:
-      returnType = new Char(string);
+      returnType = new CharConverter(string);
     break;
     // case IntType:
       // returnType = new Int(string);
@@ -26,7 +26,7 @@ AType* Convertor::acquireType(const std::string& string) {
   return returnType;
 }
 
-unsigned int Convertor::_detectType(const std::string& string) {
+unsigned int Parser::_detectType(const std::string& string) {
   if (_isTypeChar(string)) {
     return CharType;
   } else if (_isTypeInt(string)) {
@@ -38,10 +38,9 @@ unsigned int Convertor::_detectType(const std::string& string) {
   } else {
     throw NotMatchedTypeException();
   }
-  return ValidTypesNumber;
 }
 
-bool Convertor::_isPointNumber(const std::string& string) {
+bool Parser::_isPointNumber(const std::string& string) {
   if (!isdigit(*string.begin()) && !_isSign(*string.begin())) {
     return false;
   }
@@ -61,28 +60,28 @@ bool Convertor::_isPointNumber(const std::string& string) {
   return true;
 }
 
-bool Convertor::_isSign(const char& character) {
+bool Parser::_isSign(const char& character) {
  if (character == '+' || character == '-')  {
    return true;
  }
  return false;
 }
 
-bool Convertor::_isDot(const char& character) {
+bool Parser::_isDot(const char& character) {
   if (character == '.') {
     return true;
   }
   return false;
 }
 
-bool Convertor::_isFloatSuffix(const char& character) {
+bool Parser::_isFloatSuffix(const char& character) {
   if (character == 'f') {
     return true;
   }
   return false;
 }
 
-bool Convertor::_isTypeChar(const std::string& string) {
+bool Parser::_isTypeChar(const std::string& string) {
   if (string.length() != 1) {
     return false;
   }
@@ -94,7 +93,7 @@ bool Convertor::_isTypeChar(const std::string& string) {
   return false;
 }
 
-bool Convertor::_isTypeInt(const std::string& string) {
+bool Parser::_isTypeInt(const std::string& string) {
   if (!isdigit(*string.begin()) &&
       !_isSign(*string.begin())) {
     return false;
@@ -108,7 +107,7 @@ bool Convertor::_isTypeInt(const std::string& string) {
   return true;
 }
 
-bool Convertor::_isTypeFloat(const std::string& string) {
+bool Parser::_isTypeFloat(const std::string& string) {
   if (_isPointNumber(string) &&
       _isFloatSuffix(*(string.end() - 1)) &&
       !_isDot(*(string.end() - 2))) {
@@ -117,7 +116,7 @@ bool Convertor::_isTypeFloat(const std::string& string) {
   return false;
 }
 
-bool Convertor::_isTypeDouble(const std::string& string) {
+bool Parser::_isTypeDouble(const std::string& string) {
   if (_isPointNumber(string) &&
       isdigit(*(string.end() - 1))) {
     return true;
@@ -125,14 +124,14 @@ bool Convertor::_isTypeDouble(const std::string& string) {
   return false;
 }
 
-bool Convertor::_isNaN(const std::string& string) {
+bool Parser::_isNaN(const std::string& string) {
   if (string.compare("nan") == 0) {
     return true;
   }
   return false;
 }
 
-bool Convertor::_isInf(const std::string& string) {
+bool Parser::_isInf(const std::string& string) {
   if (string.compare("+inf") == 0 || string.compare("-inf") == 0 ||
       string.compare("+inff") == 0 || string.compare("-inff") == 0) {
     return true;

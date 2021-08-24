@@ -3,16 +3,16 @@
 #include <iostream>
 #include <string>
 
-class AType {
+class ATypeConverter {
 
   public:
 
-    AType& operator = (const AType& other);
+    ATypeConverter& operator = (const ATypeConverter& other);
 
-    AType(void);
-    AType(const std::string& literal);
-    AType(const AType& other);
-    virtual ~AType();
+    ATypeConverter(void);
+    ATypeConverter(const std::string& literal);
+    ATypeConverter(const ATypeConverter& other);
+    virtual ~ATypeConverter();
 
     virtual void printValue(void) const = 0;
 
@@ -22,6 +22,7 @@ class AType {
     void setIsConvertable(const bool& boolean);
 
   protected:
+
     std::string _typeName;
     bool _isConvertable;
 };
