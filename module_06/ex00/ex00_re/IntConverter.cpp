@@ -1,5 +1,8 @@
 #include "IntConverter.hpp"
 
+const std::string ansiRed("\033[1;31m");
+const std::string ansiEnd("\033[0m");
+
 IntConverter& IntConverter::operator = (const IntConverter& other) {
   ATypeConverter::operator = (other);
   _value = other._value;
@@ -20,13 +23,16 @@ IntConverter::IntConverter(const char& character)
 IntConverter::IntConverter(const float& floatigNumber)
     : ATypeConverter(), _value(0) {
   _setTypeName("int");
-  _castToInt(floatigNumber);
+  _value = _castToInt(floatigNumber);
 }
 
 IntConverter::IntConverter(const double& doubleNumber)
     : ATypeConverter(), _value(0) {
+  if (doubleNumber == NAN){
+    _isConvertable = false;
+  }
   _setTypeName("int");
-  _castToInt(doubleNumber);
+  _value = _castToInt(doubleNumber);
 }
 
 IntConverter::IntConverter(const std::string& literal)
@@ -42,9 +48,9 @@ IntConverter::~IntConverter(void) {
 }
 
 void IntConverter::printValue(void) const {
-  std::cout << "int : ";
+  std::cout << "  int : ";
   if (!_isConvertable) {
-    std::cout << "Impossible";
+    std::cout << ansiRed <<"Impossible" << ansiEnd;
   } else {
     std::cout << _value;
   }
@@ -54,10 +60,10 @@ void IntConverter::printValue(void) const {
 
 void IntConverter::convert(void) const {
   CharConverter charConverter(_value);
-  charConverter.printValue();
   FloatConverter floatConverter(_value);
-  floatConverter.printValue();
   DoubleConverter doubleConverter(_value);
+  charConverter.printValue();
+  floatConverter.printValue();
   doubleConverter.printValue();
   return ;
 }

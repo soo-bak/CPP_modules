@@ -21,6 +21,7 @@ class ATypeConverter {
     virtual void convert(void) const = 0;
 
     const std::string& getTypeName(void) const;
+    void setIsConvertable(const bool& boolean);
 
   protected:
 

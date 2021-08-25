@@ -33,6 +33,12 @@ const std::string& ATypeConverter::getTypeName(void) const {
   return _typeName;
 }
 
+void ATypeConverter::setIsConvertable(const bool& boolean) {
+  _isConvertable = boolean;
+  return ;
+}
+
 void ATypeConverter::_setTypeName(const std::string& typeName) {
   _typeName = typeName;
+  return ;
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cmath>
+
 #include "ATypeConverter.hpp"
 #include "CharConverter.hpp"
 #include "IntConverter.hpp"
@@ -8,6 +10,12 @@
 class DoubleConverter : public ATypeConverter {
 
   public:
+    enum {
+      NegativeInfinity,
+      PositiveInfinity,
+      NotANumber,
+      NotApplicable
+    };
 
     DoubleConverter& operator = (const DoubleConverter& other);
 
@@ -27,4 +35,5 @@ class DoubleConverter : public ATypeConverter {
 
     double _value;
     int _precision;
+    unsigned int _nonRepresentableValue;
 };

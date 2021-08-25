@@ -25,19 +25,19 @@ CharConverter::CharConverter(const std::string& literal)
 CharConverter::CharConverter(const int& integerNumber)
     : ATypeConverter(), _value(0), _isDisplayable(true) {
   _setTypeName("char");
-  _castToChar(integerNumber);
+  _value = _castToChar(integerNumber);
 }
 
 CharConverter::CharConverter(const float& floatingNumber)
     : ATypeConverter(), _value(0), _isDisplayable(true) {
   _setTypeName("char");
-  _castToChar(floatingNumber);
+  _value = _castToChar(floatingNumber);
 }
 
 CharConverter::CharConverter(const double& doubleNumber)
     : ATypeConverter(), _value(0), _isDisplayable(true) {
   _setTypeName("char");
-  _castToChar(doubleNumber);
+  _value = _castToChar(doubleNumber);
 }
 
 CharConverter::CharConverter(const CharConverter& other)
@@ -49,7 +49,7 @@ CharConverter::~CharConverter(void) {
 }
 
 void CharConverter::printValue(void) const {
-  std::cout << "char : ";
+  std::cout << "  char : ";
   if (!_isConvertable) {
     std::cout << ansiRed << "Impossible" << ansiEnd;
   } else if (!_isDisplayable) {
@@ -63,17 +63,19 @@ void CharConverter::printValue(void) const {
 
 void CharConverter::convert(void) const {
   IntConverter intConverter(_value);
-  intConverter.printValue();
   FloatConverter floatConverter(_value);
-  floatConverter.printValue();
   DoubleConverter doubleConverter(_value);
+  intConverter.printValue();
+  floatConverter.printValue();
   doubleConverter.printValue();
+  return ;
 }
 
 char CharConverter::_castToChar(const double& number) {
   char castedChar(0);
   if (number < std::numeric_limits<char>::min() ||
-      number > std::numeric_limits<char>::max()) {
+      number > std::numeric_limits<char>::max() ||
+      number == NAN) {
     _isConvertable = false;
   } else {
     castedChar = static_cast<char>(number);

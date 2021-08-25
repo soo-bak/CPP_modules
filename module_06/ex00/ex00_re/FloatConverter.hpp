@@ -8,6 +8,12 @@
 class FloatConverter : public ATypeConverter {
 
   public:
+    enum {
+      NegativeInfinity,
+      PositiveInfinity,
+      NotANumber,
+      NotApplicable
+    };
 
     FloatConverter& operator = (const FloatConverter& other);
 
@@ -22,9 +28,11 @@ class FloatConverter : public ATypeConverter {
 
     virtual void printValue(void) const;
     virtual void convert(void) const;
+    void setNonRepresentableValue(const unsigned int& value);
 
   private:
 
     float _value;
     int _precision;
+    unsigned int _nonRepresentableValue;
 };

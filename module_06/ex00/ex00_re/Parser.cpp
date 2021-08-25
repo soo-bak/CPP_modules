@@ -92,7 +92,6 @@ bool Parser::_isTypeChar(const std::string& string) {
   if (string.length() != 1) {
     return false;
   }
-  // !iscntrl(asciiValue)
   const int asciiValue(string.at(0));
   if (!isdigit(asciiValue)) {
     return true;
@@ -119,6 +118,9 @@ bool Parser::_isTypeFloat(const std::string& string) {
       _isFloatSuffix(*(string.end() - 1)) &&
       !_isDot(*(string.end() - 2))) {
     return true;
+  } else if (!string.compare("-inff") || !string.compare("+inff") ||
+             !string.compare("inff") || !string.compare("nanf")) {
+    return true;
   }
   return false;
 }
@@ -126,6 +128,9 @@ bool Parser::_isTypeFloat(const std::string& string) {
 bool Parser::_isTypeDouble(const std::string& string) {
   if (_isPointNumber(string) &&
       isdigit(*(string.end() - 1))) {
+    return true;
+  } else if (!string.compare("-inf") || !string.compare("+inf") ||
+             !string.compare("inf") || !string.compare("nan")) {
     return true;
   }
   return false;
