@@ -23,6 +23,7 @@ class IntConverter : public ATypeConverter {
     virtual void convert(void) const;
 
   private:
+
     int _castToInt(const double& number);
 
     int _value;

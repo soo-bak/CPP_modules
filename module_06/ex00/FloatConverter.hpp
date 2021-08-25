@@ -28,6 +28,7 @@ class FloatConverter : public ATypeConverter {
 
     virtual void printValue(void) const;
     virtual void convert(void) const;
+
     void setNonRepresentableValue(const unsigned int& value);
 
   private:

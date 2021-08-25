@@ -51,4 +51,5 @@ void identify(Base& P) {
   }
   catch (std::exception) {
   }
+  return ;
 }

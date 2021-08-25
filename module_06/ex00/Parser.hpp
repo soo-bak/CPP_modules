@@ -41,7 +41,6 @@ class Parser {
     static bool _isPointNumber(const std::string& string);
     static bool _isNaN(const std::string& string);
     static bool _isInf(const std::string& string);
-
     static bool _isSign(const char& character);
     static bool _isDot(const char& character);
     static bool _isFloatSuffix(const char& character);

@@ -50,7 +50,7 @@ IntConverter::~IntConverter(void) {
 void IntConverter::printValue(void) const {
   std::cout << "  int : ";
   if (!_isConvertable) {
-    std::cout << ansiRed <<"Impossible" << ansiEnd;
+    std::cout << ansiRed << "Impossible" << ansiEnd;
   } else {
     std::cout << _value;
   }

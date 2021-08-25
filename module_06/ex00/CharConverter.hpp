@@ -23,6 +23,7 @@ class CharConverter : public ATypeConverter {
     virtual void convert(void) const;
 
   private:
+
     char _castToChar(const double& number);
 
     char _value;
