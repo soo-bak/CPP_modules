@@ -6,6 +6,8 @@ const std::string ansiEnd("\033[0m");
 DoubleConverter& DoubleConverter::operator = (const DoubleConverter& other) {
   ATypeConverter::operator = (other);
   _value = other._value;
+  _precision = other._precision;
+  _nonRepresentableValue = other._nonRepresentableValue;
   return *this;
 }
 
@@ -57,7 +59,9 @@ DoubleConverter::DoubleConverter(const std::string& literal)
 }
 
 DoubleConverter::DoubleConverter(const DoubleConverter& other)
-    : ATypeConverter(other._literal), _value(other._value) {
+    : ATypeConverter(other._literal), _value(other._value),
+      _precision(other._precision),
+      _nonRepresentableValue(other._nonRepresentableValue) {
 }
 
 DoubleConverter::~DoubleConverter(void) {

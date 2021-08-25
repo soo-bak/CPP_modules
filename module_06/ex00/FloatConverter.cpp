@@ -6,6 +6,8 @@ const std::string ansiEnd("\033[0m");
 FloatConverter& FloatConverter::operator = (const FloatConverter& other) {
   ATypeConverter::operator = (other);
   _value = other._value;
+  _precision = other._precision;
+  _nonRepresentableValue = other._nonRepresentableValue;
   return *this;
 }
 
@@ -61,10 +63,10 @@ FloatConverter::FloatConverter(const std::string& literal)
   }
 }
 
-
-// 복사생성자들 점검
 FloatConverter::FloatConverter(const FloatConverter& other)
-    : ATypeConverter(other._literal), _value(other._value) {
+    : ATypeConverter(other._literal), _value(other._value),
+      _precision(other._precision),
+      _nonRepresentableValue(other._nonRepresentableValue) {
 }
 
 FloatConverter::~FloatConverter(void) {

@@ -25,6 +25,7 @@ class Parser {
     Parser& operator = (const Parser& other);
 
     Parser(void);
+    Parser(const Parser& other);
     ~Parser();
 
     static ATypeConverter* acquireType(const std::string& string);

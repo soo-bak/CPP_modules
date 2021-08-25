@@ -4,7 +4,18 @@ const char* Parser::NotMatchedTypeException::what(void) const throw() {
   return "Parser::NotMatchedTypeException";
 }
 
+Parser& Parser::operator = (const Parser& other) {
+  if (this == &other) {
+    return *this;
+  }
+  return *this;
+}
+
 Parser::Parser(void) {
+}
+
+Parser::Parser(const Parser& other) {
+  *this = other;
 }
 
 Parser::~Parser(void) {
