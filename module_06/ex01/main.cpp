@@ -3,8 +3,8 @@
 
 #include "Data.hpp"
 
-uintptr_t serialized(Data* ptr);
-Data* deserialized(uintptr_t raw);
+uintptr_t serialize(Data* ptr);
+Data* deserialize(uintptr_t raw);
 
 const std::string ansiRed("\033[1;31m");
 const std::string ansiYellow("\033[1;33m");
@@ -27,7 +27,7 @@ int main() {
   std::cout << std::endl;
 
   uintptr_t serializedIntPtr;
-  serializedIntPtr = serialized(&initialData);
+  serializedIntPtr = serialize(&initialData);
 
   std::cout << "[ " << ansiRed << "Serialized int type pointer" << ansiEnd << " ]";
   std::cout << std::endl;
@@ -40,7 +40,7 @@ int main() {
   std::cout << std::endl;
 
   Data* deserializedDataPtr;
-  deserializedDataPtr = deserialized(serializedIntPtr);
+  deserializedDataPtr = deserialize(serializedIntPtr);
   std::cout << "[ " << ansiRed << "Deserialized Data type pointer" << ansiEnd << " ]";
   std::cout << std::endl;
   std::cout << "   pointer value : ";
