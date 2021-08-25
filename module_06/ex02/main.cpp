@@ -17,16 +17,24 @@ const std::string ansiGreen("\033[1;32m");
 const std::string ansiCyan("\033[1;36m");
 const std::string ansiEnd("\033[0m");
 
-
 int main() {
 
   std::cout << std::endl;
   std::cout << " [ " << ansiRed << "Generate random class" << ansiEnd << " ]" << std::endl;
+  std::cout << "   ";
   Base* randomBase = generate();
   std::cout << std::endl;
+
+  std::cout << " [ " << ansiRed << "Identifying by POINTER casting" << ansiEnd << " ]" << std::endl;
+  std::cout << "   identified class is : ";
   identify(randomBase);
+  std::cout << std::endl;
 
-
+  std::cout << " [ " << ansiRed << "Identifying by REFERENCE casting" << ansiEnd << " ]" << std::endl;
+  Base& reference = *randomBase;
+  std::cout << "   identified class is : ";
+  identify(reference);
+  std::cout << std::endl;
 
   return 0;
 }

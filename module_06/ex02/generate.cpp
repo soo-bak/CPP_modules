@@ -15,17 +15,15 @@ Base* generate(void) {
   Base* randomBase;
   std::srand(std::time(NULL));
   const int randomValue(std::rand());
+  std::cout << "getnerated class is : ";
   if (randomValue % 3 == 1) {
     randomBase = new A();
-    std::cout << "getnerated class is ";
     std::cout << ansiPurple << "A" << ansiEnd << std::endl;
   } else if (randomValue % 3 == 2) {
     randomBase = new B();
-    std::cout << "getnerated class is ";
     std::cout << ansiGreen << "B" << ansiEnd << std::endl;
   } else {
     randomBase = new C();
-    std::cout << "getnerated class is ";
     std::cout << ansiCyan << "C" << ansiEnd << std::endl;
   }
   return randomBase;
