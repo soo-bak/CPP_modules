@@ -3,6 +3,8 @@ COMPILER = clang++
 CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03
 SRCS = main.cpp \
+	serialize.cpp \
+	deserialize.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
