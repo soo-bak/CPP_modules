@@ -1,8 +1,9 @@
-NAME = ex00
+NAME = ex01
 COMPILER = clang++
 CFLAGS = -Wall -Wextra -Werror
 CPP_VERSION = -std=c++03
 SRCS = main.cpp \
+	Span.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
