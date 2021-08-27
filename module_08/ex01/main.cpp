@@ -16,9 +16,9 @@ int main() {
   end = begin + testSize;
 
   testSpan.addNumber(begin, end - 1);
-  testSpan.addNumber(10042);
-
+  // testSpan.addNumber(10042);
   // testSpan.addNumber(5);
+
   // testSpan.addNumber(3);
   // testSpan.addNumber(17);
   // testSpan.addNumber(9);
@@ -28,9 +28,19 @@ int main() {
     std::cout << "Element [" << i << "] : ";
     std::cout << testSpan.getElements().at(i) << std::endl;
   }
-
-  std::cout << "Shortest span : " << testSpan.shortestSpan() << std::endl;
-  std::cout << "Longest span : " << testSpan.longestSpan() << std::endl;
-
+  try {
+    std::cout << "Shortest span : " << testSpan.shortestSpan() << std::endl;
+  }
+  catch (std::exception e) {
+    std::cout << e.what() << std::endl;
+    return -1;
+  }
+  try {
+    std::cout << "Longest span : " << testSpan.longestSpan() << std::endl;
+  }
+  catch (std::exception e) {
+    std::cout << e.what() << std::endl;
+    return -1;
+  }
   return 0;
 }
