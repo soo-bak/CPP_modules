@@ -15,14 +15,21 @@ const std::string ansiCyan("\033[1;36m");
 const std::string ansiEnd("\033[0m");
 
 int main() {
-  Span testSpan(5);
+  const unsigned int testSize = 10000;
+  Span testSpan(testSize);
 
-  testSpan.addNumber(1);
-  testSpan.addNumber(2);
-  testSpan.addNumber(3);
-  testSpan.addNumber(4);
-  testSpan.addNumber(5);
+  std::vector<int>::iterator begin;
+  begin = testSpan.getElements().begin();
+  std::vector<int>::iterator end;
+  end = begin + testSize;
 
+  testSpan.addNumber(begin, end - 1);
+  // testSpan.addNumber(begin, end - 1, 1);
+  testSpan.addNumber(42);
+
+  for (unsigned int i = 0; i < testSpan.getElements().size(); i++) {
+    std::cout << testSpan.getElements().at(i) << std::endl;
+  }
 
   return 0;
 }
