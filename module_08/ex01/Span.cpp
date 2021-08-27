@@ -57,6 +57,39 @@ void Span::addNumber(std::vector<int>::iterator start,
   return ;
 }
 
+unsigned long Span::shortestSpan(void) {
+  if (_elements.size() <= 1) {
+    throw std::exception();
+  }
+  std::sort(_elements.begin(), _elements.end());
+  std::vector<unsigned long> spans;
+  for (unsigned int i = 0; i < _elements.size(); i++) {
+    unsigned long span;
+    span = _elements[i + 1] - _elements[i];
+    spans.push_back(span);
+  }
+  const unsigned long shortestSpan = *std::min_element(spans.begin(), spans.end());
+  if (shortestSpan == 0) {
+    throw std::exception();
+  }
+  return shortestSpan;
+}
+
+unsigned long Span::longestSpan(void) {
+  if (_elements.size() <= 1) {
+    throw std::exception();
+  }
+  int max;
+  max = *std::max_element(_elements.begin(), _elements.end());
+  int min;
+  min = *std::min_element(_elements.begin(), _elements.end());
+  const unsigned long longestSpan(max - min);
+  if (longestSpan == 0) {
+    throw std::exception();
+  }
+  return longestSpan;
+}
+
 std::vector<int> Span::getElements(void) const {
   return _elements;
 }

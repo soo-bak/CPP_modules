@@ -6,6 +6,7 @@
 #include <iostream>
 
 class Span {
+
   public:
 
     Span& operator = (const Span& other);
@@ -21,9 +22,13 @@ class Span {
     void addNumber(std::vector<int>::iterator start,
                    std::vector<int>::iterator end,
                    const int& newNumber);
+    unsigned long shortestSpan(void);
+    unsigned long longestSpan(void);
+
     std::vector<int> getElements(void) const;
 
   private:
+
     unsigned int _maxSize;
     std::vector<int> _elements;
 };
