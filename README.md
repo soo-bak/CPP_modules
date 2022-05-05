@@ -1,4 +1,4 @@
-## This is a cloning project of the game 'DOOM'.
+## This is a project of introduction to C++
 - Key Learning Concepts
   - Grammar of C++
   - Object-oriented programming
